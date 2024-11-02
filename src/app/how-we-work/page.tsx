@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Navbar from "../../../components/Navbar";
 import NavlinkBar from "../../../components/NavlinkBar";
-import Servies from "../../../components/services/Services";
+
 import HowWeWorkComponent from "../../../components/HowWeWork";
 // image
 import lakeImage from "../../../public/images/lake-image.png";

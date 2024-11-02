@@ -74,7 +74,7 @@ const Servies = () => {
       <div className=" flex flex-col md:flex-row md:gap-[30px] justify-center flex-wrap ">
         
         {data.map((challenge) => (
-            <ChallengesCard title={challenge.title} description={challenge.description} image={challenge.image} className="basis-[27%] " shadowColor={"shadow-card-blue"} textColor="text-main-blue" />
+            <ChallengesCard key={challenge.title} title={challenge.title} description={challenge.description} image={challenge.image} className="basis-[27%] " shadowColor={"shadow-card-blue"} textColor="text-main-blue" />
         ))}
         </div>
     </div>

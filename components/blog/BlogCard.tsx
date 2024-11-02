@@ -1,6 +1,6 @@
 import Image from "next/image";
 import image from "../../public/images/hero-background.png";
-import H4 from "../../ui/heading/H4";
+
 const BlogCard = () => {
   return (
     <div className="p-4  flex shadow-card-red rounded-[20px]">
@@ -9,6 +9,7 @@ const BlogCard = () => {
         style={{ background: "blue", position: "relative" }}
       >
         <Image
+        alt="Ok"
           fill
           src={image} // Replace with your image path
           className=" h-full w-full rounded-[13px] border-2 border-black  object-cover"

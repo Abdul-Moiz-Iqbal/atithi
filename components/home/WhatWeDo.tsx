@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 
 // vectors
 import IndiaSafe from "../../public/vectors/whatWedo-IndiaSafe.png";
@@ -46,10 +46,11 @@ const WhatWeDo:React.FC<WhatWeDoProps> = ({title="What we do"}) => {
       <div className="flex flex-col  md:gap-10 lg:flex-row lg:justify-center ">
       {data.map((whatWeDo) => (
         <WhatWeDoCard
+        key={whatWeDo.title}
           image={whatWeDo.image}
           description={whatWeDo.description}
           title={whatWeDo.title}
-          width={whatWeDo.width}
+    
         />
       ))}
      

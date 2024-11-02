@@ -1,15 +1,15 @@
 import Image from "next/image";
-import ShadowCard from "../../ui/Card/ShadowCard";
+
 import { StaticImageData } from "next/image"; // Import for image type
 
 interface WhatWeDoCardProps {
   image: StaticImageData | string; // For static or dynamic images
   title: string;
   description: string;
-  width: number;
+ 
 }
 
-const ChallengesCard: React.FC<WhatWeDoCardProps> = ({ image, title, description, width }) => {
+const ChallengesCard: React.FC<WhatWeDoCardProps> = ({ image, title, description }) => {
   return (
     <div key={title} className="mt-5 flex  flex-col items-center flex-shrink-0 h-full flex-grow-0 md:basis-[40%] lg:basis-[28%] ">
       <div className="w-[213px] h-[175px]">

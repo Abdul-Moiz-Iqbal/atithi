@@ -4,9 +4,9 @@ import NavlinkBar from "../../../components/NavlinkBar";
 
 // image 
 import lakeImage from "../../../public/images/lake-image.png";
-import image from "../../../public/images/lake-image.png";
+
 import Blog from "../../../components/blog/Blog";
-import BlogCard from "../../../components/home/BlogCard";
+
 
 
 export default function blog() {

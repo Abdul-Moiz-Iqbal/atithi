@@ -1,6 +1,6 @@
 import ShadowCard from "../ui/Card/ShadowCard"
 import H4 from "../ui/heading/H4"
-import H6 from "../ui/heading/H6"
+
 import P from "../ui/Paragraph/P"
 import PlanCard from "./PlanCard"
 // import solo from "../public/images/plan-solo.png"

@@ -10,9 +10,6 @@ import image from "../../../../../public/images/lake-image.png";
 import share from "../../../../../public/icons/share.png";
 
 // react icons
-import { RiLinkedinFill } from "react-icons/ri";
-import { AiFillTwitterCircle } from "react-icons/ai";
-import { AiOutlineInstagram } from "react-icons/ai";
 import { TiSocialLinkedin } from "react-icons/ti";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 
@@ -146,6 +143,7 @@ const BlogPost = () => {
             {/* Pr0file image   */}
             <div className="mt-5 mx-auto w-[274px] h-[274px] border border-black rounded-full">
               <Image
+              alt="profile"
                 className="rounded-full h-full w-full border border-black"
                 src={image}
               />

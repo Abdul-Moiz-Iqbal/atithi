@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 
 // image
-import image from "../../public/images/hero-background.png";
+
 
 // ui
 import ShadowCard from "../../ui/Card/ShadowCard";
@@ -10,13 +10,13 @@ import P from "../../ui/Paragraph/P";
 import React from "react";
 
 interface BlogCardProps {
-    title: String;
-    description: String;
-    image: StaticImageData | String;
+    title: string;
+    description: string;
+    image: StaticImageData | string;
     
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({title, description, image}) => {
+const BlogCard: React.FC<BlogCardProps> = ({title, description= "Best places to visit in north India, The best hotels in India. Garam Chai with Doli and Bills Gate.", image}) => {
     return (
         <ShadowCard className={"mt-10 p-5 rounded-[20px] md:basis-[40%] lg:basis-[25%] shadow-card-red"}>
         {/* Blog Image */}
@@ -40,7 +40,7 @@ const BlogCard: React.FC<BlogCardProps> = ({title, description, image}) => {
         <P
           className="mt-3 text-start leading-5 font-normal text-[1.22rem]"
           text={
-            "Best places to visit in north India, The best hotels in India. Garam Chai with Doli and Bills Gate."
+            description
           }
         />
 

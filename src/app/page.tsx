@@ -1,6 +1,4 @@
-import Image from "next/image";
-import logo from "../../public/images/logo.png";
-import Menu from "../../public/icons/Menu.png";
+
 import  Navbar  from "../../components/Navbar";
 import Hero from "../../components/home/hero";
 import TravelExpert from "../../components/home/travelExpert";

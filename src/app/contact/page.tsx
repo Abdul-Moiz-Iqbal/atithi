@@ -2,11 +2,11 @@
 import Image from "next/image";
 import Navbar from "../../../components/Navbar";
 import NavlinkBar from "../../../components/NavlinkBar";
-import { useLoadScript, GoogleMap, Marker } from "@react-google-maps/api";
+
 // image
 import lakeImage from "../../../public/images/lake-image.png";
 import H4 from "../../../ui/heading/H4";
-import P from "../../../ui/Paragraph/P";
+
 
 // react icons
 import { LiaPhoneSolid } from "react-icons/lia";
@@ -14,23 +14,11 @@ import { IoMailOutline } from "react-icons/io5";
 import { VscMap } from "react-icons/vsc";
 
 // Set default map libraries and options
-const libraries = ["places"];
-const mapContainerStyle = {
-  width: "100%",
-  height: "400px",
-};
-const center = {
-  lat: 37.7749, // Example coordinates (San Francisco)
-  lng: -122.4194,
-};
+
+
 
 export default function ContactUs() {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-    libraries,
-  });
-
-  if (!isLoaded) return <div>Loading...</div>;
+ 
   return (
     <div className="font-author">
       <Navbar />
@@ -135,13 +123,7 @@ export default function ContactUs() {
         </div>
       </div>
       <div className="">
-        {/* <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={12}
-          center={center}
-        >
-          <Marker position={center} />
-        </GoogleMap> */}
+     
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.274257380938!2d-70.56068388481569!3d41.45496659976631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e52963ac45bbcb%3A0xf05e8d125e82af10!2sDos%20Mas!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
          className="w-full h-[40vh]"

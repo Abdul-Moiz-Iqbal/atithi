@@ -1,7 +1,6 @@
-import Image from "next/image";
 
 // ui
-import ShadowCard from "../../ui/Card/ShadowCard";
+
 import ChallengesCard from "./ChallengesCard";
 
 // vector
@@ -57,7 +56,7 @@ const Challenges = () => {
         </h1>
         <div className="flex flex-col md:flex-row md:gap-[20px] justify-center flex-wrap ">
         {data.map((challenge) => (
-            <ChallengesCard title={challenge.title} description={challenge.description} image={challenge.image} shadowColor="shadow-card-red" textColor="text-main-red" />
+            <ChallengesCard key={challenge.title} title={challenge.title} description={challenge.description} image={challenge.image} shadowColor="shadow-card-red" textColor="text-main-red" />
         ))}
         </div>
        
