@@ -87,7 +87,7 @@ const blogData = [
 ];
 
 const Blog = () => {
-  const initialVisibleCount = 2;
+  const initialVisibleCount = 6;
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
 
   // Show more blogs logic

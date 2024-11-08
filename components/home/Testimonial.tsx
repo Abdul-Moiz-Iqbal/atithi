@@ -35,7 +35,7 @@ const testimonialData = [
 
 const Testimonial = () => {
   // State to control how many testimonials are shown
-  const [visibleCount, setVisibleCount] = useState(2);
+  const [visibleCount, setVisibleCount] = useState(8);
 
 
   // Function to show more or less testimonials
