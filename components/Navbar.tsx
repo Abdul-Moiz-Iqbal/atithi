@@ -27,7 +27,7 @@
 //           <div className=" flex gap-2">
 //             <div className="">24/7 Whatsapp helpline <span className="ml-1 not-italic">|</span> </div>
 //             <div className="ml-1 flex items-center">
-//               <RiMessage2Line /> 
+//               <RiMessage2Line />
 //               <div className="ml-3">+91 8630351715</div>
 //             </div>
 //           </div>
@@ -48,6 +48,7 @@ import logo from "../public/images/logoHres.png";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { RiMessage2Line } from "react-icons/ri";
 import DropdownMenu from "../ui/dropdown/dropdown";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -59,12 +60,14 @@ export default function Navbar() {
           <HiOutlineMenuAlt1 className="text-[36px] lg:hidden text-main-red" />
 
           {/* Logo */}
-          <Image
-            src={logo}
-            alt="Hello Atithi"
-            priority
-            className="w-[150px] sm:w-[250px] ml-3 lg:ml-0"
-          />
+          <Link href={'/'}>
+            <Image
+              src={logo}
+              alt="Hello Atithi"
+              priority
+              className="w-[150px] sm:w-[250px] ml-3 lg:ml-0"
+            />
+          </Link>
         </div>
 
         {/* WhatsApp Service and Dropdown (visible on lg devices) */}
@@ -83,9 +86,11 @@ export default function Navbar() {
         </div>
 
         {/* Button */}
+        <Link href={'/trip-form'}>
         <button className="px-4 py-4 lg:px-[20.5px] text-[14px] sm:text-[18px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
           Start your Journey
         </button>
+        </Link>
       </div>
     </div>
   );

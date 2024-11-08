@@ -1,21 +1,26 @@
-import Image from 'next/image';
-import whatWeDo1 from '../public/images/what-we-do-1.png';
-const HowWeWorkCard = () => {
-  return (
-    <div className='flex flex-col items-center'>
-        <Image
-        width={87}
-        height={39}
-        alt='Your One Stop Trip to India'
-          src={whatWeDo1}
-          />
-      <div className=" mt-5  text-[22px] tracking-[0.1px] text-center ">
-        Start by providing some basic information, such as the number of
-        travellers and the days in India, using the <span className="text-main-red uppercase">“START MY JOURNEY”</span>  button.
-        We'll get in touch with you shortly.
-      </div>
+import Image from "next/image";
 
- 
+
+interface HowWeWorkCardProps {
+  image: string;
+  description: React.ReactNode;
+}
+const HowWeWorkCard: React.FC<HowWeWorkCardProps> = ({
+  image,
+  description,
+}) => {
+  return (
+    <div className="flex flex-col items-center">
+      <div className="w-[100px] h-[150px]">
+        <Image
+          // width={87}
+          // height={39}
+          className="w-full h-full"
+          alt="Your One Stop Trip to India"
+          src={image}
+        />
+      </div>
+      {description}
     </div>
   );
 };

@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
-import Navbar from "../../../../../components/Navbar";
-import NavlinkBar from "../../../../../components/NavlinkBar";
+
 import BlogCard from "../../../../../components/home/BlogCard";
 
 // image
@@ -16,6 +15,7 @@ import { FaInstagram, FaTwitter } from "react-icons/fa";
 //react
 import { useState } from "react";
 import H4 from "../../../../../ui/heading/H4";
+import Link from "next/link";
 
 const blogData = [
   {
@@ -74,13 +74,15 @@ const BlogPost = () => {
 
   // Show more blogs logic
   const showMore = () => {
-    setVisibleCount((prevCount) => prevCount + 2);
+    if (visibleCount >= blogData.length) {
+      setVisibleCount(3);
+    } else {
+      setVisibleCount((prevCount) => Math.min(prevCount + 3, blogData.length));
+    }
   };
 
   return (
     <div className="font-author">
-      <Navbar />
-      <NavlinkBar />
       <div>
         <Image src={lakeImage} alt="Servies" />
       </div>
@@ -95,6 +97,9 @@ const BlogPost = () => {
             <div>&gt;</div>
             <div>India Must Know </div>
           </div>
+          <h1 className="mt-5 sm:hidden text-main-blue text-[20px] font-semibold tracking-wide">
+            Blog Name
+          </h1>
           <div className=" mt-4 w-full  md:mx-auto border-[1px] border-main-red"></div>
 
           <div className="mt-5 text-[18px] leading-tight tracking-wider">
@@ -143,7 +148,7 @@ const BlogPost = () => {
             {/* Pr0file image   */}
             <div className="mt-5 mx-auto w-[274px] h-[274px] border border-black rounded-full">
               <Image
-              alt="profile"
+                alt="profile"
                 className="rounded-full h-full w-full border border-black"
                 src={image}
               />
@@ -177,12 +182,11 @@ const BlogPost = () => {
             </div>
 
             <div className="flex justify-center">
-              <button
-                className="mt-10 px-7 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white text-[20px] font-normal bg-main-red"
-                onClick={showMore}
-              >
-                Start my Journey
-              </button>
+            <Link href={"/trip-form"}>
+          <button className="mt-10 px-7 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white text-[20px] font-normal bg-main-red">
+            Start My Journey
+          </button>
+        </Link>
             </div>
           </div>
         </div>
@@ -208,12 +212,11 @@ const BlogPost = () => {
       </div>
 
       <div className="flex justify-center">
-        <button
-          className="mt-10 px-7 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white text-[20px] font-normal bg-main-red"
-          onClick={showMore}
-        >
-          Start my Journey
-        </button>
+        <Link href={"/trip-form"}>
+          <button className="mt-10 px-7 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white text-[20px] font-normal bg-main-red">
+            Start My Journey
+          </button>
+        </Link>
       </div>
       <H4
         title="You may also like"

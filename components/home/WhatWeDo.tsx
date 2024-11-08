@@ -9,9 +9,11 @@ import support from "../../public/vectors/whatWedo-support.png";
 import WhatWeDoCard from "./WhatWeDoCard";
 import Button from "../../ui/Button/Button";
 import React from "react";
+import Link from "next/link";
 
 interface WhatWeDoProps {
   title?: string;
+  showButton?: boolean;
 }
 const data = [
   {
@@ -37,7 +39,7 @@ const data = [
     width: 175,
   },
 ];
-const WhatWeDo:React.FC<WhatWeDoProps> = ({title="What we do"}) => {
+const WhatWeDo:React.FC<WhatWeDoProps> = ({title="What we do",showButton=true}) => {
   return (
     <div className="py-10 px-8 flex flex-col   ">
       <h1 className="uppercase text-[22px] md:text-[35px] tracking-wide text-center font-semibold text-main-blue">
@@ -55,7 +57,12 @@ const WhatWeDo:React.FC<WhatWeDoProps> = ({title="What we do"}) => {
       ))}
      
       </div>
-      <Button text="How  this works" className="w-fit tracking-wider  mt-8 mx-auto font-semibold shadow-none" />
+      {showButton && (
+        <Link href={"/how-we-work"} className="mx-auto">
+          <Button text="How  this works" className="w-fit tracking-wider  mt-8 mx-auto font-semibold shadow-none" />
+        </Link>
+      
+      )}
     </div>
   );
 };

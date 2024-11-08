@@ -1,0 +1,20 @@
+
+.custom-ol {
+    font-family:'Author-Variable' ; 
+    list-style: none;
+    counter-reset: list;
+  }
+  
+  .custom-ol li {
+    counter-increment: list;
+    position: relative;
+    padding-left: 1.5em; /* Adjust space before text */
+  }
+  
+  .custom-ol li::before {
+    content: "(" counter(list, lower-alpha) ")";
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+  

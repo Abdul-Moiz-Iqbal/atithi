@@ -35,17 +35,17 @@ const testimonialData = [
 
 const Testimonial = () => {
   // State to control how many testimonials are shown
-  const [visibleCount, setVisibleCount] = useState(8);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(2);
+
 
   // Function to show more or less testimonials
   const toggleShowMoreLess = () => {
-    if (isExpanded) {
+    if (visibleCount >= testimonialData.length) {
       setVisibleCount(2); // Collapse to show only 2
     } else {
-      setVisibleCount(testimonialData.length); // Expand to show all
+      setVisibleCount((prev) => prev + 2); // Expand to show all
     }
-    setIsExpanded(!isExpanded); // Toggle the state
+    // setIsExpanded(!isExpanded); // Toggle the state
   };
 
   return (
@@ -70,7 +70,8 @@ const Testimonial = () => {
       <div className=" flex justify-center">
 
       <Button
-        text={isExpanded ? "Show Less" : "Read More"}
+        text={visibleCount >= testimonialData.length ? "Show Less" : "View More"}
+        
         className="mt-10 mx-auto w-fit shadow-none"
         onClick={toggleShowMoreLess}
       />

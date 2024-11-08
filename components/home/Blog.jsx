@@ -23,7 +23,7 @@
 // };
 
 // export default Blog;
-"use client"
+"use client";
 import React, { useState } from "react";
 
 // image
@@ -87,11 +87,18 @@ const blogData = [
 ];
 
 const Blog = () => {
-  const [visibleCount, setVisibleCount] = useState(6);
+  const initialVisibleCount = 2;
+  const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
 
   // Show more blogs logic
   const showMore = () => {
-    setVisibleCount((prevCount) => prevCount + 2);
+    if (visibleCount >= blogData.length) {
+      // Show less when all items are already visible
+      setVisibleCount(initialVisibleCount);
+    } else {
+      // Show 2 more items
+      setVisibleCount((prevCount) => prevCount + 2);
+    }
   };
 
   return (
@@ -100,30 +107,27 @@ const Blog = () => {
 
       <div className="mt-4 w-full md:w-[85%] md:mx-auto border-[1px] border-main-red"></div>
 
-      <div className="  flex flex-col gap-[40px] md:flex-row md:flex-wrap justify-center">
+      <div className="flex flex-col sm:gap-[40px] md:flex-row md:flex-wrap justify-center">
         {/* Display blog cards */}
-      {blogData.slice(0, visibleCount).map((blog) => (
-        <BlogCard
-          key={blog.id}
-          title={blog.title}
-          description={blog.description}
-          image={blog.image}
-        />
-      ))}
+        {blogData.slice(0, visibleCount).map((blog) => (
+          <BlogCard
+            key={blog.id}
+            title={blog.title}
+            description={blog.description}
+            image={blog.image}
+          />
+        ))}
       </div>
-      
 
-      {/* Show More button */}
-      {visibleCount < blogData.length && (
-        <div className="text-center my-10">
-          <button
-            className="px-7 py-[10px] uppercase tracking-wide text-white text-[20px] font-semibold bg-main-red"
-            onClick={showMore}
-          >
-            View More
-          </button>
-        </div>
-      )}
+      {/* Show More / Show Less button */}
+      <div className="text-center my-10">
+        <button
+          className="px-7 py-[10px] uppercase tracking-wide text-white text-[20px] font-semibold bg-main-red"
+          onClick={showMore}
+        >
+          {visibleCount >= blogData.length ? "Show Less" : "View More"}
+        </button>
+      </div>
     </div>
   );
 };

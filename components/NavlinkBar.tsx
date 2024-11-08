@@ -2,18 +2,18 @@ import Link from "next/link"
 
 const NavlinkBar = () => {
     return (
-        <div className="hidden md:block w-full py-5 bg-main-red md:flex justify-center">
+        <div className="hidden  w-full py-5 bg-main-red md:flex justify-center">
             <div className="uppercase flex gap-[70px] justify-center text-[18px] font-medium text-white">
-                <Link href={"/"} className="">
+                <Link href={"/how-we-work"} className="">
                 How we Work
                 </Link>
-                <Link href={"/"} className="">
+                <Link href={"/blog"} className="">
                 India's must know
                 </Link>
-                <Link href={"/"} className="">
+                <Link href={"/services"} className="">
                 Service & fees
                 </Link>
-                <Link href={"/"} className="">
+                <Link href={"/faq"} className="">
                 Faq
                 </Link>
             </div>

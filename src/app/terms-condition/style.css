@@ -1,0 +1,16 @@
+.alpha-list {
+    counter-reset: list;
+    list-style-type: none; /* Removes default numbering */
+    /* padding-left: 1em;  */
+  }
+  
+  .alpha-list > li {
+    counter-increment: list;
+    font-weight: normal;
+  }
+  
+  .alpha-list > li::before {
+    content: "(" counter(list, lower-alpha) ") ";
+    font-weight: 600; /* Make the marker bold */
+  }
+  

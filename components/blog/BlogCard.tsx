@@ -1,7 +1,13 @@
 import Image from "next/image";
-import image from "../../public/images/hero-background.png";
+// import image from "../../public/images/hero-background.png";
 
-const BlogCard = () => {
+
+interface BlogCardProps {
+  title: string;
+  description: string;
+  image: string;
+}
+const BlogCard: React.FC<BlogCardProps> = ({ title, description, image }) => {
   return (
     <div className="p-4  flex shadow-card-red rounded-[20px]">
       <div
@@ -16,15 +22,12 @@ const BlogCard = () => {
         />
       </div>
 
-      <div className="px-5 relative">
+      <div className="px-5 w-full relative ">
         <h1 className="text-black text-[20px] tracking-wider md:text-[30px] font-medium ">
-          India Must Know{" "}
+          {title}
         </h1>
-        <div className="mt-5 text-[18px] leading-tight tracking-wider">
-          Loreum Ipsum Loreum Ipsum Loreum Ipsum Loreum Ipsum Loreum Ipsum
-          Loreum Ipsum Loreum Ipsum Loreum Ipsum Loreum Ipsum Loreum Ipsum
-          Loreum Ipsum Loreum Ipsum Loreum Ipsum Loreum Ipsum Loreum Ipsum
-          Loreum Ipsum Loreum Ipsum Loreum Ipsum
+        <div className="mt-5 w-full  text-[18px] leading-tight tracking-wider">
+         {description}
         </div>
         <p className="absolute pr-5 bottom-0 right-0 text-[20px] font-semibold text-main-red">
           Read Blogs &#8594;
