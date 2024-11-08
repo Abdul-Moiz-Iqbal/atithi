@@ -3,7 +3,8 @@ import Image from "next/image";
 
 import HowWeWorkComponent from "../../../components/HowWeWork";
 // image
-import lakeImage from "../../../public/images/mobile-blog.png";
+import lakeImage from "../../../public/images/lake-image.png";
+import mobileImage from "../../../public/images/mobile-blog.png";
 import Pricing from "../../../components/sections/pricing";
 import WhatWeDo from "../../../components/home/WhatWeDo";
 import Link from "next/link";

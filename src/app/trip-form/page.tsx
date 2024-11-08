@@ -21,7 +21,7 @@ const TripForm = () => {
           <button className="px-5 py-5 w-[80%] sm:w-fit lg:px-[20.5px] text-[18px] sm:text-[18px] sm:py-[17px] font-semibold border-2 hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
             Submit & Pay on arrival
           </button>
-          <div className="text-[20px] font-medium text-center">Or</div>
+          <div className="sm:hidden text-[20px] font-medium text-center">Or</div>
           <button className="px-5 py-5 w-[70%] sm:w-fit lg:px-[20.5px] text-[18px] sm:text-[18px] sm:py-[17px] font-semibold border-2 hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
             Submit & Pay on now
           </button>

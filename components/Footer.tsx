@@ -208,15 +208,16 @@ const Footer = () => {
                 </div>
               </div>
               <div className="pl-5  flex flex-col gap-8 uppercase">
-                <Link href={"/"} className=" text-xs font-medium tracking-wide">
-                  Information
-                </Link>
+                <div className=" text-xs font-medium tracking-wide">
+                Information
+                </div>
+               
                 <div className="flex flex-col gap-3 text-xs font-light tracking-wide">
-                  <Link href={"/how-we-work"} className="">
+                  <Link href={"/faq"} className="">
                     Faq
                   </Link>
-                  <Link href={"/blog"}>Privacy Policy</Link>
-                  <Link href={"/services"}>Terms & Condition</Link>
+                  <Link href={"/privacy-policy"}>Privacy Policy</Link>
+                  <Link href={"/terms-condition"}>Terms & Condition</Link>
                 </div>
               </div>
             </div>

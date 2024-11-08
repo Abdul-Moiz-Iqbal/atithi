@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import Navbar from "../../../components/Navbar";
-import NavlinkBar from "../../../components/NavlinkBar";
+
 import { SlArrowDown } from "react-icons/sl";
 import image from "../../../public/images/faq.png";
 import Footer from "../../../components/Footer";
@@ -77,8 +76,7 @@ export default function FAQ() {
 
   return (
     <div className="font-author">
-      <Navbar />
-      <NavlinkBar />
+   
       <div className="h-[449px]">
         <Image src={image} alt="Services" className="h-[449px] object-cover" />
       </div>
@@ -142,7 +140,7 @@ export default function FAQ() {
         </div>
         <div className="w-[25%] border-[3px] border-main-red "></div>
       </div>
-      <Footer />
+ 
     </div>
   );
 }
