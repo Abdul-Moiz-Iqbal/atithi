@@ -25,7 +25,7 @@ const ChallengesCard: React.FC<WhatWeDoCardProps> = ({ image, title, description
         <h1 className="mt-6 uppercase text-center text-black text-[20px] md:text-[28px] font-semibold">
           {title}
         </h1>
-        <div className=" mt-5  text-[22px] tracking-[0.1px] text-center ">
+        <div className=" mt-5  text-[20px] tracking-[0.1px] text-center ">
          {description}
         </div>
       </div>

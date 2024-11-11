@@ -195,7 +195,7 @@ const Blog = () => {
 
       <div className="mb-16 flex justify-center">
         <button
-          className="mt-10 px-7 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white text-[20px] font-normal bg-main-red"
+          className="mt-10 px-7 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white text-[20px] font-medium bg-main-red"
           onClick={toggleShowMore}
         >
           {visibleCount >= blogData.length ? "Show Less" : "Show More"}

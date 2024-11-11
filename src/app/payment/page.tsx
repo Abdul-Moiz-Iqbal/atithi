@@ -15,10 +15,10 @@ const Payment = () => {
         <TravelerForm />
         
         <div className="my-20 flex justify-evenly">
-          <button className="px-5 py-2 lg:px-[20.5px] text-[14px] sm:text-[18px] sm:py-[17px] font-semibold border-2 hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
+          <button className="px-5 py-2 lg:px-[20.5px] text-[20px] sm:text-[18px] sm:py-[17px] font-medium border-2 hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
             Submit & Pay on arrival
           </button>
-          <button className="px-5 py-2 lg:px-[20.5px] text-[14px] sm:text-[18px] sm:py-[17px] font-semibold border-2 hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
+          <button className="px-5 py-2 lg:px-[20.5px] text-[20px] sm:text-[18px] sm:py-[17px] font-medium border-2 hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
             Submit & Pay on now
           </button>
         </div>

@@ -1,17 +1,14 @@
 "use client";
 import Image from "next/image";
-import Navbar from "../../../components/Navbar";
-import NavlinkBar from "../../../components/NavlinkBar";
+
 import "./style.css";
 // image
 import image from "../../../public/images/terms-condition.png";
-import Footer from "../../../components/Footer";
 
 export default function TermsCondition() {
   return (
-    <div className="font-author">
-      <Navbar />
-      <NavlinkBar />
+    <div className="font-author pb-16">
+ 
       <div>
         <Image src={image} alt="Servies" />
       </div>
@@ -535,7 +532,7 @@ export default function TermsCondition() {
           </div>
         </div>
       </div>
-    <Footer/>
+
     </div>
   );
 }

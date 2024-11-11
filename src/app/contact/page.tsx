@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
-import Navbar from "../../../components/Navbar";
-import NavlinkBar from "../../../components/NavlinkBar";
+
 
 // image
 import lakeImage from "../../../public/images/lake-image.png";
@@ -21,17 +20,16 @@ export default function ContactUs() {
  
   return (
     <div className="font-author">
-      <Navbar />
-      <NavlinkBar />
+     
       <div>
         <Image src={lakeImage} alt="Servies" />
       </div>
 
       <div className="py-5 ">
         {/* form and contact us details contianer  */}
-        <div className="w-[90%] px-10 py-10 mx-auto shadow-card-red rounded-[20px] flex gap-5 ">
+        <div className="w-[90%] px-10 py-10 mx-auto shadow-card-red rounded-[20px] flex flex-col gap-5 ">
           {/* contact form  */}
-          <div className=" w-[50%] ">
+          <div className=" sm:w-[50%] ">
             <H4
               title="Contact Us"
               className="text-start normal-case text-main-red text-[35px]"
@@ -60,17 +58,17 @@ export default function ContactUs() {
               className="w-full mt-6 p-2 border border-main-red placeholder:text-[20px]"
             ></textarea>
             <div className="mt-6 flex gap-4">
-              <button className="px-7 py-[10px] w-[50%]  tracking-wide text-white text-[20px] font-semibold bg-main-red">
+              <button className="px-7 py-[10px] w-[50%]  tracking-wide text-white text-sm sm:text-[20px] font-medium bg-main-red">
                 Send Message
               </button>
-              <button className=" px-7 py-[10px] w-[50%]  tracking-wide text-white text-[20px] font-semibold bg-main-red">
+              <button className=" px-7 py-[10px] w-[50%]  tracking-wide text-white text-sm sm:text-[20px] font-medium bg-main-red">
                 Resend Message
               </button>
             </div>
           </div>
 
           {/* contact Details */}
-          <div className="w-[50%] px-8 pt-4 pb-8 border border-main-red rounded-[20px] ">
+          <div className="sm:w-[50%] px-8 pt-4 pb-8 border border-main-red rounded-[20px] ">
             <div>
               <h4 className="text-[20px] font-semibold">Need Any Help?</h4>
               <H4

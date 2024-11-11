@@ -42,7 +42,7 @@ const Trips = () => {
           </p>
           {/* Button */}
         </div>
-          <button className="mt-[-25px] px-6 py-3 text-white bg-main-red text-[16px] font-semibold rounded-[10px]  sm:text-[18px]">
+          <button className="mt-[-25px] px-6 py-3 text-white bg-main-red text-[20px] font-medium rounded-[10px]  sm:text-[18px]">
             Contact Us
           </button>
       </div>

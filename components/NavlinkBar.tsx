@@ -16,6 +16,9 @@ const NavlinkBar = () => {
                 <Link href={"/faq"} className="">
                 Faq
                 </Link>
+                <Link href={"/contact"} className="">
+                Contact Us
+                </Link>
             </div>
 
         </div>

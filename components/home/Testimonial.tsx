@@ -72,7 +72,7 @@ const Testimonial = () => {
       <Button
         text={visibleCount >= testimonialData.length ? "Show Less" : "View More"}
         
-        className="mt-10 mx-auto w-fit shadow-none"
+        className="mt-10 mx-auto text-xl font-medium w-fit shadow-none"
         onClick={toggleShowMoreLess}
       />
       </div>

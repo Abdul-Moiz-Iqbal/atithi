@@ -60,7 +60,7 @@ export default function Navbar() {
           <HiOutlineMenuAlt1 className="text-[36px] lg:hidden text-main-red" />
 
           {/* Logo */}
-          <Link href={'/'}>
+          <Link href={"/"}>
             <Image
               src={logo}
               alt="Hello Atithi"
@@ -78,7 +78,7 @@ export default function Navbar() {
             </div>
             <div className="ml-1 flex items-center">
               <RiMessage2Line />
-              <div className="ml-3">+91 8630351715</div>
+              <div className="ml-3">+91 8077034423</div>
             </div>
           </div>
           {/* Dropdown Menu */}
@@ -86,10 +86,10 @@ export default function Navbar() {
         </div>
 
         {/* Button */}
-        <Link href={'/trip-form'}>
-        <button className="px-4 py-4 lg:px-[20.5px] text-[14px] sm:text-[18px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
-          Start your Journey
-        </button>
+        <Link href={"/trip-form"}>
+          <button className="px-4 py-4 lg:px-[20.5px] text-[14px] sm:text-[20px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
+            START MY SAFE JOURNEY
+          </button>
         </Link>
       </div>
     </div>

@@ -117,8 +117,9 @@ export default function FAQ() {
             </div>
           ))}
           <Link href={"/trip-form"} className="mx-auto">
-            <button className="px-4 py-4 w-fit mx-auto lg:px-[20.5px] text-[14px] sm:text-[18px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
-              Start your Journey
+            <button className="px-4 py-4 w-fit mx-auto lg:px-[20.5px] text-[20px] sm:text-[18px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
+            START MY SAFE
+JOURNEY
             </button>
           </Link>
         </div>
@@ -133,7 +134,7 @@ export default function FAQ() {
           </div>
 
           <div className="mb-[-28px] flex justify-center">
-            <button className=" mx-auto shadow-btn hover:bg-red-800 rounded-[10px] px-10 py-3 uppercase text-[20px] font-semibold text-white bg-main-red">
+            <button className=" mx-auto shadow-btn hover:bg-red-800 rounded-[10px] px-10 py-3 uppercase text-[20px] font-medium text-white bg-main-red">
               Contact Us
             </button>
           </div>

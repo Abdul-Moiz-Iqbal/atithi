@@ -18,11 +18,11 @@ const TripForm = () => {
         <TravelerForm />
         <JourneyForm />
         <div className="my-20 flex flex-col gap-2 justify-center items-center sm:gap-0 sm:flex-row sm:justify-evenly">
-          <button className="px-5 py-5 w-[80%] sm:w-fit lg:px-[20.5px] text-[18px] sm:text-[18px] sm:py-[17px] font-semibold border-2 hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
+          <button className="px-5 py-5 w-[80%] sm:w-fit lg:px-[20.5px] text-[20px] sm:text-[18px] sm:py-[17px] font-medium border-2 hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
             Submit & Pay on arrival
           </button>
           <div className="sm:hidden text-[20px] font-medium text-center">Or</div>
-          <button className="px-5 py-5 w-[70%] sm:w-fit lg:px-[20.5px] text-[18px] sm:text-[18px] sm:py-[17px] font-semibold border-2 hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
+          <button className="px-5 py-5 w-[70%] sm:w-fit lg:px-[20.5px] text-[20px] sm:text-[18px] sm:py-[17px] font-medium border-2 hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
             Submit & Pay on now
           </button>
         </div>
@@ -35,7 +35,7 @@ const TripForm = () => {
               <br></br> WE ARE HERE 24x7.
             </div>
             <div className="mb-[-28px] flex justify-center">
-              <button className=" mx-auto shadow-btn rounded-[10px] px-10 py-3 uppercase text-[20px] font-semibold text-white bg-main-red">
+              <button className=" mx-auto shadow-btn rounded-[10px] px-10 py-3 uppercase text-[20px] font-medium text-white bg-main-red">
                 Contact Us
               </button>
             </div>

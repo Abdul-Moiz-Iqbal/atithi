@@ -6,7 +6,7 @@ const data = [
   {
     image: whatWeDo1,
     description: (
-      <div className=" mt-5  text-[22px] tracking-[0.1px] text-center ">
+      <div className=" mt-5  text-[20px] tracking-[0.1px] text-center ">
         Start by providing some basic information, such as the number of
         travellers and the days in India, using the{" "}
         <span className="text-main-red uppercase">“START MY JOURNEY”</span>{" "}
@@ -17,7 +17,7 @@ const data = [
   {
     image: whatWeDo2,
     description: (
-      <div className=" mt-5  text-[22px] tracking-[0.1px] text-center ">
+      <div className=" mt-5  text-[20px] tracking-[0.1px] text-center ">
         While you do all the bookings, we will help you filter the scams out. We
         help you in Visa and TrueGuide has the answers of your
         <span className="text-main-red uppercase">Why-When-How</span> about
@@ -28,7 +28,7 @@ const data = [
   {
     image: whatWeDo3,
     description: (
-      <div className=" mt-5  text-[22px] tracking-[0.1px] text-center ">
+      <div className=" mt-5  text-[20px] tracking-[0.1px] text-center ">
         This is the final step. On arrival in India, we activate Rupee Pay for
         you to make local payments. And, we take care of any unexpected issue
         you might face and ensure that everything goes right for you 24/7.
@@ -42,7 +42,7 @@ const HowWeWork = () => {
       <h1 className="mt-16 md:mb-8 uppercase text-[22px] md:text-[35px] tracking-wide text-center font-semibold text-main-blue">
         How We Work
       </h1>
-      <div className="w-[80%] mx-auto text-[22px] md:px-[90px] tracking-wide text-center ">
+      <div className="w-[80%] mx-auto text-[20px] md:px-[90px] tracking-wide text-center ">
         A trip to India may look like a challenging task but we <br />
         prepare you for this challenge and make it <br></br> safe and
         stress-free for you.

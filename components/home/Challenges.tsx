@@ -95,7 +95,7 @@ const Challenges = () => {
         {isSmallScreen && (
           <div className="mx-auto w-fit mt-[-40px]">
             <button
-              className="mx-auto bg-main-red p-2 rounded-full text-xl text-white"
+              className="mx-auto bg-main-red p-2 rounded-full text-xl font-medium text-white"
               onClick={toggleShowMore}
             >
               {showMore ? <SlArrowUp /> : <SlArrowDown />}

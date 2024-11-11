@@ -22,8 +22,8 @@ export default function Home() {
       <div className="flex justify-center">
         <Link href={"/trip-form"} className="">
           <Button
-            text="Start My Journey"
-            className="w-fit tracking-wider  my-8  font-semibold shadow-none"
+            text="START MY SAFE JOURNEY"
+            className="w-fit tracking-wider  my-8  font-medium shadow-none"
           />
         </Link>
       </div>

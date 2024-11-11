@@ -182,11 +182,11 @@ const BlogPost = () => {
             </div>
 
             <div className="flex justify-center">
-            <Link href={"/trip-form"}>
-          <button className="mt-10 px-7 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white text-[20px] font-normal bg-main-red">
-            Start My Journey
-          </button>
-        </Link>
+              <Link href={"/trip-form"}>
+                <button className="mt-10 px-7 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white text-[20px] font-medium bg-main-red">
+                  START MY SAFE JOURNEY
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -213,8 +213,9 @@ const BlogPost = () => {
 
       <div className="flex justify-center">
         <Link href={"/trip-form"}>
-          <button className="mt-10 px-7 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white text-[20px] font-normal bg-main-red">
-            Start My Journey
+          <button className="mt-10 px-7 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white text-[20px] font-medium bg-main-red">
+          START MY SAFE
+          JOURNEY
           </button>
         </Link>
       </div>
@@ -236,7 +237,7 @@ const BlogPost = () => {
       {visibleCount < blogData.length && (
         <div className="text-center my-10">
           <button
-            className="px-7 py-[10px] uppercase tracking-wide text-white text-[20px] font-semibold bg-main-red"
+            className="px-7 py-[10px] uppercase tracking-wide text-white text-[20px] font-medium bg-main-red"
             onClick={showMore}
           >
             View More

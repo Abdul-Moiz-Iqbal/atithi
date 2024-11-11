@@ -48,7 +48,7 @@ const ChallengesCard: React.FC<ChallengesCardProps> = ({
         >
           {title}
         </h1>
-        <div className="mt-3 text-[22px] tracking-[0.1px] text-center">
+        <div className="mt-3 text-[18px] tracking-[0.1px] text-center">
           {description} Click{" "}
           <span
             className={`${

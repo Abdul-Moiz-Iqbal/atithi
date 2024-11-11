@@ -24,8 +24,8 @@ const Footer = () => {
         {/* Add any other content for your footer */}
         <div className="relative text-white font-author  z-10 w-[80%] h-full py-8  mx-auto  ">
           {/* Your footer content here */}
-          <div className="flex  gap-10">
-            <div className="pb-2 pt-1 flex flex-col justify-between ">
+          <div className="flex   justify-between">
+            <div className="pb-2 pt-1 flex  flex-col justify-between ">
               <div className="flex gap-5  items-center">
                 <div className="w-[72px] h-[72px]">
                   <Image
@@ -63,14 +63,14 @@ const Footer = () => {
                 Information
               </Link>
               <div className="flex flex-col gap-3 text-lg font-light tracking-wide">
-                <Link href={"/how-we-work"} className="">
+                <Link href={"/Faq"} className="">
                   Faq
                 </Link>
-                <Link href={"/blog"}>Privacy Policy</Link>
-                <Link href={"/services"}>Terms & Conditions</Link>
+                <Link href={"/privacy"}>Privacy Policy</Link>
+                <Link href={"/terms-condition"}>Terms & Conditions</Link>
               </div>
             </div>
-            <div className="flex gap-14 justify-center items-center">
+            <div className="flex gap-14  justify-center items-center">
               <div className="w-[20px] h-[40px]">
                 <Image
                   src={facebook}
@@ -102,10 +102,10 @@ const Footer = () => {
             </div>
           </div>
           <div className="my-5 border border-white"></div>
-          <div className="flex justify-evenly text-lg font-medium">
+          <div className="flex justify-evenly  text-lg font-medium">
             <div className="">
               2019-2022 © <span className="text-main-red">Hello Atithi</span> .
-              - All Rights Reserved By Hello Atithi{" "}
+              - All Rights Reserved 
             </div>
             <div className="flex gap-5v">
               <div>Payment Partner:</div>
@@ -222,7 +222,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="mt-5 flex items-center justify-center gap-2">
+          <div className="mt-5 flex items-center  justify-center gap-2">
               <div>Payment Partner:</div>
               <div className="w-[57px] h-[16px]">
                 <Image
@@ -231,7 +231,7 @@ const Footer = () => {
                   alt="Hello Atithi"
                 />
               </div>
-              <div className=" w-[54px] h-[17px]">
+              <div className=" w-[45px] h-[17px]">
                 <Image src={upi} className="w-full h-full" alt="Hello Atithi" />
               </div>
             </div>

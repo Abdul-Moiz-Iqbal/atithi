@@ -13,9 +13,9 @@ interface PricingCardProps {
 }
 
 const data = [
-    { image: solo, title: "Solo", price: 5 },
-    { image: couple, title: "couple", price: 9 },
-    { image: group, title: "Group(up to 4)", price: 15 ,width:true},
+    { image: solo, title: "Solo", price: 5 ,},
+    { image: couple, title: "couple", price: 9, },
+    { image: group, title: "Group(up to 4)", price: 15 ,},
 ];
 
 const PricingCard: React.FC<PricingCardProps> = ({
@@ -23,7 +23,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
 }) => {
   return (
     <ShadowCard
-      className={` ${className}  sm:block  mx-auto pb-10 px-5 py-5  shadow-card-red`}
+      className={` ${className}  sm:block  mx-auto pb-10 px-2 sm:px-5 py-5  shadow-card-red`}
     >
       <div className="hidden md:flex flex-col md:flex-row justify-center gap-10 ">
         <div className="basis-[30%]">
@@ -32,16 +32,16 @@ const PricingCard: React.FC<PricingCardProps> = ({
             className=" text-start normal-case text-[30px]"
           />
           <P
-            className="text-start mt-5 text-[1.2rem] tracking-wide leading-2"
+            className="text-start mt-5 text-[18px] tracking-wide leading-2"
             text="This plan offers you the ultimate solution for a stress-free and safe journey throughout India. "
           />
           <P
-            className=" text-start text-main-red text-[1.2rem]"
+            className=" text-start text-main-red text-[18px]"
             text="Pay only for your trip days in India"
           />
         </div>
         {data.map((plan) => (
-                <PlanCard key={plan.price} image={plan.image} title={plan.title} price={plan.price} width={plan.width} />
+                <PlanCard key={plan.price} image={plan.image} title={plan.title} price={plan.price}  />
             ))}
       </div>
       {/* mobile view  */}
@@ -52,15 +52,15 @@ const PricingCard: React.FC<PricingCardProps> = ({
             className=" text-start normal-case text-[30px]"
           />
           <P
-            className="text-start mt-5 text-[1.2rem] tracking-wide leading-2"
+            className="text-start mt-5 text-[18px] tracking-wide leading-2"
             text="This plan offers you the ultimate solution for a stress-free and safe journey throughout India. "
           />
           <P
-            className=" text-start text-main-red text-[1.2rem]"
+            className=" text-start text-main-red text-[18px]"
             text="Pay only for your trip days in India"
           />
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-2">
             {data.map((plan) => (
                 <PlanCard key={plan.price} image={plan.image} title={plan.title} price={plan.price} width={plan.width} />
             ))}

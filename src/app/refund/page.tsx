@@ -1,17 +1,15 @@
 "use client";
 import Image from "next/image";
-import Navbar from "../../../components/Navbar";
-import NavlinkBar from "../../../components/NavlinkBar";
 
 // image
 import image from "../../../public/images/terms-condition.png";
-import Footer from "../../../components/Footer";
+
+import Link from "next/link";
+import Button from "../../../ui/Button/Button";
 
 export default function Refund() {
   return (
     <div className="font-author">
-      <Navbar />
-      <NavlinkBar />
       <div>
         <Image src={image} alt="Servies" />
       </div>
@@ -56,7 +54,9 @@ export default function Refund() {
               with any applicable currency conversion fees borne by the user.
             </li>
           </ul>
-          <p className="my-5 text-2xl ">The “Pay Upon Arrival” payment method</p>
+          <p className="my-5 text-2xl ">
+            The “Pay Upon Arrival” payment method
+          </p>
           <p className="my-5 text-lg">
             {" "}
             The “Pay on Arrival” can be processed on the following bank account,
@@ -149,13 +149,15 @@ export default function Refund() {
             For more information, Mail us payment@helloatithi.com
           </p>
           <div className="flex justify-center">
-            <button className=" px-4 py-4 lg:px-[20.5px] text-[14px] sm:text-[18px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
-              Start your Journey
-            </button>
+            <Link href={"/trip-form"} className="">
+              <Button
+                text="START MY SAFE JOURNEY"
+                className="w-fit tracking-wider  my-8  font-semibold shadow-none"
+              />
+            </Link>
           </div>
         </div>
       </div>
-    <Footer/>
     </div>
   );
 }

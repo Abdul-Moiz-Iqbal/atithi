@@ -1,17 +1,15 @@
 "use client";
 import Image from "next/image";
-import Navbar from "../../../components/Navbar";
-import NavlinkBar from "../../../components/NavlinkBar";
+
 
 // image
 import image from "../../../public/images/privacy-policy-image.png";
-import Footer from "../../../components/Footer";
+
 
 export default function PrivacyPolicy() {
   return (
-    <div className="font-author">
-      <Navbar />
-      <NavlinkBar />
+    <div className="font-author pb-16">
+
       <div>
         <Image src={image} alt="Servies" />
       </div>
@@ -302,7 +300,7 @@ export default function PrivacyPolicy() {
           </ol>
         </div>
       </div>
-      <Footer/>
+    
     </div>
   );
 }
