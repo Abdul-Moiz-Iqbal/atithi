@@ -107,7 +107,7 @@ export default function FAQ() {
                 }`}
               >
                 {isOpen[index] && (
-                  <p className="mb-5 text-base md:text-lg">{item.answer}</p>
+                  <p className="mb-5 text-base md:text-xl">{item.answer}</p>
                 )}
               </div>
               <div

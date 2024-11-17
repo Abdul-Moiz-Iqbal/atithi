@@ -42,7 +42,7 @@ const HowWeWork = () => {
       <h1 className="mt-5 md:mt-16 md:mb-8 uppercase text-[20px] md:text-[35px] tracking-wide text-center font-semibold text-main-blue">
         How We Work
       </h1>
-      <div className="w-[80%] mt-3  mx-auto text-[18px] md:px-[90px] tracking-wide text-center ">
+      <div className="w-[80%] mt-3  mx-auto text-[18px] sm:text-xl md:px-[90px] tracking-wide text-center ">
         A trip to India may look like a challenging task but we <br />
         prepare you for this challenge and make it <br></br> safe and
         stress-free for you.
