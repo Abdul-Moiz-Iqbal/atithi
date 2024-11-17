@@ -85,7 +85,7 @@ const Trips = () => {
       </div>
 
       {/* Bottom Box with Border, Text, and Button */}
-      <div className="pt-[50%] relative z-10 flex flex-col items-center">
+      <div className=" relative z-10 flex flex-col items-center">
         <div className="border-2 border-white bg-opacity-75 px-5 py-5 text-center max-w-2xl mx-auto bg-transparent text-main-black text-[16px] sm:text-[18px] leading-6 italic">
           Can't find it? Don't worry. Just because it's not here, doesn't mean
           we can't do it. Text us on +91 8630351715 on WhatsApp. WE ARE HERE 24x7.
