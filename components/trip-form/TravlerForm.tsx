@@ -98,17 +98,16 @@ import { useFormContext } from "@/context/FormContext";
 
 
 const TravelerForm = () => {
-  const [countries, setCountries] = useState<{ label: string; value: string }[]>([]);
+
   const { setCountryCode } = useFormContext();
   const [userCountry, setUserCountry] = useState<string>("Select Country");
-  console.log(countries)
+ 
 
   useEffect(() => {
     fetch("https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code")
       .then((response) => response.json())
       .then((data) => {
         setCountryCode(data.userSelectValue.value);
-        setCountries(data.countries); // Assuming data has a "countries" key with an array of objects.
         setUserCountry(data.userSelectValue.label);
         console.log(data);
       })
@@ -144,7 +143,8 @@ const TravelerForm = () => {
             type="text"
             placeholder="Country Name"
             value={userCountry}
-            className="p-2 sm:w-[60%] border border-main-red placeholder:text-[18px]"
+            onChange={(e) => setUserCountry(e.target.value)}
+            className="p-2 w-fit border border-main-red placeholder:text-[18px]"
           />
         </div>
 

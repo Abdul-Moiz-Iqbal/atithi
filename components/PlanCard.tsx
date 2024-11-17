@@ -77,7 +77,7 @@ const PlaningCard: React.FC<PlanCardProps> = ({ title, price, image }) => {
       </div>
       <button
         onClick={handleSelectPlan}
-        className={`"px-[25px] py-[3px] sm:px-[50px] sm:py-[5px] text-xl sm:text-[18px]  font-medium rounded-full hover:bg-clip-border hover:text-white shadow-btn-shadow border-[3px] border-main-red bg-gradient-to-r from-main-red to-main-orange ${selectedPlan?.title == title? 'text-white':'bg-transparent text-transparent bg-clip-text'}`}
+        className={`"px-[25px] w-full sm:w-fit py-[3px] sm:px-[50px] sm:py-[5px] text-xl sm:text-[18px]  font-medium rounded-full hover:bg-clip-border hover:text-white shadow-btn-shadow border-[3px] border-main-red bg-gradient-to-r from-main-red to-main-orange ${selectedPlan?.title == title? 'text-white':'bg-transparent text-transparent bg-clip-text'}`}
       >
         {selectedPlan?.title == title?"Selected":"Select"}
         

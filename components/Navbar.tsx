@@ -105,6 +105,7 @@ import { RiMessage2Line } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import LanguageDropdown from "../ui/dropdown/LanguageDropDown";
+import { usePathname } from "next/navigation";
 
 const languageOptions = [
   { value: "en", label: "English" },
@@ -114,9 +115,11 @@ const languageOptions = [
   
 ];
 
+
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const pathname = usePathname()
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
@@ -169,11 +172,14 @@ export default function Navbar() {
         </div>
 
         {/* Button */}
+        {pathname === 'trip-form' ? (
+          
         <Link href={"/trip-form"}>
           <button className="px-2 py-2 lg:px-[20.5px] text-[14px] sm:text-[20px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
             START MY SAFE JOURNEY
           </button>
         </Link>
+        ): <div className="text-white px-2 py-2 lg:px-[20.5px] text-[14px] sm:text-[20px] sm:py-[17px] font-medium uppercase"> START MY SAFE JOURNEY</div>}
       </div>
 
       {/* Full-Screen Mobile Menu */}

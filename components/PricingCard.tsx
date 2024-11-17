@@ -72,7 +72,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
             text="Pay only for your trip days in India"
           />
         </div>
-        <div className="flex gap-2 items-center justify-evenly">
+        <div className="flex gap-3 items-center justify-evenly">
             {data.map((plan) => (
                 <PlanCard key={plan.price} image={plan.image} title={plan.title} price={plan.price} width={plan.width} isSelected={plan.title === selectedPlan}/>
             ))}

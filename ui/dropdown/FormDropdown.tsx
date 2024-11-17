@@ -234,12 +234,12 @@ const CustomDropdown = ({ options, placeholder, onOptionSelect,className }) => {
       {/* Dropdown Options */}
       {showDropdown && (
         <div
-          className="absolute z-10 custom-scrollbar border-2 not-italic border-main-red overflow-y-auto max-h-[200px] w-full bg-white"
+          className="absolute z-10 custom-scrollbar border-2 border-t-0 not-italic border-main-red overflow-y-auto max-h-[200px] w-full bg-white"
           style={{ top: "100%", left: 0 }}
         >
           {options.map((option) => (
             <div
-              className={`p-2 cursor-pointer text-[#8A8A8A] text-sm hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)] ${
+              className={`p-2 cursor-pointer text-[#8A8A8A] text-lg hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)] ${
                 selectedOption === option.label ? "border-l-4 border-main-red" : ""
               }`}
               key={option.value} // Use value as unique key

@@ -100,7 +100,9 @@ import insta from "../../../public/icons/form-insta.png";
 import facebook from "../../../public/icons/form-faceBook.png";
 import Link from "next/link";
 
+
 const TripForm = () => {
+  
   return (
     <div className="font-author">
       

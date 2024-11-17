@@ -168,7 +168,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="text-lg font-medium">
-              <Link href={"https://aicjklu.com/"}>AIC-JKLU
+              <Link href={"https://www.aicjklu.in/about"}>AIC-JKLU
               Incubated by <span className="text-main-red">AIC-JKLU</span>{" "}
               </Link>
             </div>
@@ -333,7 +333,7 @@ const Footer = () => {
             </div>
 
             <div className="mt-3 text-sm sm:text-lg text-center font-medium">
-              <Link href={"https://www.aic-jklu.com/"} target="_blank">
+              <Link href={"https://www.aicjklu.in/about"} target="_blank">
               Incubated by <span className="text-main-red">AIC-JKLU</span>{" "}</Link>
             </div>
           </div>

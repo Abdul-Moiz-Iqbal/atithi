@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
 
 const MultiSelectDropdown = ({
-  options,
+  regions,
   placeholder,
   onOptionsChange,
   className,
@@ -15,19 +15,36 @@ const MultiSelectDropdown = ({
     setShowDropdown((prev) => !prev);
   };
 
-  const handleOptionSelect = (option) => {
+  const handleOptionSelect = (option, isRegion, regionStates) => {
     setSelectedOptions((prevSelected) => {
-      const isSelected = prevSelected.includes(option);
-      const newSelection = isSelected
-        ? prevSelected.filter((item) => item !== option) // Remove option
-        : [...prevSelected, option]; // Add option
+      let newSelection;
+      if (isRegion) {
+        const allSelected = regionStates.every((state) =>
+          prevSelected.includes(state)
+        );
+        newSelection = allSelected
+          ? prevSelected.filter((item) => !regionStates.includes(item)) // Deselect all states of region
+          : [...prevSelected, ...regionStates.filter((state) => !prevSelected.includes(state))]; // Select missing states of region
+      } else {
+        const isSelected = prevSelected.includes(option);
+        newSelection = isSelected
+          ? prevSelected.filter((item) => item !== option) // Deselect individual state
+          : [...prevSelected, option]; // Select individual state
+      }
 
-      onOptionsChange(newSelection); // Notify parent component
+      onOptionsChange(newSelection);
       return newSelection;
     });
   };
 
-  // Close dropdown if clicked outside
+  const getSelectedRegions = () => {
+    return regions
+      .filter((region) =>
+        region.states.every((state) => selectedOptions.includes(state))
+      )
+      .map((region) => region.region);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -42,24 +59,24 @@ const MultiSelectDropdown = ({
   }, []);
 
   return (
-    <div className={` relative flex flex-col `} ref={dropdownRef}>
+    <div className={`relative flex flex-col`} ref={dropdownRef}>
       {/* Dropdown Header */}
       <div
         className={`${className} w-full border-2 border-main-red flex items-center justify-between p-2 cursor-pointer`}
         onClick={toggleDropdown}
       >
         <div
-          className={`flex-grow max-w-60 overflow-hidden whitespace-nowrap text-ellipsis text-[18px] ${
+          className={`flex-grow max-w-60 lg:max-w-max overflow-hidden whitespace-nowrap text-ellipsis text-[18px] ${
             selectedOptions.length === 0 ? "text-[#808080]" : "text-black"
           }`}
         >
           {selectedOptions.length > 0
-            ? selectedOptions.join(", ") // Display selected options
+            ? getSelectedRegions().join(", ") // Display selected regions only
             : placeholder}
         </div>
 
         <TiArrowSortedDown
-          className={`${className} text-main-red text-2xl  transition-transform ${
+          className={`text-main-red text-2xl  transition-transform ${
             showDropdown ? "rotate-180" : ""
           }`}
         />
@@ -68,20 +85,44 @@ const MultiSelectDropdown = ({
       {/* Dropdown Options */}
       {showDropdown && (
         <div
-          className="absolute not-italic z-10 border-2  border-main-red overflow-y-auto max-h-[200px] w-full bg-white custom-scrollbar"
+          className="absolute z-10 border-2 border-t-0 border-main-red overflow-y-auto max-h-[300px] w-full bg-white custom-scrollbar"
           style={{ top: "100%", left: 0 }}
         >
-          {options.map((option) => (
-            <div
-              key={option.value}
-              className={`p-2 text-sm text-[#8A8A8A] hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)] cursor-pointer flex items-center ${
-                selectedOptions.includes(option.label)
-                  ? " font-semibold border-l-4 border-main-red"
-                  : ""
-              }`}
-              onClick={() => handleOptionSelect(option.label)}
-            >
-              {option.label}
+          {regions.map((region) => (
+            <div key={region.region} className="mb-2">
+              {/* Region Header */}
+              <div
+                className={`p-[10px] text-lg font-semibold cursor-pointer text-[#8A8A8A] hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)] ${
+                  region.states.every((state) =>
+                    selectedOptions.includes(state)
+                  )
+                    ? "border-l-4 border-main-red"
+                    : ""
+                }`}
+                onClick={() =>
+                  handleOptionSelect(
+                    region.region,
+                    true, // isRegion
+                    region.states
+                  )
+                }
+              >
+                {region.region}
+              </div>
+              {/* State Options */}
+              {region.states.map((state) => (
+                <div
+                  key={state}
+                  className={`p-[10px] text-lg text-[#8A8A8A] hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)] cursor-pointer flex items-center ${
+                    selectedOptions.includes(state)
+                      ? "font-semibold border-l-4 border-main-red"
+                      : ""
+                  }`}
+                  onClick={() => handleOptionSelect(state, false)}
+                >
+                  {state}
+                </div>
+              ))}
             </div>
           ))}
         </div>
