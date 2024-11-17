@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import NavlinkBar from "../../components/NavlinkBar";
+import { FormContextProvider } from "@/context/FormContext";
 
 
 
@@ -22,7 +23,9 @@ export default function RootLayout({
     <body>
       <Navbar />
       <NavlinkBar />
+      <FormContextProvider>
       {children}
+      </FormContextProvider>
       <Footer />
     </body>
   </html>

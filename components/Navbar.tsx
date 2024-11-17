@@ -103,26 +103,25 @@ import logo from "../public/images/logoHres.png";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { RiMessage2Line } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
-import DropdownMenu from "../ui/dropdown/dropdown";
 import Link from "next/link";
-import MultiSelectDropdown from "../ui/dropdown/MultiSelectDropDown";
+import LanguageDropdown from "../ui/dropdown/LanguageDropDown";
 
-const languages = [
-  { value: "English", label: "English" },
-  { value: "French", label: "French" },
-  { value: "German", label: "German" },
-  { value: "Russia", label: "Russia" },
-  { value: "Spanish", label: "Spanish" },
-]
+const languageOptions = [
+  { value: "en", label: "English" },
+  { value: "es", label: "Spanish" },
+  { value: "fr", label: "French" },
+  { value: "de", label: "German" },
+  
+];
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
-  const handleLanguageChange = (selected) => {
-    // setSelectedStates(selected);
-    console.log("Selected States:", selected);
+  const handleLanguageSelect = (selectedLanguage) => {
+    console.log("Selected Language:", selectedLanguage);
   };
 
   return (
@@ -148,8 +147,8 @@ export default function Navbar() {
         </div>
 
         {/* WhatsApp Service and Dropdown (visible on lg devices) */}
-        <div className="hidden lg:flex italic tracking-wider text-[18px] font-medium items-center gap-4">
-          <div className="flex gap-2">
+        <div className="hidden lg:flex lg:justify-center items-center gap-4  italic tracking-wider text-[18px] font-medium ">
+          <div className="flex gap-2 ">
             <div>
               24/7 WhatsApp helpline<span className="ml-1 not-italic">|</span>
             </div>
@@ -159,7 +158,14 @@ export default function Navbar() {
             </div>
           </div>
           {/* Dropdown Menu */}
-          <DropdownMenu />
+          <div>
+          <LanguageDropdown
+        options={languageOptions}
+        placeholder="Choose a language"
+        onOptionSelect={handleLanguageSelect}
+        className="max-w-[120px] text-[16px] font-medium"
+      />
+          </div>
         </div>
 
         {/* Button */}
@@ -181,18 +187,13 @@ export default function Navbar() {
             />
           </div>
           <div className="mx-[8px]">
-
-          <MultiSelectDropdown
-              options={languages.map((language) => ({
-                label: language.value,
-                value: language.value,
-              }))}
-            placeholder="English"
-            onOptionsChange={handleLanguageChange}
-            className='border-none text-[#000] text-lg'
-          />
+          <LanguageDropdown
+        options={languageOptions}
+        placeholder="Choose a language"
+        onOptionSelect={handleLanguageSelect}
+        className="text-[16px] font-medium"
+      />
           </div>
-          
 
           {/* Navigation Links */}
           <nav className="p-[18px] flex flex-col gap-6 text-[24px] text-gray-700 font-medium">
@@ -215,7 +216,7 @@ export default function Navbar() {
               className="border-b-2 text-[18px] font-medium uppercase border-main-red pb-2 "
               onClick={toggleMenu}
             >
-             Services and fees
+              Services and fees
             </Link>
             <Link
               href="/contact"
@@ -224,7 +225,6 @@ export default function Navbar() {
             >
               Faq
             </Link>
-           
           </nav>
         </div>
       )}

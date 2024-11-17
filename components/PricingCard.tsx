@@ -1,3 +1,4 @@
+"use client"
 import ShadowCard from "../ui/Card/ShadowCard";
 import H4 from "../ui/heading/H4";
 
@@ -6,6 +7,8 @@ import PlanCard from "./PlanCard";
 import solo from "../public/images/plan-solo.png";
 import couple from "../public/images/plan-couple.png";
 import group from "../public/images/plan-group.png";
+import { useFormContext } from "@/context/FormContext";
+
 
 
 interface PricingCardProps {
@@ -21,6 +24,7 @@ const data = [
 const PricingCard: React.FC<PricingCardProps> = ({
   className = "lg:w-[80%] mt-4",
 }) => {
+  const { selectedPlan } = useFormContext();
   return (
     <ShadowCard
       className={` ${className}  sm:block  mx-auto md:pb-10 px-2 border-2 border-main-red md:border-none md:shadow-card-red`}
@@ -41,7 +45,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
           />
         </div>
         {data.map((plan) => (
-                <PlanCard key={plan.price} image={plan.image} title={plan.title} price={plan.price}  />
+                <PlanCard key={plan.price} image={plan.image} title={plan.title} price={plan.price} isSelected={plan.title === selectedPlan} />
             ))}
       </div>
       {/* mobile view  */}
@@ -70,7 +74,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
         </div>
         <div className="flex gap-2 items-center justify-evenly">
             {data.map((plan) => (
-                <PlanCard key={plan.price} image={plan.image} title={plan.title} price={plan.price} width={plan.width} />
+                <PlanCard key={plan.price} image={plan.image} title={plan.title} price={plan.price} width={plan.width} isSelected={plan.title === selectedPlan}/>
             ))}
       
         </div>

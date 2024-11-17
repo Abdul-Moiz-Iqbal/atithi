@@ -88,7 +88,7 @@
 // export default TripForm;
 
 "use client";
-import { FormContextProvider } from "@/context/FormContext";
+
 
 import JourneyForm from "../../../components/trip-form/Journey-Form";
 import TravelerForm from "../../../components/trip-form/TravlerForm";
@@ -103,7 +103,7 @@ import Link from "next/link";
 const TripForm = () => {
   return (
     <div className="font-author">
-      <FormContextProvider>
+      
         <TravelerForm />
         <JourneyForm />
         <div className="my-20 flex flex-col gap-2 justify-center items-center sm:gap-0 sm:flex-row sm:justify-evenly">
@@ -136,7 +136,7 @@ const TripForm = () => {
           </div>
           <div className="w-[5%] sm:w-[25%] border sm:border-[3px] border-main-red "></div>
         </div>
-      </FormContextProvider>
+      
       <div className="mt-16 sm:mt-28 w-[90%] sm:w-[80%] mx-auto">
         <Image src={comingSoonImage} alt="Coming Soon Global  version" />
       </div>

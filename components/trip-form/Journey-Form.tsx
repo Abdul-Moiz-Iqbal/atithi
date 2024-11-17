@@ -311,6 +311,180 @@
 
 // export default JourneyForm;
 
+// "use client";
+// import { useEffect, useState } from "react";
+// import ShadowCard from "../../ui/Card/ShadowCard";
+// import { useFormContext } from "@/context/FormContext";
+// import PricingCard from "../PricingCard";
+// import CustomDropdown from "../../ui/dropdown/FormDropdown"; // Import CustomDropdown
+// import MultiSelectDropdown from "../../ui/dropdown/MultiSelectDropDown";
+
+// const days = [
+//   { days: 1 },
+//   { days: 2 },
+//   { days: 3 },
+//   { days: 4 },
+//   { days: 5 },
+//   { days: 6 },
+// ];
+
+// const months = [
+//   { label: "January", value: "01" },
+//   { label: "February", value: "02" },
+//   { label: "March", value: "03" },
+//   { label: "April", value: "04" },
+//   { label: "May", value: "05" },
+//   { label: "June", value: "06" },
+//   { label: "July", value: "07" },
+//   { label: "August", value: "08" },
+//   { label: "September", value: "09" },
+//   { label: "October", value: "10" },
+//   { label: "November", value: "11" },
+//   { label: "December", value: "12" },
+// ];
+
+// const JourneyForm = () => {
+//   const { countryCode } = useFormContext();
+//   const [states, setStates] = useState([]);
+//   // const [selectedState, setSelectedState] = useState("");
+//   const [selectedMonth, setSelectedMonth] = useState("");
+//   const [selectedYear, setSelectedYear] = useState("");
+//   const [selectedStates, setSelectedStates] = useState([]);
+//   console.log(selectedMonth,selectedYear,selectedStates);
+
+//   useEffect(() => {
+//     if (countryCode) {
+//       fetch(
+//         `https://api.countrystatecity.in/v1/countries/IN/states`,
+//         {
+//           headers: {
+//             "X-CSCAPI-KEY":
+//               "YUN4SG5oZWFUZmJ6cTJlVEdUcmtQTmFkRDVyNEpUQUF1YVN3Vk5EMg==", // Replace with actual API key
+//           },
+//           redirect: "follow",
+//           method: "GET",
+//         }
+//       )
+//         .then((response) => response.json())
+//         .then((data) => {
+//           if (Array.isArray(data)) {
+//             setStates(data); // Only set if data is an array
+//           } else {
+//             setStates([]); // Set an empty array if data is not in the expected format
+//             console.error("Unexpected data format:", data);
+//           }
+//         })
+//         .catch((error) => {
+//           console.error("Error fetching states:", error);
+//           setStates([]); // Set empty array on error
+//         });
+//     }
+//   }, [countryCode]);
+
+//   // const currentYear = new Date().getFullYear();
+//   // const years = Array.from({ length: 10 }, (_, index) => ({
+//   //   label: (currentYear + index).toString(),
+//   //   value: (currentYear + index).toString(),
+//   // }));
+
+//   const handleStateChange = (selected) => {
+//     setSelectedStates(selected);
+//     console.log("Selected States:", selected);
+//   };
+//   const years = [
+    
+//     { label: "2024", value: "2024" },
+//     { label: "2025", value: "2025" }, 
+//     { label: "2026", value: "2026" }, 
+//   ]
+//   return (
+//     <ShadowCard className="sm:w-[80%] mx-auto mt-5 sm:mt-10 py-10 px-5 sm:p-10 rounded-[20px] shadow-card-red">
+//       <div className="flex flex-col gap-2">
+//         <h1 className="uppercase font-semibold text-[20px] sm:text-[35px] tracking-wide">
+//           Journey Details
+//         </h1>
+//         <div className="w-full border-[0.1px] border-main-red"></div>
+
+//         {/* State/Province Dropdown */}
+//         <div className="mt-4  w-fit">
+//           <label className=" text-base sm:text-[20px] mt-4">
+//             Where are you going?[Can Select Multiple]
+//           </label>
+        
+//           <div className="mt-4">
+//           <MultiSelectDropdown
+//               options={states.map((state) => ({
+//                 label: state.name,
+//                 value: state.name,
+//               }))}
+//             placeholder="Select State"
+//             onOptionsChange={handleStateChange}
+//           />
+//           </div>
+          
+          
+//         </div>
+//         {/* Date Selection */}
+//         <label className="text-base sm:text-[20px] mt-4">
+//           When would you like to go?
+//         </label>
+//         <div className="flex flex-row gap-2 md:gap-10">
+//           {/* Month Dropdown */}
+//           <CustomDropdown
+//             options={months.map((month) => ({
+//               label: month.label,
+//               value: month.value,
+//             }))}
+//             placeholder="Select month"
+//             onOptionSelect={(value) => setSelectedMonth(value)}
+//           />
+
+//           {/* Year Dropdown */}
+//           <CustomDropdown
+//             options={years.map((year) => ({
+//               label: year.label,
+//               value: year.value,
+//             }))}
+//             placeholder="Select a year"
+//             onOptionSelect={(value) => setSelectedYear(value)}
+//           />
+//         </div>
+//       </div>
+
+//       <PricingCard className="w-full mt-6 mb-10" />
+
+//       <div className=" mt-10 sm:mt-20 w-fit">
+//       {/* Days Dropdown */}
+//       <label className=" text-lg sm:text-[20px] ">How Long for?</label>
+//       <CustomDropdown
+//         options={days.map((day) => ({
+//           label: `0${day.days} `,
+//           value: day.days,
+//         }))}
+//         placeholder="Select Duration"
+//         onOptionSelect={(value) => console.log(value)}
+//       />
+//       </div>
+
+
+//       <div className="mt-7 text-[20px]">Plan Charges</div>
+//       <div className="mt-3 text-main-red text-[30px] font-semibold">
+//         $ <span className="pl-2">80</span>
+//       </div>
+      
+//       {/* Additional Information */}
+//       <div className="mt-4 text-[20px]">Any Other Comments?</div>
+//       <textarea
+//         placeholder="Any differently abled or elderly traveler, any do’s or don'ts, any specific requirement"
+//         rows={7}
+//         className="w-full sm:w-[60%] mt-6 p-2 border-2 border-main-red placeholder:text-[20px]"
+//       ></textarea>
+//     </ShadowCard>
+//   );
+// };
+
+// export default JourneyForm;
+
 "use client";
 import { useEffect, useState } from "react";
 import ShadowCard from "../../ui/Card/ShadowCard";
@@ -318,15 +492,6 @@ import { useFormContext } from "@/context/FormContext";
 import PricingCard from "../PricingCard";
 import CustomDropdown from "../../ui/dropdown/FormDropdown"; // Import CustomDropdown
 import MultiSelectDropdown from "../../ui/dropdown/MultiSelectDropDown";
-
-const days = [
-  { days: 1 },
-  { days: 2 },
-  { days: 3 },
-  { days: 4 },
-  { days: 5 },
-  { days: 6 },
-];
 
 const months = [
   { label: "January", value: "01" },
@@ -346,57 +511,59 @@ const months = [
 const JourneyForm = () => {
   const { countryCode } = useFormContext();
   const [states, setStates] = useState([]);
-  // const [selectedState, setSelectedState] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedStates, setSelectedStates] = useState([]);
-  console.log(selectedMonth,selectedYear,selectedStates);
 
   useEffect(() => {
     if (countryCode) {
-      fetch(
-        `https://api.countrystatecity.in/v1/countries/IN/states`,
-        {
-          headers: {
-            "X-CSCAPI-KEY":
-              "YUN4SG5oZWFUZmJ6cTJlVEdUcmtQTmFkRDVyNEpUQUF1YVN3Vk5EMg==", // Replace with actual API key
-          },
-          redirect: "follow",
-          method: "GET",
-        }
-      )
+      fetch(`https://api.countrystatecity.in/v1/countries/IN/states`, {
+        headers: {
+          "X-CSCAPI-KEY": "YUN4SG5oZWFUZmJ6cTJlVEdUcmtQTmFkRDVyNEpUQUF1YVN3Vk5EMg==",
+        },
+        redirect: "follow",
+        method: "GET",
+      })
         .then((response) => response.json())
         .then((data) => {
           if (Array.isArray(data)) {
-            setStates(data); // Only set if data is an array
+            setStates(data);
           } else {
-            setStates([]); // Set an empty array if data is not in the expected format
+            setStates([]);
             console.error("Unexpected data format:", data);
           }
         })
         .catch((error) => {
           console.error("Error fetching states:", error);
-          setStates([]); // Set empty array on error
+          setStates([]);
         });
     }
   }, [countryCode]);
 
-  // const currentYear = new Date().getFullYear();
-  // const years = Array.from({ length: 10 }, (_, index) => ({
-  //   label: (currentYear + index).toString(),
-  //   value: (currentYear + index).toString(),
-  // }));
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth();
+
+  const years = Array.from({ length: 3 }, (_, index) => ({
+    label: (currentYear + index).toString(),
+    value: (currentYear + index).toString(),
+  }));
+
+  const filteredMonths = selectedYear
+    ? selectedYear === currentYear.toString()
+      ? months.slice(currentMonth) // Show remaining months for the current year
+      : months // Show all months for future years
+    : months;
+
+  const days = Array.from({ length: 180 }, (_, index) => ({
+    label: `${index + 1} Day${index + 1 > 1 ? "s" : ""}`,
+    value: (index + 1).toString(),
+  }));
 
   const handleStateChange = (selected) => {
     setSelectedStates(selected);
     console.log("Selected States:", selected);
   };
-  const years = [
-    
-    { label: "2024", value: "2024" },
-    { label: "2025", value: "2025" }, 
-    { label: "2026", value: "2026" }, 
-  ]
+
   return (
     <ShadowCard className="sm:w-[80%] mx-auto mt-5 sm:mt-10 py-10 px-5 sm:p-10 rounded-[20px] shadow-card-red">
       <div className="flex flex-col gap-2">
@@ -406,36 +573,22 @@ const JourneyForm = () => {
         <div className="w-full border-[0.1px] border-main-red"></div>
 
         {/* State/Province Dropdown */}
-        <div className="mt-4 w-fit">
-          <label className="text-base sm:text-[20px] mt-4">
+        <div className="mt-4  w-fit">
+          <label className=" text-base sm:text-[20px] mt-4">
             Where are you going?[Can Select Multiple]
           </label>
-          {/* <CustomDropdown
-            options={states.map((state) => ({
-              label: state.name,
-              value: state.name,
-            }))}
-            placeholder="Select State/Province"
-            onOptionSelect={(value) => setSelectedState(value)}
-          /> */}
-          {/* <CustomDropdown
-            options={states.map((state) => ({
-              label: state.name,
-              value: state.name,
-            }))}
-            placeholder="Select State/Province"
-            onOptionSelect={(value) => setSelectedState(value)}
-          /> */}
+          <div className="mt-4">
             <MultiSelectDropdown
               options={states.map((state) => ({
                 label: state.name,
                 value: state.name,
               }))}
-            placeholder="Select States"
-            onOptionsChange={handleStateChange}
-          />
-          
+              placeholder="Select State"
+              onOptionsChange={handleStateChange}
+            />
+          </div>
         </div>
+
         {/* Date Selection */}
         <label className="text-base sm:text-[20px] mt-4">
           When would you like to go?
@@ -443,11 +596,11 @@ const JourneyForm = () => {
         <div className="flex flex-row gap-2 md:gap-10">
           {/* Month Dropdown */}
           <CustomDropdown
-            options={months.map((month) => ({
+            options={filteredMonths.map((month) => ({
               label: month.label,
               value: month.value,
             }))}
-            placeholder="Select Month"
+            placeholder="Select month"
             onOptionSelect={(value) => setSelectedMonth(value)}
           />
 
@@ -457,7 +610,7 @@ const JourneyForm = () => {
               label: year.label,
               value: year.value,
             }))}
-            placeholder="Select Year"
+            placeholder="Select a year"
             onOptionSelect={(value) => setSelectedYear(value)}
           />
         </div>
@@ -466,24 +619,23 @@ const JourneyForm = () => {
       <PricingCard className="w-full mt-6 mb-10" />
 
       <div className=" mt-10 sm:mt-20 w-fit">
-      {/* Days Dropdown */}
-      <label className=" text-lg sm:text-[20px] ">How Long for?</label>
-      <CustomDropdown
-        options={days.map((day) => ({
-          label: `0${day.days} `,
-          value: day.days,
-        }))}
-        placeholder="Select Duration"
-        onOptionSelect={(value) => console.log(value)}
-      />
+        {/* Days Dropdown */}
+        <label className=" text-lg sm:text-[20px] ">How Long for?</label>
+        <CustomDropdown
+          options={days.map((day) => ({
+            label: day.label,
+            value: day.value,
+          }))}
+          placeholder="Select Duration"
+          onOptionSelect={(value) => console.log(value)}
+        />
       </div>
-
 
       <div className="mt-7 text-[20px]">Plan Charges</div>
       <div className="mt-3 text-main-red text-[30px] font-semibold">
         $ <span className="pl-2">80</span>
       </div>
-      
+
       {/* Additional Information */}
       <div className="mt-4 text-[20px]">Any Other Comments?</div>
       <textarea
