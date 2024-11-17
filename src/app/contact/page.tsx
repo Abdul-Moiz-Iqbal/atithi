@@ -1,11 +1,9 @@
 "use client";
 import Image from "next/image";
 
-
 // image
 import lakeImage from "../../../public/images/lake-image.png";
 import H4 from "../../../ui/heading/H4";
-
 
 // react icons
 import { LiaPhoneSolid } from "react-icons/lia";
@@ -14,13 +12,9 @@ import { VscMap } from "react-icons/vsc";
 
 // Set default map libraries and options
 
-
-
 export default function ContactUs() {
- 
   return (
     <div className="font-author">
-     
       <div>
         <Image src={lakeImage} alt="Servies" />
       </div>
@@ -62,7 +56,7 @@ export default function ContactUs() {
                 Send Message
               </button>
               <button className=" px-7 py-[10px] w-[50%]  tracking-wide text-white text-sm sm:text-[20px] font-medium bg-main-red">
-                Resend Message
+                Resend
               </button>
             </div>
           </div>
@@ -93,15 +87,39 @@ export default function ContactUs() {
                     <p className="mt-[-5px] tracking-wider">Coming Soon!</p>
                   </div>
                 </div>
-                <div className="flex gap-10 ">
+                <div className="flex items-center gap-10 ">
                   {/* icon  */}
-                  <div className="bg-main-red w-fit p-3">
+                  <div className="bg-main-red w-fit h-fit p-3">
                     <IoMailOutline className=" text-5xl text-white" />
                   </div>
                   {/* text part  */}
                   <div className="text-[20px]">
-                    <h4 className=" font-medium">Have any question?</h4>
-                    <p className="mt-[-5px] tracking-wider">Coming Soon!</p>
+                    <h4 className="font-medium leading-none ">Email</h4>
+                    <div className="leading-none tracking-[1px]">
+                      {/* USA */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-main-red">USA:</span>
+                        <span className="tracking-wider text-black">
+                          usasupport@helloatithi.com
+                        </span>
+                      </div>
+
+                      {/* Europe */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-main-red">EUROPE:</span>
+                        <span className="tracking-wider text-black">
+                          europesupport@helloatithi.com
+                        </span>
+                      </div>
+
+                      {/* Others */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-main-red">OTHERS:</span>
+                        <span className="tracking-wider text-black">
+                          support@helloatithi.com
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="flex gap-10 ">
@@ -111,8 +129,10 @@ export default function ContactUs() {
                   </div>
                   {/* text part  */}
                   <div className="text-[20px]">
-                    <h4 className=" font-medium">Have any question?</h4>
-                    <p className="mt-[-5px] tracking-wider">Coming Soon!</p>
+                    <h4 className=" font-medium">address</h4>
+                    <p className="mt-[-5px] tracking-wider">
+                      704, West Ambar Talab, Roorkee, Uttarakhand, India-2476667
+                    </p>
                   </div>
                 </div>
               </div>
@@ -121,11 +141,9 @@ export default function ContactUs() {
         </div>
       </div>
       <div className="">
-     
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.274257380938!2d-70.56068388481569!3d41.45496659976631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e52963ac45bbcb%3A0xf05e8d125e82af10!2sDos%20Mas!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
-         className="w-full h-[40vh]"
-      
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12733.840455469028!2d77.88363884109943!3d29.876475986977265!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390eb48009555555%3A0x53191ef93ef0ff39!2sHello%20Atithi%20India%20Private%20Limited!5e0!3m2!1sen!2s!4v1731831473801!5m2!1sen!2s"
+          className="w-full h-[40vh]"
         ></iframe>
       </div>
     </div>

@@ -14,8 +14,8 @@ interface PricingCardProps {
 
 const data = [
     { image: solo, title: "Solo", price: 5 ,},
-    { image: couple, title: "couple", price: 9, },
-    { image: group, title: "Group(up to 4)", price: 15 ,},
+    { image: couple, title: "Couple", price: 9, },
+    { image: group, title: "Group (up to 4)", price: 15 ,},
 ];
 
 const PricingCard: React.FC<PricingCardProps> = ({

@@ -99,7 +99,7 @@ const Trips = () => {
         <div className=" w-[50%] border-2 border-white">
           <div className="py-5 px-10 text-base sm:text-[18px] italic text-center text-white ">
             Can't find it? Don't worry. Just because it's not here, doesn't mean
-            we can't do it. <br></br> WhatsApp us on +91 8630351715 <br></br> WE
+            we can't do it. <br></br> WhatsApp us on +91 8077034423 <br></br> WE
             ARE HERE 24x7.
           </div>
 
