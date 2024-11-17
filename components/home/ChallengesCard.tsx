@@ -2,6 +2,7 @@
 import Image from "next/image";
 import ShadowCard from "../../ui/Card/ShadowCard";
 import { StaticImageData } from "next/image"; // Import for image type
+import Link from "next/link";
 
 
 interface ChallengesCardProps {
@@ -58,7 +59,8 @@ const ChallengesCard: React.FC<ChallengesCardProps> = ({
               textColor == "text-main-red" ? "text-main-blue" : "text-main-red"
             } font-medium`}
           >
-            here
+            <Link href={'/blog/categories/content'}>here</Link>
+            
           </span>{" "}
           to know more
         </div>
