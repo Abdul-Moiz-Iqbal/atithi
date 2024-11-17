@@ -3,6 +3,7 @@ import Image from "next/image";
 
 // image 
 import lakeImage from "../../../public/images/lake-image.png";
+import mobileImage from "../../../public/images/mobile-blog.png";
 
 import Blog from "../../../components/blog/Blog";
 
@@ -12,8 +13,9 @@ export default function blog() {
   return (
     <div className="font-author">
       
-      <div>
-        <Image src={lakeImage} alt="Servies"/>
+      <div className="">
+        <Image src={lakeImage} alt="Servies" className="hidden sm:block" />
+        <Image src={mobileImage} alt="Servies" className="sm:hidden" />
       </div>
       <div className="w-[78%] my-7  mx-auto flex gap-5 uppercase text-main-red text-[20px] font-semibold tracking-wider">
         <div>Home</div>

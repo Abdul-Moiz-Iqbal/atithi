@@ -5,6 +5,7 @@ import BlogCard from "../../../../../components/home/BlogCard";
 
 // image
 import lakeImage from "../../../../../public/images/lake-image.png";
+import mobileImage from "../../../../../public/images/mobile-blog.png";
 import image from "../../../../../public/images/lake-image.png";
 import share from "../../../../../public/icons/share.png";
 
@@ -83,8 +84,9 @@ const BlogPost = () => {
 
   return (
     <div className="font-author">
-      <div>
-        <Image src={lakeImage} alt="Servies" />
+        <div className="">
+        <Image src={lakeImage} alt="Servies" className="hidden sm:block" />
+        <Image src={mobileImage} alt="Servies" className="sm:hidden" />
       </div>
       {/* blog and Profile section  */}
       <div className="flex gap-6 w-[80%] mx-auto ">
