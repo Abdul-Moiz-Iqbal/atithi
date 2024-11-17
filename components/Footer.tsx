@@ -104,7 +104,7 @@ const Footer = () => {
           <div className="my-5 border border-white"></div>
           <div className="flex justify-between tracking-wider text-lg font-medium">
             <div className="">
-              2019-2022 © <span className="text-main-red">Hello Atithi</span> .
+              2019-2024 © <span className="text-main-red">Hello Atithi</span> .
               - All Rights Reserved 
             </div>
             <div className="flex gap-5">
@@ -238,7 +238,7 @@ const Footer = () => {
           <div className="my-5 w-[90%] mx-auto border-2  z-10 border-white"></div>
           <div className="flex flex-col justify-evenly text-sm sm:text-lg font-medium">
             <div className="text-center">
-              2019-2022 © <span className="text-main-red">Hello Atithi</span> .
+              2019-2024 © <span className="text-main-red">Hello Atithi</span> .
               - All Rights Reserved 
             </div>
            

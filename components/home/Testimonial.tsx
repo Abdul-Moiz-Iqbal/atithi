@@ -50,7 +50,7 @@ const Testimonial = () => {
 
   return (
     <div className="sm:py-10 ">
-      <H4 title="Testimonials" className="mb-4 text-main-red" />
+      <H4 title="Testimonials" className="mb-4 text-main-red sm:text-[35px]" />
       <div className="flex flex-col md:flex-row md:flex-wrap">
       {testimonialData.slice(0, visibleCount).map((testimonial) => (
         <TestiminalCard

@@ -10,8 +10,8 @@ const HowWeWorkCard: React.FC<HowWeWorkCardProps> = ({
   description,
 }) => {
   return (
-    <div className="flex flex-col items-center">
-      <div className="w-[100px] h-[150px]">
+    <div className="flex flex-col  items-center">
+      <div className=" h-[120px] mb-5">
         <Image
           // width={87}
           // height={39}

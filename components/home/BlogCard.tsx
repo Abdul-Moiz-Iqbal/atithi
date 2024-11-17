@@ -38,7 +38,7 @@ const BlogCard: React.FC<BlogCardProps> = ({title, description= "Best places to 
 
         {/* Blog Description */}
         <P
-          className="mt-3 text-start leading-5 font-normal text-base sm:text-lg"
+          className="mt-3 text-start leading-5 tracking-[0.8px] sm:tracking-[0.9px] font-normal text-base sm:text-lg"
           text={
             description
           }

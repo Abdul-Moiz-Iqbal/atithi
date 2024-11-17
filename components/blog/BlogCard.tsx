@@ -26,7 +26,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, description, image }) => {
         <h1 className="text-black text-[18px] tracking-wider md:text-[30px] font-medium ">
           {title}
         </h1>
-        <div className="mt-5 w-full  text-base sm:text-[18px] leading-tight tracking-wider">
+        <div className="mt-5 w-full  text-base sm:text-[18px] leading-tight tracking-[0.8px] sm:tracking-[0.9px]">
          {description}
         </div>
         <p className="absolute pr-5 bottom-0 right-0 text-[16px] font-semibold text-main-red">
