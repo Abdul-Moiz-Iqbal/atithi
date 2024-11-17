@@ -63,10 +63,10 @@ const Footer = () => {
                 Information
               </Link>
               <div className="flex flex-col gap-3 text-lg font-light tracking-wide">
-                <Link href={"/Faq"} className="">
+                <Link href={"/faq"} className="">
                   Faq
                 </Link>
-                <Link href={"/privacy"}>Privacy Policy</Link>
+                <Link href={"/privacy-policy"}>Privacy Policy</Link>
                 <Link href={"/terms-condition"}>Terms & Conditions</Link>
               </div>
             </div>

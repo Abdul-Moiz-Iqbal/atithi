@@ -23,13 +23,13 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, description, image }) => {
       </div>
 
       <div className="px-5 w-full relative ">
-        <h1 className="text-black text-[20px] tracking-wider md:text-[30px] font-medium ">
+        <h1 className="text-black text-[18px] tracking-wider md:text-[30px] font-medium ">
           {title}
         </h1>
-        <div className="mt-5 w-full  text-[18px] leading-tight tracking-wider">
+        <div className="mt-5 w-full  text-base sm:text-[18px] leading-tight tracking-wider">
          {description}
         </div>
-        <p className="absolute pr-5 bottom-0 right-0 text-[20px] font-semibold text-main-red">
+        <p className="absolute pr-5 bottom-0 right-0 text-[16px] font-semibold text-main-red">
           Read Blogs &#8594;
         </p>
       </div>
