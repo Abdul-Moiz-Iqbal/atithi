@@ -129,7 +129,7 @@ export default function ContactUs() {
                   </div>
                   {/* text part  */}
                   <div className="text-[20px]">
-                    <h4 className=" font-medium">address</h4>
+                    <h4 className=" font-medium">Address</h4>
                     <p className="mt-[-5px] tracking-wider">
                       704, West Ambar Talab, Roorkee, Uttarakhand, India-2476667
                     </p>

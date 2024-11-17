@@ -65,7 +65,7 @@ const Servies = () => {
   return (
     <div className="py-10 px-8 flex flex-col   ">
       <H4
-        title="India's Must Know"
+        title="Services"
         className="text-main-blue tracking-wider md:text-[35px]"
       />
 

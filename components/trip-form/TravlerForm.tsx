@@ -135,13 +135,22 @@ const TravelerForm = () => {
           />
         </div>
 
-        {/* Country Dropdown */}
-        <div className="w-fit  flex flex-col gap-4 mt-4">
+        {/* Country input */}
+        {/* <div className="w-fit  flex flex-col gap-4 mt-4">
           <label className="text-base sm:text-[20px]">Select your country</label>
           <CustomDropdown
             options={countries}
             placeholder={userCountry}
             onOptionHandler={handleCountryChange}
+          />
+        </div> */}
+        <div className="mt-5 flex flex-col gap-5">
+          <label className="text-base sm:text-[20px]">Your Country</label>
+          <input
+            type="text"
+            placeholder="Country Name"
+            value={userCountry}
+            className="p-2 sm:w-[60%] border border-main-red placeholder:text-[20px]"
           />
         </div>
 

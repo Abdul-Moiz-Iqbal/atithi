@@ -12,10 +12,10 @@ import Image from "next/image";
 import Link from "next/link";
 const Footer = () => {
   return (
-    <div>
+    <div className="h-full">
       {/* footer for big screens  */}
       <div
-        className="hidden md:block relative bg-cover bg-center h-72"
+        className="hidden md:block relative bg-cover bg-center "
         style={{ backgroundImage: `url(${image.src})` }}
       >
         {/* Black overlay with low opacity */}
@@ -168,7 +168,9 @@ const Footer = () => {
               </div>
             </div>
             <div className="text-lg font-medium">
+              <Link href={"https://aicjklu.com/"}>AIC-JKLU
               Incubated by <span className="text-main-red">AIC-JKLU</span>{" "}
+              </Link>
             </div>
           </div>
         </div>
@@ -331,7 +333,8 @@ const Footer = () => {
             </div>
 
             <div className="mt-3 text-sm sm:text-lg text-center font-medium">
-              Incubated by <span className="text-main-red">AIC-JKLU</span>{" "}
+              <Link href={"https://www.aic-jklu.com/"} target="_blank">
+              Incubated by <span className="text-main-red">AIC-JKLU</span>{" "}</Link>
             </div>
           </div>
         </div>

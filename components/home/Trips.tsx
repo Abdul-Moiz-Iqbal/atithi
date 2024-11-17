@@ -106,7 +106,7 @@ const Trips = () => {
           <div className="mb-[-28px] flex justify-center">
             <Link href={'/contact'}>
             
-            <button className=" mx-auto shadow-btn hover:bg-red-800 rounded-[10px] px-10 py-3 uppercase text-[20px] font-medium text-white bg-main-red">
+            <button className=" mx-auto shadow-btn hover:bg-red-800 rounded-[10px] px-10 py-3 uppercase text-[20px] tracking-[0.4px] font-medium text-white bg-main-red">
               Contact Us
             </button>
             </Link>

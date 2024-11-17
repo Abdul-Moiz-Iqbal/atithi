@@ -59,7 +59,7 @@ const WhatWeDo:React.FC<WhatWeDoProps> = ({title="What we do",showButton=true}) 
       </div>
       {showButton && (
         <Link href={"/how-we-work"} className="mx-auto">
-          <Button text="How  this works" className="w-fit tracking-wider  mt-8 mx-auto  shadow-none" />
+          <Button text="How  this works" className="w-fit   mt-8 mx-auto  shadow-none" />
         </Link>
       
       )}
