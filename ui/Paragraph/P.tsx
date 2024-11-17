@@ -6,7 +6,7 @@ interface ParagraphProps {
 }
 const P: React.FC<ParagraphProps> = ({className, text}) => {
     return (
-        <p className={`${className} text-[22px] tracking-[0.1px] text-center`}>
+        <p className={`${className} text-[18px]  tracking-[0.1px] text-center`}>
             {text}
         </p>
     );

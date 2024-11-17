@@ -77,7 +77,7 @@ const Trips = () => {
 
       {/* Main Text */}
       <div className="relative z-10 flex items-center justify-center ">
-        <p className="text-center font-playfair tracking-wide italic text-main-red text-[24px] md:text-[30px] font-medium px-5 md:px-[20%]">
+        <p className="text-center font-playfair tracking-wide italic text-main-red text-[20px] md:text-[30px] font-medium px-5 md:px-[20%]">
           “There are three trips you take to India: the one you think you’re
           going to have - that you plan for, the one you actually have; and the
           one you live through once you go back home.”
@@ -85,12 +85,12 @@ const Trips = () => {
       </div>
 
       {/* Bottom Box with Border, Text, and Button */}
-      <div className="relative z-10 flex flex-col items-center">
+      <div className="pt-[50%] relative z-10 flex flex-col items-center">
         <div className="border-2 border-white bg-opacity-75 px-5 py-5 text-center max-w-2xl mx-auto bg-transparent text-main-black text-[16px] sm:text-[18px] leading-6 italic">
           Can't find it? Don't worry. Just because it's not here, doesn't mean
           we can't do it. Text us on +91 8630351715 on WhatsApp. WE ARE HERE 24x7.
         </div>
-        <button className="mt-4 px-6 py-3 text-white bg-main-red text-[20px] font-medium rounded-[10px] sm:text-[18px]">
+        <button className=" mt-4 px-6 py-3 text-white bg-main-red  text-[16px] font-medium rounded-[10px] sm:text-[18px]">
           Contact Us
         </button>
       </div>

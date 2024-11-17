@@ -110,8 +110,77 @@
 // };
 
 // export default CustomDropdown;
+// import { useRef, useState, useEffect } from "react";
+// import { TiArrowSortedDown } from "react-icons/ti";
+
+// const CustomDropdown = ({ options, placeholder, onOptionSelect }) => {
+//   const [selectedOption, setSelectedOption] = useState("");
+//   const [showDropdown, setShowDropdown] = useState(false);
+//   const dropdownRef = useRef(null);
+
+//   const showDropdownHandler = () => {
+//     setShowDropdown((prev) => !prev);
+//   };
+
+//   const onOptionHandler = (option) => {
+//     setSelectedOption(option.label); // Display label
+//     onOptionSelect(option.value); // Pass value back to parent
+//     setShowDropdown(false); // Close dropdown after selection
+//   };
+
+//   // Close dropdown if clicked outside
+//   useEffect(() => {
+//     const handleClickOutside = (event) => {
+//       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+//         setShowDropdown(false);
+//       }
+//     };
+
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, []);
+
+//   return (
+//     <div className="relative  flex flex-col mt-4" ref={dropdownRef}>
+//       <div
+//         className="w-full  border-2 border-main-red flex justify-between"
+//         onClick={showDropdownHandler}
+//       >
+//         <input
+//           className="pl-4 w-[100%] sm:pl-4 placeholder:text-[14px]  outline-none "
+//           value={selectedOption}
+//           placeholder={placeholder}
+//           readOnly
+//         />
+//         <div className=" flex justify-between  items-center py-2 text-gray-600">
+//           <TiArrowSortedDown
+//             className={`text-main-red  text-2xl ${showDropdown ? "rotate-180" : ""}`}
+//           />
+//         </div>
+//       </div>
+//       {showDropdown && (
+//         <div className="absolute z-10 border-2 border-t-0 border-main-red overflow-y-auto max-h-[200px]">
+//           {options.map((option) => (
+//             <div
+//               className="p-2 cursor-pointer text-slate-500 text-sm hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)]"
+//               key={option.value} // Use value as unique key
+//               onClick={() => onOptionHandler(option)}
+//             >
+//               {option.label}
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default CustomDropdown;
 import { useRef, useState, useEffect } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
+import './FormDropDown.css'; // Include your custom CSS if needed
 
 const CustomDropdown = ({ options, placeholder, onOptionSelect }) => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -143,28 +212,36 @@ const CustomDropdown = ({ options, placeholder, onOptionSelect }) => {
   }, []);
 
   return (
-    <div className="  flex flex-col mt-4" ref={dropdownRef}>
+    <div className="relative flex flex-col mt-4" ref={dropdownRef}>
+      {/* Dropdown Toggle */}
       <div
-        className="w-full  border border-main-red flex justify-between"
+        className="w-full border-2 border-main-red flex justify-between"
         onClick={showDropdownHandler}
       >
         <input
-          className="pl-2 outline-none "
+          className="pl-4 w-[100%] sm:pl-4 placeholder:text-[14px] outline-none"
           value={selectedOption}
           placeholder={placeholder}
           readOnly
         />
-        <div className=" flex justify-between  items-center p-2 text-gray-600">
+        <div className="flex justify-between items-center py-2 text-gray-600">
           <TiArrowSortedDown
-            className={`text-main-red  text-2xl ${showDropdown ? "rotate-180" : ""}`}
+            className={`text-main-red text-2xl ${showDropdown ? "rotate-180" : ""}`}
           />
         </div>
       </div>
+
+      {/* Dropdown Options */}
       {showDropdown && (
-        <div className="border border-t-0 border-main-red">
+        <div
+          className="absolute z-10 custom-scrollbar border-2 border-t-0 border-main-red overflow-y-auto max-h-[200px] w-full bg-white"
+          style={{ top: "100%", left: 0 }}
+        >
           {options.map((option) => (
             <div
-              className="p-2 cursor-pointer text-slate-500 text-sm hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)]"
+              className={`p-2 cursor-pointer text-slate-500 text-sm hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)] ${
+                selectedOption === option.label ? "border-l-4 border-main-red" : ""
+              }`}
               key={option.value} // Use value as unique key
               onClick={() => onOptionHandler(option)}
             >

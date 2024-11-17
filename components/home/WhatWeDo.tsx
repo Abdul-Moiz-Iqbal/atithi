@@ -19,7 +19,7 @@ const data = [
   {
     title: "Makes India easy for you",
     description:
-      "We simplifies the experience at every step. From understanding culture to everyday issues in India like making payments or communicating with locals, explore India with confidence. Experience the country without the usual stress or confusion.",
+      "We simplifies the experience at every step. From understanding culture to everyday issues in India like making payments or communicating with locals, explore India with  confidence. Experience the country without the usual stress or confusion.",
     image: IndiaSafe,
     width: 102,
   },
@@ -42,7 +42,7 @@ const data = [
 const WhatWeDo:React.FC<WhatWeDoProps> = ({title="What we do",showButton=true}) => {
   return (
     <div className="py-10 px-8 flex flex-col   ">
-      <h1 className="uppercase text-[22px] md:text-[35px] tracking-wide text-center font-semibold text-main-blue">
+      <h1 className="uppercase text-[20px] md:text-[35px] tracking-wide text-center font-semibold text-main-blue">
         {title}
       </h1>
       <div className="flex flex-col  md:gap-10 lg:flex-row lg:justify-center ">

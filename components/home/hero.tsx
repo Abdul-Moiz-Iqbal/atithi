@@ -67,13 +67,26 @@ const Hero = () => {
       {/* Text and Button Overlay */}
       <div className="absolute inset-0 flex flex-col justify-end lg:justify-center items-center text-center pb-24 md:pb-0 md:flex-col">
         {/* Hero Text */}
-        <div className="flex flex-col tracking-widest   ">
+        {/* for bigger then mobile screen  */}
+        <div className="hidden sm:flex flex-col tracking-widest">
           <h1 className="text-white text-[30px] sm:text-[50px] font-medium uppercase drop-shadow-2xl ">
-          MAKE YOUR TRIP TO INDIA  SAFE
+            MAKE YOUR TRIP TO INDIA SAFE
           </h1>
           <h1 className="m-0 p-0 text-white text-[30px] sm:text-[50px] font-medium uppercase drop-shadow-2xl">
-          AND
-          STRESS-FREE
+            AND STRESS-FREE
+          </h1>
+        </div>
+
+        {/* for mobile screen  */}
+        <div className="flex flex-col sm:hidden tracking-widest">
+          <h1 className="text-white text-[30px] sm:text-[50px] font-medium uppercase drop-shadow-2xl ">
+            MAKE YOUR TRIP TO 
+          </h1>
+          <h1 className="text-white text-[30px] sm:text-[50px] font-medium uppercase drop-shadow-2xl ">
+          INDIA SAFE AND
+          </h1>
+          <h1 className="m-0 p-0 text-white text-[30px] sm:text-[50px] font-medium uppercase drop-shadow-2xl">
+             STRESS-FREE
           </h1>
         </div>
 

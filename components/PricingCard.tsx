@@ -23,16 +23,16 @@ const PricingCard: React.FC<PricingCardProps> = ({
 }) => {
   return (
     <ShadowCard
-      className={` ${className}  sm:block  mx-auto pb-10 px-2 sm:px-5 py-5  shadow-card-red`}
+      className={` ${className}  sm:block  mx-auto md:pb-10 px-2 border-2 border-main-red md:border-none md:shadow-card-red`}
     >
-      <div className="hidden md:flex flex-col md:flex-row justify-center gap-10 ">
-        <div className="basis-[30%]">
+      <div className="hidden w-fit  md:flex  md:flex-row justify-center gap-8 ">
+        <div className="basis-[25%]">
           <H4
             title="Select your plan"
             className=" text-start normal-case text-[30px]"
           />
           <P
-            className="text-start mt-5 text-[18px] tracking-wide leading-2"
+            className="text-start mt-5 text-[18px] tracking-wide "
             text="This plan offers you the ultimate solution for a stress-free and safe journey throughout India. "
           />
           <P
@@ -45,22 +45,30 @@ const PricingCard: React.FC<PricingCardProps> = ({
             ))}
       </div>
       {/* mobile view  */}
-      <div className=" flex flex-col sm:hidden  justify-center gap-10 ">
+      <div className=" flex flex-col md:hidden  justify-center  ">
         <div className="basis-[30%]">
           <H4
             title="Select your plan"
-            className=" text-start normal-case text-[30px]"
+            className=" text-start normal-case font-semibold text-[20px]"
           />
           <P
-            className="text-start mt-5 text-[18px] tracking-wide leading-2"
-            text="This plan offers you the ultimate solution for a stress-free and safe journey throughout India. "
+            className="text-start mt-5 text-[16px] font-light tracking-wide leading-2"
+            text="This plan offers you the ultimate. "
           />
           <P
-            className=" text-start text-main-red text-[18px]"
+            className="text-start  text-[16px] font-light tracking-wide leading-2"
+            text=" solution for a stress-free and safe journey throughout India "
+          />
+          <P
+            className="text-start  text-[16px] font-light tracking-wide leading-2"
+            text="  and safe journey throughout India "
+          />
+          <P
+            className=" text-start text-main-red text-[16px] font-light"
             text="Pay only for your trip days in India"
           />
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center justify-evenly">
             {data.map((plan) => (
                 <PlanCard key={plan.price} image={plan.image} title={plan.title} price={plan.price} width={plan.width} />
             ))}

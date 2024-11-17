@@ -20,7 +20,7 @@ const data = [
       <div className=" mt-5  text-[20px] tracking-[0.1px] text-center ">
         While you do all the bookings, we will help you filter the scams out. We
         help you in Visa and TrueGuide has the answers of your
-        <span className="text-main-red uppercase">Why-When-How</span> about
+        <span className="text-main-red uppercase"> {' '}Why-When-How</span> about
         India. Here, you get ready for India.{" "}
       </div>
     ),
@@ -39,10 +39,10 @@ const data = [
 const HowWeWork = () => {
   return (
     <div>
-      <h1 className="mt-16 md:mb-8 uppercase text-[22px] md:text-[35px] tracking-wide text-center font-semibold text-main-blue">
+      <h1 className="mt-5 md:mt-16 md:mb-8 uppercase text-[20px] md:text-[35px] tracking-wide text-center font-semibold text-main-blue">
         How We Work
       </h1>
-      <div className="w-[80%] mx-auto text-[20px] md:px-[90px] tracking-wide text-center ">
+      <div className="w-[80%] mt-3  mx-auto text-[18px] md:px-[90px] tracking-wide text-center ">
         A trip to India may look like a challenging task but we <br />
         prepare you for this challenge and make it <br></br> safe and
         stress-free for you.

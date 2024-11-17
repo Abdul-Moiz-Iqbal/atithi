@@ -310,12 +310,14 @@
 // };
 
 // export default JourneyForm;
+
 "use client";
 import { useEffect, useState } from "react";
 import ShadowCard from "../../ui/Card/ShadowCard";
 import { useFormContext } from "@/context/FormContext";
 import PricingCard from "../PricingCard";
 import CustomDropdown from "../../ui/dropdown/FormDropdown"; // Import CustomDropdown
+import MultiSelectDropdown from "../../ui/dropdown/MultiSelectDropDown";
 
 const days = [
   { days: 1 },
@@ -344,14 +346,16 @@ const months = [
 const JourneyForm = () => {
   const { countryCode } = useFormContext();
   const [states, setStates] = useState([]);
-  const [selectedState, setSelectedState] = useState("");
+  // const [selectedState, setSelectedState] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
+  const [selectedStates, setSelectedStates] = useState([]);
+  console.log(selectedMonth,selectedYear,selectedStates);
 
   useEffect(() => {
     if (countryCode) {
       fetch(
-        `https://api.countrystatecity.in/v1/countries/${countryCode}/states`,
+        `https://api.countrystatecity.in/v1/countries/IN/states`,
         {
           headers: {
             "X-CSCAPI-KEY":
@@ -377,14 +381,24 @@ const JourneyForm = () => {
     }
   }, [countryCode]);
 
-  const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 10 }, (_, index) => ({
-    label: (currentYear + index).toString(),
-    value: (currentYear + index).toString(),
-  }));
+  // const currentYear = new Date().getFullYear();
+  // const years = Array.from({ length: 10 }, (_, index) => ({
+  //   label: (currentYear + index).toString(),
+  //   value: (currentYear + index).toString(),
+  // }));
 
+  const handleStateChange = (selected) => {
+    setSelectedStates(selected);
+    console.log("Selected States:", selected);
+  };
+  const years = [
+    
+    { label: "2024", value: "2024" },
+    { label: "2025", value: "2025" }, 
+    { label: "2026", value: "2026" }, 
+  ]
   return (
-    <ShadowCard className="sm:w-[80%] mx-auto mt-10 py-10 px-5 sm:p-10 rounded-[20px] shadow-card-red">
+    <ShadowCard className="sm:w-[80%] mx-auto mt-5 sm:mt-10 py-10 px-5 sm:p-10 rounded-[20px] shadow-card-red">
       <div className="flex flex-col gap-2">
         <h1 className="uppercase font-semibold text-[20px] sm:text-[35px] tracking-wide">
           Journey Details
@@ -392,24 +406,41 @@ const JourneyForm = () => {
         <div className="w-full border-[0.1px] border-main-red"></div>
 
         {/* State/Province Dropdown */}
-        <div className="w-fit">
+        <div className="mt-4 w-fit">
           <label className="text-base sm:text-[20px] mt-4">
-            Select your state/province
+            Where are you going?[Can Select Multiple]
           </label>
-          <CustomDropdown
+          {/* <CustomDropdown
             options={states.map((state) => ({
               label: state.name,
               value: state.name,
             }))}
             placeholder="Select State/Province"
             onOptionSelect={(value) => setSelectedState(value)}
+          /> */}
+          {/* <CustomDropdown
+            options={states.map((state) => ({
+              label: state.name,
+              value: state.name,
+            }))}
+            placeholder="Select State/Province"
+            onOptionSelect={(value) => setSelectedState(value)}
+          /> */}
+            <MultiSelectDropdown
+              options={states.map((state) => ({
+                label: state.name,
+                value: state.name,
+              }))}
+            placeholder="Select States"
+            onOptionsChange={handleStateChange}
           />
+          
         </div>
         {/* Date Selection */}
         <label className="text-base sm:text-[20px] mt-4">
           When would you like to go?
         </label>
-        <div className="flex flex-row gap-5">
+        <div className="flex flex-row gap-2 md:gap-10">
           {/* Month Dropdown */}
           <CustomDropdown
             options={months.map((month) => ({
@@ -432,14 +463,14 @@ const JourneyForm = () => {
         </div>
       </div>
 
-      <PricingCard className="w-full mt-8 mb-10" />
+      <PricingCard className="w-full mt-6 mb-10" />
 
-      <div className="w-fit">
+      <div className=" mt-10 sm:mt-20 w-fit">
       {/* Days Dropdown */}
-      <label className="text-base sm:text-[20px] mt-4">How Long for?</label>
+      <label className=" text-lg sm:text-[20px] ">How Long for?</label>
       <CustomDropdown
         options={days.map((day) => ({
-          label: `${day.days} Days`,
+          label: `0${day.days} `,
           value: day.days,
         }))}
         placeholder="Select Duration"
@@ -458,7 +489,7 @@ const JourneyForm = () => {
       <textarea
         placeholder="Any differently abled or elderly traveler, any do’s or don'ts, any specific requirement"
         rows={7}
-        className="w-full sm:w-[60%] mt-6 p-2 border border-main-red placeholder:text-[20px]"
+        className="w-full sm:w-[60%] mt-6 p-2 border-2 border-main-red placeholder:text-[20px]"
       ></textarea>
     </ShadowCard>
   );

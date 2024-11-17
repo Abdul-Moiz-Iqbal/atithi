@@ -18,7 +18,7 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({title, description= "Best places to visit in north India, The best hotels in India. Garam Chai with Doli and Bills Gate.", image}) => {
     return (
-        <ShadowCard className={"mt-10 p-5 rounded-[20px] md:basis-[40%] lg:basis-[25%] shadow-card-red"}>
+        <ShadowCard className={"mt-8 sm:mt-10 p-5 rounded-[20px] md:basis-[40%] lg:basis-[25%] shadow-card-red"}>
         {/* Blog Image */}
         <div className="flex justify-center h-[170px] ">
           <Image
@@ -33,19 +33,19 @@ const BlogCard: React.FC<BlogCardProps> = ({title, description= "Best places to 
         {/* Blog Title */}
         <H6
           title={`India Must Know`}
-          className="tracking-wider text-[30px] font-medium mt-5"
+          className="tracking-wider text-lg sm:text-[30px] font-medium mt-5"
         />
 
         {/* Blog Description */}
         <P
-          className="mt-3 text-start leading-5 font-normal text-[1.22rem]"
+          className="mt-3 text-start leading-5 font-normal text-base smtext-[1.22rem]"
           text={
             description
           }
         />
 
         {/* Learn More Button */}
-        <p className="mt-7 uppercase text-center text-main-red text-[20px] font-semibold">
+        <p className="mt-7 uppercase text-center text-main-red text-[16px] sm:text-[20px] font-semibold">
           Read More
         </p>
       </ShadowCard>

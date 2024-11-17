@@ -4,8 +4,7 @@ import { useState } from "react";
 
 import { SlArrowDown } from "react-icons/sl";
 import image from "../../../public/images/faq.png";
-import Footer from "../../../components/Footer";
-import Link from "next/link";
+
 
 const data = [
   {
@@ -81,7 +80,7 @@ export default function FAQ() {
         <Image src={image} alt="Services" className="h-[449px] object-cover" />
       </div>
       <div className="my-5 w-[90%] md:w-[80%] mx-auto">
-        <h1 className="mt-16 mb-16 md:text-center text-[20px] md:text-4xl font-semibold text-main-red">
+        <h1 className="sm:mt-16 sm:mb-16 md:text-center text-[20px] md:text-4xl font-semibold text-main-red">
           YOUR BURNING QUESTIONS, ANSWERED
         </h1>
         <div className="flex flex-col gap-5 mt-5">
@@ -116,12 +115,12 @@ export default function FAQ() {
               ></div>
             </div>
           ))}
-          <Link href={"/trip-form"} className="mx-auto">
+          {/* <Link href={"/trip-form"} className="mx-auto">
             <button className="px-4 py-4 w-fit mx-auto lg:px-[20.5px] text-[20px] sm:text-[18px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
             START MY SAFE
 JOURNEY
             </button>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div className="hidden  mt-5 mb-16  md:flex items-center">

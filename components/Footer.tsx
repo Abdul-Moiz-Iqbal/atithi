@@ -7,7 +7,7 @@ import insta from "../public/icons/footer-insta.png";
 import twitter from "../public/icons/footer-twitter.png";
 import picscart from "../public/icons/footer-picscart.png";
 import paypal from "../public/images/footer-paypal.png";
-import upi from "../public/images/footer-upi.png";
+import upi from "../public/images/upi.svg";
 import Image from "next/image";
 import Link from "next/link";
 const Footer = () => {
@@ -59,7 +59,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex flex-col gap-8 uppercase">
-              <Link href={"/"} className="text-lg font-medium tracking-wide">
+              <Link href={"/"} className="text-lg font-medium  tracking-wide">
                 Information
               </Link>
               <div className="flex flex-col gap-3 text-lg font-light tracking-wide">
@@ -102,12 +102,12 @@ const Footer = () => {
             </div>
           </div>
           <div className="my-5 border border-white"></div>
-          <div className="flex justify-evenly  text-lg font-medium">
+          <div className="flex justify-between tracking-wider text-lg font-medium">
             <div className="">
               2019-2022 © <span className="text-main-red">Hello Atithi</span> .
               - All Rights Reserved 
             </div>
-            <div className="flex gap-5v">
+            <div className="flex gap-5">
               <div>Payment Partner:</div>
               <div className="w-[96px] h-[24px]">
                 <Image
@@ -116,7 +116,7 @@ const Footer = () => {
                   alt="Hello Atithi"
                 />
               </div>
-              <div className="w-[96px] h-[24px]">
+              <div className="w-[96px] h-[24px] bg-white rounded-md">
                 <Image src={upi} className="w-full h-full" alt="Hello Atithi" />
               </div>
             </div>
@@ -231,18 +231,18 @@ const Footer = () => {
                   alt="Hello Atithi"
                 />
               </div>
-              <div className=" w-[45px] h-[17px]">
+              <div className=" w-[57px] h-[16px] bg-white rounded-[4px]">
                 <Image src={upi} className="w-full h-full" alt="Hello Atithi" />
               </div>
             </div>
           <div className="my-5 w-[90%] mx-auto border-2  z-10 border-white"></div>
-          <div className="flex flex-col justify-evenly text-lg font-medium">
+          <div className="flex flex-col justify-evenly text-sm sm:text-lg font-medium">
             <div className="text-center">
               2019-2022 © <span className="text-main-red">Hello Atithi</span> .
               - All Rights Reserved 
             </div>
            
-            <div className="mt-3 text-lg text-center font-medium">
+            <div className="mt-3 text-sm sm:text-lg text-center font-medium">
               Incubated by <span className="text-main-red">AIC-JKLU</span>{" "}
             </div>
           </div>

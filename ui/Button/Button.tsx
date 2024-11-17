@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({ text, className, onClick }) => {
   return (
     <button
       onClick={onClick} // Attach onClick handler to button
-      className={`${className} px-4 py-4 lg:px-[20.5px] text-[20px] sm:text-[18px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn`}
+      className={`${className} px-4 py-3 lg:px-[20.5px] text-[14px] sm:text-[18px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn`}
     >
       {text}
     </button>

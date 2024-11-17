@@ -27,7 +27,7 @@ export default function ContactUs() {
 
       <div className="py-5 ">
         {/* form and contact us details contianer  */}
-        <div className="w-[90%] px-10 py-10 mx-auto shadow-card-red rounded-[20px] flex flex-col gap-5 ">
+        <div className="sm:w-[90%] px-10 pb-5 sm:py-10 mx-auto shadow-card-red rounded-[20px] flex flex-col sm:flex-row gap-5 ">
           {/* contact form  */}
           <div className=" sm:w-[50%] ">
             <H4

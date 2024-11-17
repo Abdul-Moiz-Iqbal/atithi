@@ -41,23 +41,100 @@
 //   );
 // }
 
+// import Image from "next/image";
+// import logo from "../public/images/logoHres.png";
+
+// // react icons
+// import { HiOutlineMenuAlt1 } from "react-icons/hi";
+// import { RiMessage2Line } from "react-icons/ri";
+// import DropdownMenu from "../ui/dropdown/dropdown";
+// import Link from "next/link";
+
+// export default function Navbar() {
+//   return (
+//     <div className="w-full font-author border-2 px-[10px] py-[8px]">
+//       <div className="w-full sm:w-[80%] sm:mx-auto bg-white flex justify-between items-center">
+//         {/* Logo and Mobile Menu Icon */}
+//         <div className="flex justify-center items-center">
+//           {/* Mobile Menu Icon (visible on small screens) */}
+//           <HiOutlineMenuAlt1 className="text-[36px] lg:hidden text-main-red" />
+
+//           {/* Logo */}
+//           <Link href={"/"}>
+//             <Image
+//               src={logo}
+//               alt="Hello Atithi"
+//               priority
+//               className="w-[150px] sm:w-[250px] ml-3 lg:ml-0"
+//             />
+//           </Link>
+//         </div>
+
+//         {/* WhatsApp Service and Dropdown (visible on lg devices) */}
+//         <div className="hidden lg:flex italic tracking-wider text-[18px] font-medium items-center gap-4">
+//           <div className="flex gap-2">
+//             <div>
+//               24/7 WhatsApp helpline<span className="ml-1 not-italic">|</span>
+//             </div>
+//             <div className="ml-1 flex items-center">
+//               <RiMessage2Line />
+//               <div className="ml-3">+91 8077034423</div>
+//             </div>
+//           </div>
+//           {/* Dropdown Menu */}
+//           <DropdownMenu />
+//         </div>
+
+//         {/* Button */}
+//         <Link href={"/trip-form"}>
+//           <button className="px-2 py-2 lg:px-[20.5px] text-[14px] sm:text-[20px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
+//             START MY SAFE JOURNEY
+//           </button>
+//         </Link>
+//       </div>
+//     </div>
+//   );
+// }
+
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import logo from "../public/images/logoHres.png";
-
-// react icons
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { RiMessage2Line } from "react-icons/ri";
+import { IoMdClose } from "react-icons/io";
 import DropdownMenu from "../ui/dropdown/dropdown";
 import Link from "next/link";
+import MultiSelectDropdown from "../ui/dropdown/MultiSelectDropDown";
 
+const languages = [
+  { value: "English", label: "English" },
+  { value: "French", label: "French" },
+  { value: "German", label: "German" },
+  { value: "Russia", label: "Russia" },
+  { value: "Spanish", label: "Spanish" },
+]
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+  const handleLanguageChange = (selected) => {
+    // setSelectedStates(selected);
+    console.log("Selected States:", selected);
+  };
+
   return (
-    <div className="w-full font-author border-2 px-[10px] py-[8px]">
+    <div className="w-full font-author border-2 px-[10px] py-[8px] relative">
       <div className="w-full sm:w-[80%] sm:mx-auto bg-white flex justify-between items-center">
         {/* Logo and Mobile Menu Icon */}
         <div className="flex justify-center items-center">
           {/* Mobile Menu Icon (visible on small screens) */}
-          <HiOutlineMenuAlt1 className="text-[36px] lg:hidden text-main-red" />
+          <HiOutlineMenuAlt1
+            className="text-[36px] lg:hidden text-main-red cursor-pointer"
+            onClick={toggleMenu}
+          />
 
           {/* Logo */}
           <Link href={"/"}>
@@ -87,11 +164,70 @@ export default function Navbar() {
 
         {/* Button */}
         <Link href={"/trip-form"}>
-          <button className="px-4 py-4 lg:px-[20.5px] text-[14px] sm:text-[20px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
+          <button className="px-2 py-2 lg:px-[20.5px] text-[14px] sm:text-[20px] sm:py-[17px] font-medium bg-main-red text-white uppercase shadow-btn">
             START MY SAFE JOURNEY
           </button>
         </Link>
       </div>
+
+      {/* Full-Screen Mobile Menu */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-white z-50   ">
+          {/* Close Icon */}
+          <div className="flex justify-end">
+            <IoMdClose
+              className="text-[36px] text-slate-400 cursor-pointer"
+              onClick={toggleMenu}
+            />
+          </div>
+          <div className="mx-[8px]">
+
+          <MultiSelectDropdown
+              options={languages.map((language) => ({
+                label: language.value,
+                value: language.value,
+              }))}
+            placeholder="English"
+            onOptionsChange={handleLanguageChange}
+            className='border-none text-[#000] text-lg'
+          />
+          </div>
+          
+
+          {/* Navigation Links */}
+          <nav className="p-[18px] flex flex-col gap-6 text-[24px] text-gray-700 font-medium">
+            <Link
+              href="/"
+              className=" border-b-2 text-[18px] font-medium uppercase border-main-red pb-2 "
+              onClick={toggleMenu}
+            >
+              How We Work
+            </Link>
+            <Link
+              href="/"
+              className="border-b-2 text-[18px] font-medium uppercase border-main-red pb-2 "
+              onClick={toggleMenu}
+            >
+              India's must know
+            </Link>
+            <Link
+              href="/"
+              className="border-b-2 text-[18px] font-medium uppercase border-main-red pb-2 "
+              onClick={toggleMenu}
+            >
+             Services and fees
+            </Link>
+            <Link
+              href="/"
+              className="border-b-2 text-[18px] font-medium uppercase border-main-red pb-2 "
+              onClick={toggleMenu}
+            >
+              Faq
+            </Link>
+            
+          </nav>
+        </div>
+      )}
     </div>
   );
 }

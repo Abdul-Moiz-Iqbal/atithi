@@ -119,7 +119,7 @@ const TravelerForm = () => {
   };
 
   return (
-    <ShadowCard className="sm:w-[80%] mx-auto mt-10 py-10 px-5 sm:p-10 rounded-[20px] shadow-card-red">
+    <ShadowCard className="sm:w-[80%] mx-auto mt-5 sm:mt-10 py-10 px-5 sm:p-10 rounded-[20px] shadow-card-red">
       <div className="flex flex-col gap-1">
         <h1 className="uppercase font-semibold text-[20px] sm:text-[35px] tracking-wide">
           Traveller Details

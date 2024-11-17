@@ -73,10 +73,10 @@ const Challenges = () => {
   return (
     <div className="py-3 px-5">
       <div className="flex flex-col gap-[20px]">
-        <h1 className="uppercase text-[22px] md:text-[35px] tracking-wide text-center font-semibold text-main-red">
+        <h1 className="uppercase text-[20px] md:text-[35px] tracking-wide text-center font-semibold text-main-red">
           Challenges you face
         </h1>
-        <div className="flex flex-col md:flex-row md:gap-[20px] justify-center flex-wrap">
+        <div className="w-[92%] mx-auto flex flex-col  md:flex-row md:gap-[20px] justify-center flex-wrap">
           {/* Show 2 cards initially on small screens, or all on larger screens */}
           {data.slice(0, showMore || !isSmallScreen ? data.length : 2).map((challenge) => (
             <ChallengesCard

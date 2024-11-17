@@ -14,49 +14,49 @@ const data = [
     {
       title: "Visa Assist",
       description:
-        "Say goodbye to hidden fees and unnecessary charges. Enjoy clear guidance and support every step of the way. Click here to know more",
+        "Say goodbye to hidden fees and unnecessary charges. Enjoy clear guidance and support every step of the way. ",
       image: visa,
       width:102
     },
     {
       title: "Trip Shield",
       description:
-        "Travel with confidence, knowing that help is just a message away. We ensure your safety throughout your journey in India. Click here to know more",
+        "Travel with confidence, knowing that help is just a message away. We ensure your safety throughout your journey in India. ",
       image: trip,
       width:102
     },
     {
       title: "RupeePay",
       description:
-        "Experience the convenience of paying like a local. Using QR-based payments, you can avoid the hassle of currency exchange. Click here to know more",
+        "Experience the convenience of paying like a local.Using QR-based payments, you can avoid the hassle of currency exchange",
       image: pay,
       width:175
     },
     {
       title: "True Guide",
       description:
-        "Get real answers to your Why-When-How about India. TrueGuide help you navigate India confidently and avoid tourist scams. Click here to know more",
+        "Get real answers to your Why-When-How about India. TrueGuide help you navigate India confidently and avoid tourist scams.",
       image: tripGuide,
       width:184
     },
     {
       title: "Local Sim",
       description:
-        "A local number that allows you to receive OTPs for booking confirmations, whether you're booking from abroad or in India. Click here to know more",
+        "A local number that allows you to receive OTPs for booking confirmations, whether you're booking from abroad or in India. ",
       image: sim,
       width:122
     },
     {
       title: "Steet Speak",
       description:
-        "A tool with essential words fo use. Whether you're navigating markets or asking for directions, this is for you. Click here to know more",
+        "A tool with essential words fo use. Whether you're navigating markets or asking for directions, this is for you.",
       image: streetSpeak,
       width:122
     },
     {
       title: "The Support",
       description:
-        "Your safety and peace of mind are our priority. Our support team is here 24/7 for any travel issues or health concerns. Click here to know more",
+        "Your safety and peace of mind are our priority. Our support team is here 24/7 for any travel issues or health concerns.",
       image: support,
       width:122
     },

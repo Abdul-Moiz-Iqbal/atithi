@@ -31,10 +31,10 @@ const ChallengesCard: React.FC<ChallengesCardProps> = ({
   return (
     <div
       key={title}
-      className={` flex-shrink-0 flex-grow-0 md:basis-[40%] lg:basis-[28%]`}
+      className={` flex-shrink-0 flex-grow-0 md:basis-[40%] lg:basis-[28%] lg:max-w-[348px]`}
     >
       <ShadowCard
-        className={` ${className} ${shadowColor} pb-10 px-5 mt-28 flex flex-col items-center `}
+        className={` ${className} ${shadowColor} pb-10 px-4 mt-28 flex flex-col items-center `}
       >
         <Image
           src={image}
@@ -44,12 +44,15 @@ const ChallengesCard: React.FC<ChallengesCardProps> = ({
           className="mt-[-99px]"
         />
         <h1
-          className={`${textColor} mt-5 text-center  text-[20px] md:text-[24px] font-semibold`}
+          className={`${textColor} mt-5 text-center  text-[18px] font-semibold`}
         >
           {title}
         </h1>
-        <div className="mt-3 text-[18px] tracking-[0.1px] text-center">
-          {description} Click{" "}
+        <div className="mt-3 text-[18px] tracking-[0.5px] text-center">
+        {description} 
+        </div>
+        <div className=" text-[18px] tracking-[0.1px] text-center">
+          Click{" "}
           <span
             className={`${
               textColor == "text-main-red" ? "text-main-blue" : "text-main-red"

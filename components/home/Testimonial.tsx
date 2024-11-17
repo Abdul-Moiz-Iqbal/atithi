@@ -49,8 +49,8 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="py-10 ">
-      <H4 title="Testimonial" className="text-main-red" />
+    <div className="sm:py-10 ">
+      <H4 title="Testimonials" className="mb-4 text-main-red" />
       <div className="flex flex-col md:flex-row md:flex-wrap">
       {testimonialData.slice(0, visibleCount).map((testimonial) => (
         <TestiminalCard
@@ -70,9 +70,9 @@ const Testimonial = () => {
       <div className=" flex justify-center">
 
       <Button
-        text={visibleCount >= testimonialData.length ? "Show Less" : "View More"}
+        text={visibleCount >= testimonialData.length ? "Show Less" : "Read More"}
         
-        className="mt-10 mx-auto text-xl font-medium w-fit shadow-none"
+        className="mt-10 px-12 mx-auto text-base font-medium w-fit shadow-none"
         onClick={toggleShowMoreLess}
       />
       </div>

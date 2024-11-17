@@ -2,7 +2,8 @@
 import Image from "next/image";
 
 // image
-import image from "../../../public/images/terms-condition.png";
+import lakeImage from "../../../public/images/terms-condition.png";
+import mobileImage from "../../../public/images/mobile-blog.png";
 
 import Link from "next/link";
 import Button from "../../../ui/Button/Button";
@@ -10,16 +11,17 @@ import Button from "../../../ui/Button/Button";
 export default function Refund() {
   return (
     <div className="font-author">
-      <div>
-        <Image src={image} alt="Servies" />
+      <div className="">
+        <Image src={lakeImage} alt="Servies" className="hidden sm:block" />
+        <Image src={mobileImage} alt="Servies" className="sm:hidden" />
       </div>
       <div className="w-[80%] mx-auto">
-        <h1 className="mt-10 mb-5 pl-2 text-[35px] font-semibold text-main-red">
+        <h1 className="mt-10 mb-5 pl-2 text-xl sm:text-[35px] font-semibold text-main-red">
           PAYMENT TERMS, CANCELLATION AND REFUND
         </h1>
         <div className="w-full border-2 border-main-red"></div>
         <div className="px-4">
-          <p className="my-5 text-lg">
+          <p className="my-5 text-base">
             At Hello Atithi, the goal is to ensure a smooth and transparent
             experience for all travellers. To achieve this, the following
             payment terms and refund policy have been designed to clearly
@@ -29,14 +31,14 @@ export default function Refund() {
             services like Local SIM recharges, and the conditions under which
             refunds are provided.
           </p>
-          <h2 className="text-[30px] uppercase">1. Service Fees</h2>
-          <p className="my-5 text-lg">
+          <h2 className="text-xl sm:text-[30px] uppercase">1. Service Fees</h2>
+          <p className="my-5 text-base sm:text-lg">
             All services, including Visa Assist, TripShield, RupeePay,
             TrueGuide, Local SIM, StreetSpeak, and 24/7 support, are available
             under a subscription model. Payment must be completed before
             services are activated.
           </p>
-          <h2 className="text-[30px] uppercase">2. Payment Methods</h2>
+          <h2 className="text-xl sm:text-[30px] uppercase">2. Payment Methods</h2>
           <p className="my-5 text-lg"></p>
           <ul>
             <li>

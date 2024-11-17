@@ -15,12 +15,13 @@ const HowWeWork = () => {
     <div className="font-author">
 
       <div className="">
-        <Image src={lakeImage} alt="Servies" />
+        <Image src={lakeImage} alt="Servies" className="hidden sm:block" />
+        <Image src={mobileImage} alt="Servies" className="sm:hidden" />
       </div>
     
       <HowWeWorkComponent />
       <Pricing />
-      <WhatWeDo title="why us" showButton={false} />
+      <WhatWeDo title="What we do" showButton={false} />
       <div className="flex justify-center">
         <Link href={"/trip-form"} className="">
           <Button

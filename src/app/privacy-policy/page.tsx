@@ -3,30 +3,32 @@ import Image from "next/image";
 
 
 // image
-import image from "../../../public/images/privacy-policy-image.png";
+import lakeImage from "../../../public/images/terms-condition.png";
+import mobileImage from "../../../public/images/mobile-blog.png";
 
 
 export default function PrivacyPolicy() {
   return (
     <div className="font-author pb-16">
 
-      <div>
-        <Image src={image} alt="Servies" />
+<div className="">
+        <Image src={lakeImage} alt="Servies" className="hidden sm:block" />
+        <Image src={mobileImage} alt="Servies" className="sm:hidden" />
       </div>
       <div className="w-[80%] mx-auto">
-        <h1 className="mt-10 mb-5 pl-2 text-[35px] font-semibold text-main-red">
+        <h1 className="mt-5 sm:mt-10 mb-5 pl-2 text-xl sm:text-[35px] font-semibold text-main-red">
           Privacy Policy
         </h1>
         <div className="w-full border-2 border-main-red"></div>
         <div className="px-4">
-          <p className="my-5 text-lg">
+          <p className="my-5 text-base">
             HELLO ATITHI is committed to protecting your information. This
             privacy notice provides details about the information we collect
             about you and how we protect it. It also explains your rights and
             how to contact us if you have questions about how we use your
             information.
           </p>
-          <h2 className="text-[30px] uppercase">
+          <h2 className="text-xl sm:text-[30px] uppercase">
             Information about HELLO ATITHI
           </h2>
           <p className="my-5 text-lg">
@@ -36,12 +38,12 @@ export default function PrivacyPolicy() {
             you interact with us (e.g. by using our app or website) and how
             Hello Atithi will process your information.
           </p>
-          <h2 className="text-[30px] uppercase">Marketing and Preferences</h2>
+          <h2 className="text-xl sm:text-[30px] uppercase">Marketing and Preferences</h2>
           <p className="my-5 text-lg">
             We do not use your personal information to send you marketing
             messages by post, telephone, social media platforms, email, SMS.
           </p>
-          <h2 className="text-[30px] uppercase">Scope of our privacy notice</h2>
+          <h2 className="text-xl sm:text-[30px] uppercase">Scope of our privacy notice</h2>
           <p className="my-5 text-lg leading-8">
             This notice applies to anyone who interacts with us in relation to
             our products and services (“you”, “your''), via any channel (e.g.
@@ -62,7 +64,7 @@ export default function PrivacyPolicy() {
             with information about your children, it is processed as described
             in this notice.
           </p>
-          <h2 className="text-[30px] uppercase">
+          <h2 className="text-xl sm:text-[30px] uppercase">
             Ways in which we obtain personal information
           </h2>
           <p className="mt-5 text-lg leading-8">
@@ -82,7 +84,7 @@ export default function PrivacyPolicy() {
               service
             </li>
           </ol>
-          <h2 className="text-[30px] uppercase">
+          <h2 className=" text-xl sm:text-[30px] uppercase">
             Categories of personal information
           </h2>
           <p className="mt-5 text-lg leading-8">
