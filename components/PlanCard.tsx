@@ -47,8 +47,8 @@ const PlaningCard: React.FC<PlanCardProps> = ({ title, price, image }) => {
   const { setSelectedPlan,selectedPlan } = useFormContext();
 
   const handleSelectPlan = () => {
-    if (selectedPlan === title) return; // If the plan is already selected, do nothing
-    setSelectedPlan(title); // Set the selected plan in context
+    if (selectedPlan?.title === title) return; // If the plan is already selected, do nothing
+    setSelectedPlan({title,price}); // Set the selected plan in context
 
     // Only navigate if not already on the "trip-form" page
     if (pathName !== "/trip-form") {
@@ -77,9 +77,9 @@ const PlaningCard: React.FC<PlanCardProps> = ({ title, price, image }) => {
       </div>
       <button
         onClick={handleSelectPlan}
-        className={`"px-[25px] py-[3px] sm:px-[50px] sm:py-[5px] text-xl sm:text-[18px]  font-medium rounded-full hover:bg-clip-border hover:text-white shadow-btn-shadow border-[3px] border-main-red bg-gradient-to-r from-main-red to-main-orange ${selectedPlan == title? 'text-white':'bg-transparent text-transparent bg-clip-text'}`}
+        className={`"px-[25px] py-[3px] sm:px-[50px] sm:py-[5px] text-xl sm:text-[18px]  font-medium rounded-full hover:bg-clip-border hover:text-white shadow-btn-shadow border-[3px] border-main-red bg-gradient-to-r from-main-red to-main-orange ${selectedPlan?.title == title? 'text-white':'bg-transparent text-transparent bg-clip-text'}`}
       >
-        {selectedPlan == title?"Selected":"Select"}
+        {selectedPlan?.title == title?"Selected":"Select"}
         
       </button>
     </div>

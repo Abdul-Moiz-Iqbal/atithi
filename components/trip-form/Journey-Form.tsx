@@ -514,6 +514,7 @@ const JourneyForm = () => {
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedStates, setSelectedStates] = useState([]);
+  console.log(selectedMonth,selectedStates)
 
   useEffect(() => {
     if (countryCode) {

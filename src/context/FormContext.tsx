@@ -33,15 +33,15 @@ import { createContext, useContext, useState, ReactNode } from "react";
 type FormContextType = {
   countryCode: string | null;
   setCountryCode: (user: string | null) => void;
-  selectedPlan: string | null; // Add selectedPlan state
-  setSelectedPlan: (plan: string | null) => void; // Add setter for selectedPlan
+  selectedPlan: object | null; // Add selectedPlan state
+  setSelectedPlan: (plan: object | null) => void; // Add setter for selectedPlan
 };
 
 const FormContext = createContext<FormContextType | undefined>(undefined);
 
 export const FormContextProvider = ({ children }: { children: ReactNode }) => {
   const [countryCode, setCountryCode] = useState<string | null>(null);
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null); // Initialize selectedPlan
+  const [selectedPlan, setSelectedPlan] = useState<object | null>(null); // Initialize selectedPlan
   console.log("Selected plan:",selectedPlan)
 
   return (

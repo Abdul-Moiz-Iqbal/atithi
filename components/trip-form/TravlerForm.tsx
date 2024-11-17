@@ -95,12 +95,13 @@
 import { useEffect, useState } from "react";
 import ShadowCard from "../../ui/Card/ShadowCard";
 import { useFormContext } from "@/context/FormContext";
-import CustomDropdown from "../../ui/dropdown/FormDropdown"; // Make sure the path is correct
+
 
 const TravelerForm = () => {
   const [countries, setCountries] = useState<{ label: string; value: string }[]>([]);
   const { setCountryCode } = useFormContext();
   const [userCountry, setUserCountry] = useState<string>("Select Country");
+  console.log(countries)
 
   useEffect(() => {
     fetch("https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code")
@@ -114,9 +115,9 @@ const TravelerForm = () => {
       .catch((error) => console.error("Error fetching countries:", error));
   }, [setCountryCode]);
 
-  const handleCountryChange = (value) => {
-    setCountryCode(value);
-  };
+  // const handleCountryChange = (value) => {
+  //   setCountryCode(value);
+  // };
 
   return (
     <ShadowCard className="sm:w-[80%] mx-auto mt-5 sm:mt-10 py-10 px-5 sm:p-10 rounded-[20px] shadow-card-red">
