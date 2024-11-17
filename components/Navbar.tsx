@@ -197,34 +197,48 @@ export default function Navbar() {
           {/* Navigation Links */}
           <nav className="p-[18px] flex flex-col gap-6 text-[24px] text-gray-700 font-medium">
             <Link
-              href="/"
+              href="/how-we-work"
               className=" border-b-2 text-[18px] font-medium uppercase border-main-red pb-2 "
               onClick={toggleMenu}
             >
               How We Work
             </Link>
             <Link
-              href="/"
+              href="/blog"
               className="border-b-2 text-[18px] font-medium uppercase border-main-red pb-2 "
               onClick={toggleMenu}
             >
               India's must know
             </Link>
             <Link
-              href="/"
+              href="/services"
               className="border-b-2 text-[18px] font-medium uppercase border-main-red pb-2 "
               onClick={toggleMenu}
             >
              Services and fees
             </Link>
             <Link
-              href="/"
+              href="/contact"
               className="border-b-2 text-[18px] font-medium uppercase border-main-red pb-2 "
               onClick={toggleMenu}
             >
               Faq
             </Link>
-            
+            <Link href={"/how-we-work"} className="">
+                How we Work
+                </Link>
+                <Link href={"/blog"} className="">
+                India's must know
+                </Link>
+                <Link href={"/services"} className="">
+                Service & fees
+                </Link>
+                <Link href={"/faq"} className="">
+                Faq
+                </Link>
+                <Link href={"/contact"} className="">
+                Contact Us
+                </Link>
           </nav>
         </div>
       )}
