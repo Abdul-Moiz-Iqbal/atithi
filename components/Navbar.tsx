@@ -224,21 +224,7 @@ export default function Navbar() {
             >
               Faq
             </Link>
-            <Link href={"/how-we-work"} className="">
-                How we Work
-                </Link>
-                <Link href={"/blog"} className="">
-                India's must know
-                </Link>
-                <Link href={"/services"} className="">
-                Service & fees
-                </Link>
-                <Link href={"/faq"} className="">
-                Faq
-                </Link>
-                <Link href={"/contact"} className="">
-                Contact Us
-                </Link>
+           
           </nav>
         </div>
       )}
