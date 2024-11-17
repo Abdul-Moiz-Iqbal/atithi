@@ -493,20 +493,6 @@ import PricingCard from "../PricingCard";
 import CustomDropdown from "../../ui/dropdown/FormDropdown"; // Import CustomDropdown
 import MultiSelectDropdown from "../../ui/dropdown/MultiSelectDropDown";
 
-const months = [
-  { label: "January", value: "01" },
-  { label: "February", value: "02" },
-  { label: "March", value: "03" },
-  { label: "April", value: "04" },
-  { label: "May", value: "05" },
-  { label: "June", value: "06" },
-  { label: "July", value: "07" },
-  { label: "August", value: "08" },
-  { label: "September", value: "09" },
-  { label: "October", value: "10" },
-  { label: "November", value: "11" },
-  { label: "December", value: "12" },
-];
 
 // const JourneyForm = () => {
 //   const { countryCode,selectedPlan } = useFormContext();
@@ -706,11 +692,24 @@ const regions = [
     ],
   },
 ];
-
-
+const months = [
+  { label: "January", value: "01" },
+  { label: "February", value: "02" },
+  { label: "March", value: "03" },
+  { label: "April", value: "04" },
+  { label: "May", value: "05" },
+  { label: "June", value: "06" },
+  { label: "July", value: "07" },
+  { label: "August", value: "08" },
+  { label: "September", value: "09" },
+  { label: "October", value: "10" },
+  { label: "November", value: "11" },
+  { label: "December", value: "12" },
+];
 const JourneyForm = () => {
   const currentYear = new Date().getFullYear();
-  const currentMonth  = new Date().getMonth();
+  const currentMonth = new Date().getMonth(); // 0-based index for months (0 = January)
+
   const { countryCode, selectedPlan } = useFormContext();
   const [states, setStates] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState("");
@@ -718,7 +717,7 @@ const JourneyForm = () => {
   const [selectedStates, setSelectedStates] = useState([]);
   const [selectedDays, setSelectedDays] = useState<number>(1);
 
-  console.log(selectedMonth, selectedStates,states);
+  console.log(selectedMonth, selectedStates, states);
   console.log("Price:", selectedDays * selectedPlan?.price);
 
   useEffect(() => {
@@ -746,28 +745,50 @@ const JourneyForm = () => {
     }
   }, [countryCode]);
 
-
-
-  const years = Array.from({ length: 3 }, (_, index) => ({
-    label: (currentYear + index).toString(),
-    value: (currentYear + index).toString(),
-  }));
-
-  const filteredMonths = selectedYear
-    ? selectedYear === currentYear.toString()
-      ? months.slice(currentMonth) // Show remaining months for the current year
-      : months // Show all months for future years
-    : months;
+  const months = [
+    { label: "January", value: "01" },
+    { label: "February", value: "02" },
+    { label: "March", value: "03" },
+    { label: "April", value: "04" },
+    { label: "May", value: "05" },
+    { label: "June", value: "06" },
+    { label: "July", value: "07" },
+    { label: "August", value: "08" },
+    { label: "September", value: "09" },
+    { label: "October", value: "10" },
+    { label: "November", value: "11" },
+    { label: "December", value: "12" },
+  ];
 
   const days = Array.from({ length: 180 }, (_, index) => ({
     label: `${index + 1} Day${index + 1 > 1 ? "s" : ""}`,
     value: (index + 1).toString(),
   }));
 
+  const getDynamicYears = () => {
+    const selectedMonthIndex = months.findIndex((month) => month.value === selectedMonth); // 0-based index
+    if (selectedMonthIndex !== -1 && selectedMonthIndex < currentMonth) {
+      // Month is in the past, shift to the next year
+      return Array.from({ length: 3 }, (_, index) => ({
+        label: (currentYear + index + 1).toString(),
+        value: (currentYear + index + 1).toString(),
+      }));
+    } else {
+      // Month is in the current or future year
+      return Array.from({ length: 3 }, (_, index) => ({
+        label: (currentYear + index).toString(),
+        value: (currentYear + index).toString(),
+      }));
+    }
+  };
+
   const handleMonthSelect = (value) => {
     setSelectedMonth(value);
-    if (value === "01" && selectedYear === currentYear.toString()) {
-      setSelectedYear((currentYear + 1).toString());
+
+    // Automatically adjust the year dropdown
+    const updatedYears = getDynamicYears();
+    if (updatedYears.length > 0) {
+      setSelectedYear(updatedYears[0].value); // Default to the first year
     }
   };
 
@@ -785,40 +806,28 @@ const JourneyForm = () => {
         <div className="w-full border-[0.1px] border-main-red"></div>
 
         {/* State/Province Dropdown */}
-        <div className="mt-4  w-fit">
-          <label className=" text-base sm:text-[20px] mt-4">
-            Where are you going?[Can Select Multiple]
+        <div className="mt-4 w-fit">
+          <label className="text-base sm:text-[20px] mt-4">
+            Where are you going? [Can Select Multiple]
           </label>
-          <div className="mt-4 lg:w-[720px]     ">
-          <MultiSelectDropdown
-          regions={regions}
-          placeholder="Select State"
-          onOptionsChange={handleStateChange}
-          className="custom-dropdown-class"
-        />
+          <div className="mt-4 lg:w-[720px]">
+            <MultiSelectDropdown
+              regions={regions}
+              placeholder="Select State"
+              onOptionsChange={handleStateChange}
+              className="custom-dropdown-class"
+            />
           </div>
         </div>
 
         {/* Date Selection */}
         <label className="text-base sm:text-[20px] mt-4">
-        When are you going?
+          When are you going?
         </label>
         <div className="flex flex-row gap-2 md:gap-10">
-
-           {/* Year Dropdown */}
-           <CustomDropdown
-            options={years.map((year) => ({
-              label: year.label,
-              value: year.value,
-            }))}
-            placeholder="Select a year"
-            onOptionSelect={(value) => setSelectedYear(value)}
-            selectedValue={selectedYear} // Reflect updated year
-          />
-
           {/* Month Dropdown */}
           <CustomDropdown
-            options={filteredMonths.map((month) => ({
+            options={months.map((month) => ({
               label: month.label,
               value: month.value,
             }))}
@@ -826,15 +835,24 @@ const JourneyForm = () => {
             onOptionSelect={handleMonthSelect}
           />
 
-         
+          {/* Year Dropdown */}
+          <CustomDropdown
+            options={getDynamicYears().map((year) => ({
+              label: year.label,
+              value: year.value,
+            }))}
+            placeholder="Select a year"
+            onOptionSelect={(value) => setSelectedYear(value)}
+            selectedValue={selectedYear} // Reflect updated year
+          />
         </div>
       </div>
 
       <PricingCard className="w-full mt-6 mb-10" />
 
-      <div className=" mt-10 sm:mt-20 w-fit">
+      <div className="mt-10 sm:mt-20 w-fit">
         {/* Days Dropdown */}
-        <label className=" text-lg sm:text-[20px] ">How Long for?</label>
+        <label className="text-lg sm:text-[20px]">How Long for?</label>
         <CustomDropdown
           options={days.map((day) => ({
             label: day.label,
@@ -847,7 +865,7 @@ const JourneyForm = () => {
 
       <div className="mt-7 text-[20px]">Plan Charges</div>
       <div className="mt-3 text-main-red text-[30px] font-semibold">
-        $ <span className="pl-2">{(selectedDays !== 0 && selectedPlan?.price !== undefined)? selectedDays * selectedPlan?.price :0}</span>
+        $ <span className="pl-2">{selectedDays * selectedPlan?.price || 0}</span>
       </div>
 
       {/* Additional Information */}
@@ -855,7 +873,7 @@ const JourneyForm = () => {
       <textarea
         placeholder="Any differently abled or elderly traveler, any do’s or don'ts, any specific requirement"
         rows={7}
-        className="w-full sm:w-[60%] text-[18px]  mt-6 p-2 border-2 border-main-red placeholder:text-[20px]"
+        className="w-full sm:w-[60%] text-[18px] mt-6 p-2 border-2 border-main-red placeholder:text-[20px]"
       ></textarea>
     </ShadowCard>
   );
