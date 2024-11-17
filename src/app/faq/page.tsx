@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { SlArrowDown } from "react-icons/sl";
 import image from "../../../public/images/faq.png";
+import Link from "next/link";
 
 
 const data = [
@@ -107,7 +108,7 @@ export default function FAQ() {
                 }`}
               >
                 {isOpen[index] && (
-                  <p className="mb-5 text-base md:text-xl">{item.answer}</p>
+                  <p className="mb-5 text-base tracking-[0.8px] md:text-xl sm:tracking-[1px]">{item.answer}</p>
                 )}
               </div>
               <div
@@ -126,16 +127,19 @@ JOURNEY
       <div className="hidden  mt-5 mb-16  md:flex items-center">
         <div className="w-[25%] border-[3px] border-main-red"></div>
         <div className=" w-[50%] border-2 border-main-red">
-          <div className="py-5 px-10 text-[18px] italic text-center ">
+          <div className="py-5 px-10 text-base sm:text-[18px] italic text-center ">
             Can't find it? Don't worry. Just because it's not here, doesn't mean
             we can't do it. <br></br> WhatsApp us on +91 8630351715 <br></br> WE
             ARE HERE 24x7.
           </div>
 
           <div className="mb-[-28px] flex justify-center">
+            <Link href={'/contact'}>
+            
             <button className=" mx-auto shadow-btn hover:bg-red-800 rounded-[10px] px-10 py-3 uppercase text-[20px] font-medium text-white bg-main-red">
               Contact Us
             </button>
+            </Link>
           </div>
         </div>
         <div className="w-[25%] border-[3px] border-main-red "></div>

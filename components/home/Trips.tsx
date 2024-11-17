@@ -55,6 +55,7 @@
 import Image from "next/image";
 import image from "../../public/images/image.png";
 import imageDesktop from "../../public/images/image-desktop.png";
+import Link from "next/link";
 
 const Trips = () => {
   return (
@@ -86,13 +87,31 @@ const Trips = () => {
 
       {/* Bottom Box with Border, Text, and Button */}
       <div className=" relative z-10 flex flex-col items-center">
-        <div className="border-2 border-white bg-opacity-75 px-5 py-5 text-center max-w-2xl mx-auto bg-transparent text-main-black text-[16px] sm:text-[18px] leading-6 italic">
+        {/* <div className="border-2 border-white bg-opacity-75 px-5 py-5 text-center max-w-2xl mx-auto bg-transparent text-main-black text-[16px] sm:text-[18px] leading-6 italic">
           Can't find it? Don't worry. Just because it's not here, doesn't mean
           we can't do it. Text us on +91 8630351715 on WhatsApp. WE ARE HERE 24x7.
         </div>
-        <button className=" mt-4 px-6 py-3 text-white bg-main-red  text-[16px] font-medium rounded-[10px] sm:text-[18px]">
+        <Link href={'/contact'}>
+        <button className=" mt-4 px-6 py-3 text-white bg-main-red hover:bg-red-800  text-[16px] font-medium rounded-[10px] sm:text-[18px]">
           Contact Us
         </button>
+        </Link> */}
+        <div className=" w-[50%] border-2 border-white">
+          <div className="py-5 px-10 text-base sm:text-[18px] italic text-center text-white ">
+            Can't find it? Don't worry. Just because it's not here, doesn't mean
+            we can't do it. <br></br> WhatsApp us on +91 8630351715 <br></br> WE
+            ARE HERE 24x7.
+          </div>
+
+          <div className="mb-[-28px] flex justify-center">
+            <Link href={'/contact'}>
+            
+            <button className=" mx-auto shadow-btn hover:bg-red-800 rounded-[10px] px-10 py-3 uppercase text-[20px] font-medium text-white bg-main-red">
+              Contact Us
+            </button>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

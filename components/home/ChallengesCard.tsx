@@ -45,11 +45,11 @@ const ChallengesCard: React.FC<ChallengesCardProps> = ({
           className="mt-[-99px]"
         />
         <h1
-          className={`${textColor} mt-5 text-center  text-[18px] font-semibold`}
+          className={`${textColor} mt-5 text-center  text-[18px]  tracking-[0.2px] sm:text-xl sm:tracking-[0.4px]   font-semibold`}
         >
           {title}
         </h1>
-        <div className="mt-3 text-[18px] tracking-[0.5px] text-center">
+        <div className="mt-3 text-[18px] tracking-[0.2px] text-center">
         {description} 
         </div>
         <div className=" text-[18px] tracking-[0.1px] text-center">
