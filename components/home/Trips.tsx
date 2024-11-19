@@ -96,8 +96,8 @@ const Trips = () => {
           Contact Us
         </button>
         </Link> */}
-        <div className=" w-[50%] border-2 border-white">
-          <div className="py-5 px-10 text-base sm:text-[18px] italic text-center text-white ">
+        <div className=" sm:w-[50%] border-2 border-white">
+          <div className="py-5 px-1 sm:px-10 text-base sm:text-[18px] italic text-center text-white ">
             Can't find it? Don't worry. Just because it's not here, doesn't mean
             we can't do it. <br></br> WhatsApp us on +91 8077034423 <br></br> WE
             ARE HERE 24x7.
@@ -106,7 +106,7 @@ const Trips = () => {
           <div className="mb-[-28px] flex justify-center">
             <Link href={'/contact'}>
             
-            <button className=" mx-auto shadow-btn hover:bg-red-800 rounded-[10px] px-10 py-3 uppercase text-[20px] tracking-[0.4px] font-medium text-white bg-main-red">
+            <button className=" mx-auto shadow-btn hover:bg-red-800 rounded-[10px] px-4 sm:px-10 py-3 uppercase text-base sm:text-[20px] tracking-[0.4px] font-medium text-white bg-main-red">
               Contact Us
             </button>
             </Link>

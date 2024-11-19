@@ -176,6 +176,7 @@ const Blog = () => {
         {blogData.slice(0, visibleCount).map((blog) => (
           <BlogCard
             key={blog.id}
+            id={blog.id}
             title={blog.title}
             description={blog.description}
             image={blog.image}
@@ -186,6 +187,7 @@ const Blog = () => {
         {blogData.slice(0, visibleCount).map((blog) => (
           <BlogCardHome
             key={blog.id}
+            
             title={blog.title}
             description={blog.description}
             image={blog.image}

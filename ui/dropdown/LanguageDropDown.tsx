@@ -31,16 +31,15 @@ const LanguageDropdown = ({ options, placeholder, onOptionSelect, className }) =
   }, []);
 
   return (
-    <div className="relative  flex flex-col " ref={dropdownRef}>
+    <div className="relative text-lg font-normal  flex flex-col " ref={dropdownRef}>
       {/* Dropdown Toggle */}
       <div
         className={`${className}   flex justify-between`}
         onClick={showDropdownHandler}
       >
         <input
-          className="pl-4 w-[100%] sm:pl-4 placeholder:text-[14px] outline-none"
+          className="pl-4 w-[100%] sm:pl-4  text-lg font-normal outline-none"
           value={selectedLanguage}
-        //   placeholder={placeholder}
           readOnly
         />
         <div className="flex justify-between items-center py-2 text-gray-600">
@@ -58,7 +57,7 @@ const LanguageDropdown = ({ options, placeholder, onOptionSelect, className }) =
         >
           {options.map((option) => (
             <div
-              className={`p-2 cursor-pointer text-[#8A8A8A] text-sm hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)] ${
+              className={`p-[10px] font-normal font-author cursor-pointer text-[#8A8A8A] text-sm hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)] ${
                 selectedLanguage === option.label ? "border-l-4 border-main-red" : ""
               }`}
               key={option.value}

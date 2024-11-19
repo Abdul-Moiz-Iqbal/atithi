@@ -168,7 +168,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="text-lg font-medium">
-              <Link href={"https://www.aicjklu.in/about"}>AIC-JKLU
+              <Link href={"https://www.aicjklu.in/about"} target="_blank">
               Incubated by <span className="text-main-red">AIC-JKLU</span>{" "}
               </Link>
             </div>

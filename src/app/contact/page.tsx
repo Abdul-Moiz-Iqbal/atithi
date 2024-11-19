@@ -21,7 +21,7 @@ export default function ContactUs() {
 
       <div className="py-5 ">
         {/* form and contact us details contianer  */}
-        <div className="sm:w-[90%] px-10 pb-5 sm:py-10 mx-auto shadow-card-red rounded-[20px] flex flex-col sm:flex-row gap-5 ">
+        <div className="sm:w-[90%] px-4 sm:px-10 pb-5 sm:py-10 mx-auto shadow-card-red rounded-[20px] flex flex-col sm:flex-row gap-5 ">
           {/* contact form  */}
           <div className=" sm:w-[50%] ">
             <H4
@@ -56,18 +56,18 @@ export default function ContactUs() {
                 Send Message
               </button>
               <button className=" px-7 py-[10px] w-[50%]  tracking-wide text-white text-sm sm:text-[20px] font-medium bg-main-red">
-                Resend
+                Resent
               </button>
             </div>
           </div>
 
           {/* contact Details */}
-          <div className="sm:w-[50%] px-8 pt-4 pb-8 border border-main-red rounded-[20px] ">
+          <div className="sm:w-[50%] px-2 sm:px-8 pt-4 pb-8 border border-main-red rounded-[20px] ">
             <div>
               <h4 className="text-[20px] font-semibold">Need Any Help?</h4>
               <H4
                 title="Get in touch with us"
-                className="mt-0 text-start normal-case text-main-red text-[35px]"
+                className="mt-[5px] sm:mt-[24px] text-start normal-case text-main-red text-[25px] sm:text-[35px]"
               />
 
               <p className="text-start tracking-wider font-normal text-[1.15rem]">
@@ -75,25 +75,25 @@ export default function ContactUs() {
                 respond promptly.
               </p>
 
-              <div className="mt-16 pl-2 flex flex-col gap-10">
-                <div className="flex gap-10 ">
+              <div className="mt-16 sm:pl-2 flex flex-col gap-10">
+                <div className="flex gap-3 sm:gap-10 ">
                   {/* icon  */}
-                  <div className="bg-main-red w-fit p-3">
-                    <LiaPhoneSolid className="rotate-[270deg] text-5xl text-white" />
+                  <div className="bg-main-red w-fit h-fit p-3">
+                    <LiaPhoneSolid className="rotate-[270deg] text-3xl sm:text-5xl text-white" />
                   </div>
                   {/* text part  */}
-                  <div className="text-[20px]">
+                  <div className="text-sm sm:text-[20px]">
                     <h4 className=" font-medium">Have any question?</h4>
                     <p className="mt-[-5px] tracking-wider">Coming Soon!</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-10 ">
+                <div className="flex items-center gap-2 sm:gap-10 ">
                   {/* icon  */}
                   <div className="bg-main-red w-fit h-fit p-3">
-                    <IoMailOutline className=" text-5xl text-white" />
+                    <IoMailOutline className=" text-3xl sm:text-5xl text-white" />
                   </div>
                   {/* text part  */}
-                  <div className="text-[20px]">
+                  <div className="text-sm sm:text-[20px]">
                     <h4 className="font-medium leading-none ">Email</h4>
                     <div className="leading-none tracking-[1px]">
                       {/* USA */}
@@ -113,7 +113,7 @@ export default function ContactUs() {
                       </div>
 
                       {/* Others */}
-                      <div className="flex items-center gap-2">
+                      <div className=" flex items-center gap-2">
                         <span className="text-main-red">OTHERS:</span>
                         <span className="tracking-wider text-black">
                           support@helloatithi.com
@@ -122,13 +122,13 @@ export default function ContactUs() {
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-10 ">
+                <div className=" flex gap-3 sm:gap-10 ">
                   {/* icon  */}
-                  <div className="bg-main-red w-fit p-3">
-                    <VscMap className=" text-5xl text-white" />
+                  <div className="bg-main-red w-fit h-fit p-3">
+                    <VscMap className=" text-3xl sm:text-5xl text-white" />
                   </div>
                   {/* text part  */}
-                  <div className="text-[20px]">
+                  <div className="text-sm sm:text-xl">
                     <h4 className=" font-medium">Address</h4>
                     <p className="mt-[-5px] tracking-wider">
                       704, West Ambar Talab, Roorkee, Uttarakhand, India-2476667

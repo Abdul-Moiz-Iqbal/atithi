@@ -8,16 +8,20 @@ import ShadowCard from "../../ui/Card/ShadowCard";
 import H6 from "../../ui/heading/H6";
 import P from "../../ui/Paragraph/P";
 import React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface BlogCardProps {
     title: string;
     description: string;
     image: StaticImageData | string;
+    id:number;
     
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({title, description= "Best places to visit in north India, The best hotels in India. Garam Chai with Doli and Bills Gate.", image}) => {
-    return (
+const BlogCard: React.FC<BlogCardProps> = ({id,title, description= "Best places to visit in north India, The best hotels in India. Garam Chai with Doli and Bills Gate.", image}) => {
+  const pathName = usePathname()  
+  return (
         <ShadowCard className={"mt-8 sm:mt-10 p-5 rounded-[20px] md:basis-[40%] lg:basis-[25%] shadow-card-red"}>
         {/* Blog Image */}
         <div className="flex justify-center h-[170px] ">
@@ -45,9 +49,10 @@ const BlogCard: React.FC<BlogCardProps> = ({title, description= "Best places to 
         />
 
         {/* Learn More Button */}
-        <p className="mt-7 uppercase text-center text-main-red text-[16px] sm:text-[20px] font-semibold">
-          Read More
-        </p>
+        <Link href={`${pathName}/${id}`} className="mt-7 uppercase text-center text-main-red text-[16px] sm:text-[20px] font-semibold">
+        Read More
+        </Link>
+        
       </ShadowCard>
     );
 }

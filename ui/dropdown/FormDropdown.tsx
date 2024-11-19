@@ -234,7 +234,7 @@ const CustomDropdown = ({ options, placeholder, onOptionSelect,className }) => {
       {/* Dropdown Options */}
       {showDropdown && (
         <div
-          className="absolute z-10 custom-scrollbar border-2 border-t-0 not-italic border-main-red overflow-y-auto max-h-[200px] w-full bg-white"
+          className="absolute z-20 custom-scrollbar border-2 border-t-0 not-italic border-main-red overflow-y-auto max-h-[200px] w-full bg-white"
           style={{ top: "100%", left: 0 }}
         >
           {options.map((option) => (

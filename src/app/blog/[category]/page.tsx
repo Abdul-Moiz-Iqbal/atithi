@@ -209,6 +209,7 @@ const Category = () => {
         {blogData.slice(0, visibleCount).map((blog) => (
           <BlogCard
             key={blog.id}
+            id={blog.id}
             title={blog.title}
             description={blog.description}
             image={blog.image}
