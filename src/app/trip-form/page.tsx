@@ -109,15 +109,16 @@ const TripForm = () => {
         <TravelerForm />
         <JourneyForm />
         <div className="my-20 flex flex-col gap-2 justify-center items-center sm:gap-0 sm:flex-row sm:justify-evenly">
-          <button className="px-5 py-4 w-[80%] sm:w-fit lg:px-[20.5px] text-[18px] sm:py-[17px] font-semibold border-[3px] hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
-            Submit & Pay on arrival
-          </button>
+        <Link href={'/sucess'} className="px-5 py-4 w-[70%] text-center sm:w-fit lg:px-[20.5px] text-[18px] sm:py-[17px] font-semibold border-[3px] hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
+          Submit & Pay on Arrival
+          </Link>
           <div className="sm:hidden text-[20px] font-medium text-center">
             OR
           </div>
-          <button className="px-5 py-4 w-[70%] sm:w-fit lg:px-[20.5px] text-[18px] sm:py-[17px] font-semibold border-[3px] hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
-            Submit & Pay now
-          </button>
+          <Link href={'/payment'} className="px-5 py-4 w-[70%] text-center sm:w-fit lg:px-[20.5px] text-[18px] sm:py-[17px] font-semibold border-[3px] hover:bg-[rgba(255,0,0,0.1)] border-main-red  text-main-red uppercase shadow-btn">
+          Submit & Pay now
+          </Link>
+   
         </div>
         <div className=" flex items-center">
           <div className="w-[5%] sm:w-[25%]  border sm:border-[3px] border-main-red"></div>

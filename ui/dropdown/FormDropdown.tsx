@@ -215,7 +215,7 @@ const CustomDropdown = ({ options, placeholder, onOptionSelect,className }) => {
     <div className="font-author relative flex flex-col " ref={dropdownRef}>
       {/* Dropdown Toggle */}
       <div
-        className={`${className} w-full border-2 border-main-red flex justify-between`}
+        className={`w-full ${className}  border-2 border-main-red flex justify-between`}
         onClick={showDropdownHandler}
       >
         <input

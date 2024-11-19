@@ -837,7 +837,7 @@ const JourneyForm = () => {
 
       <PricingCard className="w-full mt-6 mb-10" />
 
-      <div className="mt-10 sm:mt-20 w-fit">
+      <div className="mt-10  sm:mt-20 w-fit">
         {/* Days Dropdown */}
         <label className="text-lg sm:text-[20px]">How Long for?</label>
         <CustomDropdown
