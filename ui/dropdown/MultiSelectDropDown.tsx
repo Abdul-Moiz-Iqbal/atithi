@@ -154,7 +154,8 @@
 // };
 
 // export default MultiSelectDropdown;
-
+"use client";
+import { useFormContext } from "@/context/FormContext";
 import { useState, useRef, useEffect } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
 
@@ -164,32 +165,41 @@ const MultiSelectDropdown = ({
   onOptionsChange,
   className,
 }) => {
+  const { setFormData ,setFormError} = useFormContext();
   const [selectedOptions, setSelectedOptions] = useState([]);
-  
   const [showDropdown, setShowDropdown] = useState(false);
+  
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setShowDropdown((prev) => !prev);
+    
   };
 
-  const handleOptionSelect = (option: string, ) => {
-    selectedOptions.includes(option) ? setSelectedOptions(selectedOptions.filter((item) => item !== option)) :   setSelectedOptions((prevSelected) => [...prevSelected, option]); 
-  
-    console.log(selectedOptions)
-};
+  const handleOptionSelect = (option) => {
+    const updatedSelection = selectedOptions.includes(option)
+      ? selectedOptions.filter((item) => item !== option)
+      : [...selectedOptions, option];
+
+    setSelectedOptions(updatedSelection);
+    setFormData((prevData) => ({ ...prevData, regions: updatedSelection }));
+    setFormError((prev) => ({ ...prev, regions: "" })); // Clear error on change
+   
+  };
 
   const getSelectedDisplay = () => {
-   
-    return [...selectedOptions].join(
-      ", "
-    );
+    return selectedOptions.length > 0 ? selectedOptions.join(", ") : placeholder;
   };
 
+  // Handle blur (focus lost from the dropdown)
   useEffect(() => {
+    
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setShowDropdown(false);
+
+        // Set error if no option is selected
+       
       }
     };
 
@@ -197,7 +207,7 @@ const MultiSelectDropdown = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [selectedOptions]);
 
   return (
     <div className={`relative flex flex-col`} ref={dropdownRef}>
@@ -211,7 +221,7 @@ const MultiSelectDropdown = ({
             selectedOptions.length === 0 ? "text-[#808080]" : "text-black"
           }`}
         >
-          {selectedOptions.length > 0 ? getSelectedDisplay() : placeholder}
+          {getSelectedDisplay()}
         </div>
 
         <TiArrowSortedDown
@@ -236,13 +246,7 @@ const MultiSelectDropdown = ({
                     ? "border-l-4 border-main-red"
                     : ""
                 }`}
-                onClick={() =>
-                  handleOptionSelect(
-                    region.region,
-                    true, // isRegion
-                    region.states
-                  )
-                }
+                onClick={() => handleOptionSelect(region.region)}
               >
                 {region.region}
               </div>
@@ -255,7 +259,7 @@ const MultiSelectDropdown = ({
                       ? "font-semibold border-l-4 border-main-red"
                       : ""
                   }`}
-                  onClick={() => handleOptionSelect(state, false, region.states)}
+                  onClick={() => handleOptionSelect(state)}
                 >
                   {state}
                 </div>
@@ -264,9 +268,11 @@ const MultiSelectDropdown = ({
           ))}
         </div>
       )}
+
+      {/* Display error message */}
+      {/* {error && <p className="text-red-500 text-sm mt-2">{error}</p>} */}
     </div>
   );
 };
 
 export default MultiSelectDropdown;
-

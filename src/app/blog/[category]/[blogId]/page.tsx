@@ -172,7 +172,7 @@ const BlogPost = () => {
 
             {/* social icons  */}
             <div className="ml-5 mt-5 flex  gap-5">
-              <div className="bg-main-blue p-2 rounded-full h-fit">
+              <div className="bg-twitter-blue p-2 rounded-full h-fit">
                 <FaTwitter className="text-white" />
               </div>
               <div className="bg-main-blue p-2 rounded-full h-fit">
@@ -201,7 +201,7 @@ const BlogPost = () => {
           <Image src={share} alt="Servies" />
 
           <h1 className="font-semibold text-[20px] md:text-[39px]">Share</h1>
-          <div className="bg-main-blue p-2 rounded-full h-fit">
+          <div className="bg-twitter-blue p-2 rounded-full h-fit">
             <FaTwitter className="text-white md:text-xl" />
           </div>
           <div className="bg-main-blue p-2 rounded-full h-fit">

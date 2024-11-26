@@ -8,6 +8,8 @@ import Trips from "../../components/home/Trips";
 
 
 export default function Home() {
+
+
   return (
     <div className="font-author">
       

@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
-import NavlinkBar from "../../components/NavlinkBar";
-import { FormContextProvider } from "@/context/FormContext";
-
 
 
 export const metadata: Metadata = {
@@ -17,16 +12,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
     <head />
     <body>
-      <Navbar />
-      <NavlinkBar />
-      <FormContextProvider>
+
       {children}
-      </FormContextProvider>
-      <Footer />
+
     </body>
   </html>
   );

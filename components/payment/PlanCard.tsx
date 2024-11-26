@@ -27,7 +27,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ title, price, image }) => {
           "linear-gradient(0deg, rgba(233,233,233,0) 0%, rgba(255,241,245,1) 49%, rgba(217,217,217,0) 100%)",
       }}
     >
-      <div className="w-[22px] h-[55px]  sm:h-[92px]">
+      <div className=" h-[55px]  sm:h-[92px]">
         <Image className="w-full h-full" src={image} alt={title} />
       </div>
 

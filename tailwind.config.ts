@@ -18,6 +18,7 @@ const config: Config = {
         'Soft-Pink': "#FFE2EA",
         'Pale-Blue': "#D5F4FF",
         'Vanilla': "#F7F5DD",
+        'twitter-blue': "#2AA3EF",
       },
       fontFamily: {
         'author': ['Author-Variable', 'sans-serif'],

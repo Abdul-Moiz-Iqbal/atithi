@@ -178,22 +178,107 @@
 // };
 
 // export default CustomDropdown;
+// import { useRef, useState, useEffect } from "react";
+// import { TiArrowSortedDown } from "react-icons/ti";
+// import './FormDropDown.css'; // Include your custom CSS if needed
+// import { useFormContext } from "@/context/FormContext";
+
+// const CustomDropdown = ({ options, placeholder, onOptionSelect,className }) => {
+//   const {setFormData} =useFormContext()
+//   const [selectedOption, setSelectedOption] = useState("");
+//   const [showDropdown, setShowDropdown] = useState(false);
+//   const dropdownRef = useRef(null);
+
+//   const showDropdownHandler = () => {
+//     setShowDropdown((prev) => !prev);
+//   };
+
+//   const onOptionHandler = (option) => {
+//     setSelectedOption(option.label); // Display label
+//     onOptionSelect(option.value); // Pass value back to parent
+//     setShowDropdown(false); // Close dropdown after selection
+//   };
+
+//   // Close dropdown if clicked outside
+//   useEffect(() => {
+//     const handleClickOutside = (event) => {
+//       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+//         setShowDropdown(false);
+//       }
+//     };
+
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, []);
+
+//   return (
+//     <div className="font-author relative flex flex-col " ref={dropdownRef}>
+//       {/* Dropdown Toggle */}
+//       <div
+//         className={`w-full ${className}  border-2 border-main-red flex justify-between`}
+//         onClick={showDropdownHandler}
+//       >
+//         <input
+//           className="pl-2 w-[100%]  placeholder:text-[18px] outline-none"
+//           value={selectedOption}
+//           placeholder={placeholder}
+//           readOnly
+//         />
+//         <div className="flex justify-between items-center py-2 text-gray-600">
+//           <TiArrowSortedDown
+//             className={`${className}  text-main-red  text-2xl  ${showDropdown ? "rotate-180" : ""}`}
+//           />
+//         </div>
+//       </div>
+
+//       {/* Dropdown Options */}
+//       {showDropdown && (
+//         <div
+//           className="absolute z-20 custom-scrollbar border-2 border-t-0 not-italic border-main-red overflow-y-auto max-h-[200px] w-full bg-white"
+//           style={{ top: "100%", left: 0 }}
+//         >
+//           {options.map((option) => (
+//             <div
+//               className={`p-2 cursor-pointer text-[#8A8A8A] text-lg hover:text-main-red hover:bg-gradient-to-r hover:from-[rgba(255,0,0,0.3)] hover:to-[rgba(233,233,233,0)] ${
+//                 selectedOption === option.label ? "border-l-4 border-main-red" : ""
+//               }`}
+//               key={option.value} // Use value as unique key
+//               onClick={() => onOptionHandler(option)}
+//             >
+//               {option.label}
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default CustomDropdown;
+"use client";
+
 import { useRef, useState, useEffect } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
 import './FormDropDown.css'; // Include your custom CSS if needed
+import { useFormContext } from "@/context/FormContext";
 
-const CustomDropdown = ({ options, placeholder, onOptionSelect,className }) => {
+const CustomDropdown = ({ options, placeholder, onOptionSelect, className, onBlur, error }) => {
+  const { setFormData } = useFormContext();
   const [selectedOption, setSelectedOption] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
   const showDropdownHandler = () => {
+   
+    
     setShowDropdown((prev) => !prev);
   };
 
   const onOptionHandler = (option) => {
     setSelectedOption(option.label); // Display label
-    onOptionSelect(option.value); // Pass value back to parent
+    onOptionSelect(option); // Pass value back to parent
     setShowDropdown(false); // Close dropdown after selection
   };
 
@@ -212,21 +297,26 @@ const CustomDropdown = ({ options, placeholder, onOptionSelect,className }) => {
   }, []);
 
   return (
-    <div className="font-author relative flex flex-col " ref={dropdownRef}>
+    <div className="font-author relative flex flex-col" ref={dropdownRef}>
+           {/* Display error message if any */}
+           {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
       {/* Dropdown Toggle */}
       <div
-        className={`w-full ${className}  border-2 border-main-red flex justify-between`}
+        className={`w-full ${className} border-2 border-main-red flex justify-between`}
         onClick={showDropdownHandler}
       >
         <input
-          className="pl-2 w-[100%]  placeholder:text-[18px] outline-none"
+          className="pl-2 w-[100%] placeholder:text-[18px] outline-none"
           value={selectedOption}
           placeholder={placeholder}
           readOnly
+          onBlur={() => {
+            if (onBlur) onBlur(); // Call onBlur passed from parent
+          }}
         />
         <div className="flex justify-between items-center py-2 text-gray-600">
           <TiArrowSortedDown
-            className={`${className}  text-main-red  text-2xl  ${showDropdown ? "rotate-180" : ""}`}
+            className={`${className} text-main-red text-2xl ${showDropdown ? "rotate-180" : ""}`}
           />
         </div>
       </div>
@@ -250,6 +340,8 @@ const CustomDropdown = ({ options, placeholder, onOptionSelect,className }) => {
           ))}
         </div>
       )}
+
+ 
     </div>
   );
 };

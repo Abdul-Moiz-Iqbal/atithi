@@ -35,6 +35,10 @@ type FormContextType = {
   setCountryCode: (user: string | null) => void;
   selectedPlan: object | null; // Add selectedPlan state
   setSelectedPlan: (plan: object | null) => void; // Add setter for selectedPlan
+  formData: object | null; 
+  setFormData: (data: object | null) => void; // Add setter for selectedPlan
+  formError: object | null; 
+  setFormError: (data: object | null) => void; // Add setter for selectedPlan
 };
 
 const FormContext = createContext<FormContextType | undefined>(undefined);
@@ -42,10 +46,14 @@ const FormContext = createContext<FormContextType | undefined>(undefined);
 export const FormContextProvider = ({ children }: { children: ReactNode }) => {
   const [countryCode, setCountryCode] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<object | null>(null); // Initialize selectedPlan
-  console.log("Selected plan:",selectedPlan)
+  const [formData, setFormData] = useState<object | null>(null); 
+  const [formError, setFormError] = useState<object | null>(null); 
+  // console.log("Selected plan:",selectedPlan)
+  // console.log("Form Data:",formData)
+  console.log("Form Error:",formError)
 
   return (
-    <FormContext.Provider value={{ countryCode, setCountryCode, selectedPlan, setSelectedPlan }}>
+    <FormContext.Provider value={{ countryCode, setCountryCode, selectedPlan, setSelectedPlan,formData,setFormData ,formError,setFormError}}>
       {children}
     </FormContext.Provider>
   );
