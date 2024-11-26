@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Navbar";
 import NavlinkBar from "../../../components/NavlinkBar";
-import { FormContextProvider } from "@/context/FormContext";
+import { FormContextProvider } from "@/src/context/FormContext";
 
 
 
