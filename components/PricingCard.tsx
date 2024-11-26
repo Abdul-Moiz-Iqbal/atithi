@@ -7,7 +7,7 @@ import PlanCard from "./PlanCard";
 import solo from "../public/images/plan-solo.png";
 import couple from "../public/images/plan-couple.png";
 import group from "../public/images/plan-group.png";
-import { useFormContext } from "@/context/FormContext";
+import { useFormContext } from "@/src/context/FormContext";
 
 
 
