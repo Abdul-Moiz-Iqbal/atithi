@@ -6,7 +6,7 @@ import JourneyForm from "../../../../components/trip-form/Journey-Form";
 import TravelerForm from "../../../../components/trip-form/TravlerForm";
 import Image from "next/image";
 
-import { useFormContext } from "@/context/FormContext"; // Import FormContext
+import { useFormContext } from "@/src/context/FormContext"; // Import FormContext
 import comingSoonImage from "../../../../public/images/Coming-soon-banner.png";
 import picscart from "../../../../public/icons/form-picscart.png";
 import insta from "../../../../public/icons/form-insta.png";
