@@ -32,7 +32,7 @@
 //     }else{
 //       setErrors((prevErrors) => ({ ...prevErrors, user_name: "Please enter a valid name" }));
 //     }
-    
+
 //   }
 //   const emailOnChange = (e) => {
 //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -48,9 +48,7 @@
 //     setFormData((prevData: any) => ({ ...prevData, days: +value.value }));
 //     setSelectedDays(+value.value);
 
-
 //   }
-  
 
 //   return (
 //     <div className="w-full sm:w-[80%]  mx-auto mt-8     rounded-[20px] ">
@@ -102,7 +100,7 @@
 //           onOptionSelect={daysHandler}
 //         />
 //       </div>
-   
+
 //         <div className="mt-3 text-[20px]">Plan Charges</div>
 //         <div className=" text-main-red text-[30px] font-semibold">
 //           ${" "}
@@ -121,9 +119,9 @@
 //         </div>
 //         </div>
 //         {/* <Button className="mt-8 w-[90%] sm:w-[80%] py-[10px] mx-auto font-normal normal-case " text="Proceed to Pay"/> */}
-        
+
 //         <PaypalButton amount={selectedDays * selectedPlan?.price} isDisabled={false} onSuccess={handleSuccess}/>
-        
+
 //         <div className="mt-2 text-lg mx-auto">(Secured payment by PayPal)</div>
 //       </div>
 //     </div>
@@ -131,7 +129,6 @@
 // };
 
 // export default PlanDetails;
-
 
 "use client";
 import { useEffect, useState } from "react";
@@ -145,7 +142,7 @@ const PlanDetails = () => {
   const { selectedPlan, formData, setFormData } = useFormContext();
 
   const [selectedDays, setSelectedDays] = useState<number>(0);
-  const [totalAmount, setTotalAmount] = useState<string>('1');
+  const [totalAmount, setTotalAmount] = useState<string>("1");
   const [errors, setErrors] = useState({});
   const [payPalDisabled, setPayPalDisabled] = useState(true);
 
@@ -157,41 +154,40 @@ const PlanDetails = () => {
   console.log("Days:", selectedDays);
   console.log("PLan:", selectedPlan);
 
-
   useEffect(() => {
     const validateForm = () => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const isNameValid = formData?.user_name?.trim().length >= 3;
       const isEmailValid = emailRegex.test(formData?.email || "");
       const isDaysValid = selectedDays > 0;
-  
+
       setErrors({
         user_name: isNameValid ? "" : "Please enter a valid name",
         email: isEmailValid ? "" : "Please enter a valid email",
       });
-  
+
       return isNameValid && isEmailValid && isDaysValid;
     };
     const isValid = validateForm();
     setTotalAmount(selectedDays * selectedPlan?.price);
-    console.log("Total Amount",totalAmount)
+    console.log("Total Amount", totalAmount);
     setPayPalDisabled(!isValid);
-  }, [formData, selectedDays,selectedPlan.price, totalAmount]);
+  }, [formData, selectedDays, selectedPlan?.price, totalAmount]);
 
   const handleSuccess = async (details: unknown) => {
-    console.log("details: ",details)
+    console.log("details: ", details);
     const updatedFormData = {
       ...formData,
       planDetails: selectedPlan,
       pay: true,
       paymentDetails: details,
-      totalPrice: formData.days * selectedPlan?.price,
+      totalPrice: formData?.days * selectedPlan?.price,
     };
 
     console.log("Proceeding with Pay on Arrival...");
     console.log("Form Data:", formData);
-    try{
-      const resp = await fetch("/api/form/userTrip",{
+    try {
+      const resp = await fetch("/api/form/userTrip", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -200,13 +196,11 @@ const PlanDetails = () => {
       });
       const data = await resp.json();
       console.log(data);
-      
-    }catch (error) {
+    } catch (error) {
       console.error("Error fetching data:", error);
-    } finally{
-      router.push("/sucess")
+    } finally {
+      router.push("/sucess");
     }
- 
   };
 
   const nameOnChange = (e) => {
@@ -244,8 +238,8 @@ const PlanDetails = () => {
             placeholder="Full Name"
             className="p-3 sm:w-[90%] border border-b-2 border-main-red placeholder:text-[20px]"
           />
-          {errors.user_name && (
-            <p className="text-red-500 text-sm">{errors.user_name}</p>
+          {errors?.user_name && (
+            <p className="text-red-500 text-sm">{errors?.user_name}</p>
           )}
         </div>
 
@@ -258,8 +252,8 @@ const PlanDetails = () => {
             placeholder="example@gmail.com"
             className="p-2 sm:w-[90%] border border-main-red placeholder:text-[18px]"
           />
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email}</p>
+          {errors?.email && (
+            <p className="text-red-500 text-sm">{errors?.email}</p>
           )}
         </div>
 
@@ -278,21 +272,21 @@ const PlanDetails = () => {
         <div className="mt-3 text-[20px]">Plan Charges</div>
         <div className="text-main-red text-[30px] font-semibold">
           ${" "}
-          <span className="pl-2">{selectedDays * selectedPlan?.price || 0}</span>
+          <span className="pl-2">
+            {selectedDays * selectedPlan?.price || 0}
+          </span>
         </div>
 
         <div className="my-5 w-full border-[0.1px] border-main-red"></div>
         <div className="px-4 sm:px-0 flex justify-between text-lg font-normal">
           <p>Total amount (Inc. all taxes)</p>
           <div className="text-[25px]">
-            ${" "}
-            <span>{selectedDays * selectedPlan?.price || 0}</span>
+            $ <span>{selectedDays * selectedPlan?.price || 0}</span>
           </div>
         </div>
 
         <PaypalButton
-        
-       amount={selectedDays * selectedPlan?.price }
+          amount={selectedDays * selectedPlan?.price}
           isDisabled={payPalDisabled}
           onSuccess={handleSuccess}
         />
