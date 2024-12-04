@@ -1,0 +1,8 @@
+.truncate-lines {
+    display: -webkit-box; /* Fallback for WebKit browsers */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    overflow: hidden; /* Hide overflowing content */
+    text-overflow: ellipsis; /* Show ellipsis */
+  }
+  

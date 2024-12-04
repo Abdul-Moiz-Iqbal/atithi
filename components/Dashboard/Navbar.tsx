@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaHome, FaBlog, FaWpforms, FaCog } from "react-icons/fa";
+import { FaHome, FaBlog, FaWpforms, FaCog, FaPage4 } from "react-icons/fa";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -12,13 +12,15 @@ const Sidebar = () => {
   const menuItems = [
     { name: "Home", path: "/dashboard", icon: <FaHome /> },
     { name: "Blog", path: "/dashboard/blog", icon: <FaBlog /> },
-    { name: "Forms", path: "/dashboard/forms", icon: <FaWpforms /> },
-    { name: "Settings", path: "/dashboard/settings", icon: <FaCog /> },
+    { name: "Category", path: "/dashboard/category", icon: <FaWpforms /> },
+    { name: "form", path: "/dashboard/form", icon: <FaWpforms /> },
+    { name: "Meta Data", path: "/dashboard/meta-data", icon: <FaCog /> },
+    { name: "Legal edit", path: "/dashboard/legal-edit", icon: <FaPage4 /> },
   ];
 
   return (
     <div
-      className={` bg-gray-800 text-white flex flex-col transition-all duration-300 ${
+      className={` bg-gray-800  text-white flex flex-col transition-all duration-300 ${
         isCollapsed ? "w-16" : "w-64"
       }`}
     >

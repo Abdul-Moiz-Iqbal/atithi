@@ -10,7 +10,7 @@ import { LiaPhoneSolid } from "react-icons/lia";
 import { IoMailOutline } from "react-icons/io5";
 import { VscMap } from "react-icons/vsc";
 
-// Set default map libraries and options
+
 
 export default function ContactUs() {
   return (

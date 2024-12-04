@@ -121,62 +121,100 @@ import Image from "next/image";
 import mobileBlog from "../../../../public/images/mobile-blog.png";
 import image from "../../../../public/images/lake-image.png";
 import BlogCard from "../../../../components/home/BlogCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 
-const blogData = [
-    {
-      id: 1,
-      title: "Discover India's Rich Culture",
-      description:
-        "Experience the diverse traditions, festivals, and history that define India's cultural landscape.",
-      image: image,
-    },
-    {
-      id: 2,
-      title: "Top Places to Visit in North India",
-      description:
-        "From the Himalayas to the Taj Mahal, explore the best destinations in North India.",
-      image: image,
-    },
-    {
-      id: 3,
-      title: "A Culinary Journey Through India",
-      description:
-        "Discover India's mouth-watering cuisines, from street food to royal delicacies.",
-      image: image,
-    },
-    {
-      id: 4,
-      title: "Exploring Spirituality in India",
-      description:
-        "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
-      image: image,
-    },
-    {
-      id: 5,
-      title: "A Culinary Journey Through India",
-      description:
-        "Discover India's mouth-watering cuisines, from street food to royal delicacies.",
-      image: image,
-    },
-    {
-      id: 6,
-      title: "Exploring Spirituality in India",
-      description:
-        "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
-      image: image,
-    },
-    {
-      id: 7,
-      title: "Exploring Spirituality in India",
-      description:
-        "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
-      image: image,
-    },
-  ];
+// const blogData = [
+//     {
+//       id: 1,
+//       title: "Discover India's Rich Culture",
+//       description:
+//         "Experience the diverse traditions, festivals, and history that define India's cultural landscape.",
+//       image: image,
+//     },
+//     {
+//       id: 2,
+//       title: "Top Places to Visit in North India",
+//       description:
+//         "From the Himalayas to the Taj Mahal, explore the best destinations in North India.",
+//       image: image,
+//     },
+//     {
+//       id: 3,
+//       title: "A Culinary Journey Through India",
+//       description:
+//         "Discover India's mouth-watering cuisines, from street food to royal delicacies.",
+//       image: image,
+//     },
+//     {
+//       id: 4,
+//       title: "Exploring Spirituality in India",
+//       description:
+//         "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
+//       image: image,
+//     },
+//     {
+//       id: 5,
+//       title: "A Culinary Journey Through India",
+//       description:
+//         "Discover India's mouth-watering cuisines, from street food to royal delicacies.",
+//       image: image,
+//     },
+//     {
+//       id: 6,
+//       title: "Exploring Spirituality in India",
+//       description:
+//         "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
+//       image: image,
+//     },
+//     {
+//       id: 7,
+//       title: "Exploring Spirituality in India",
+//       description:
+//         "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
+//       image: image,
+//     },
+//   ];
 
 const Category = () => {
+  const { category} = useParams();
+  const id = category.split('-').pop();
+  useEffect(() => {
+    const fetchBlogsByCategory = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`/api/blog?categoryId=${id}`);
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch blogs');
+        }
+
+        const data = await response.json();
+        if (data.success) {
+          console.log(data)
+          setBlogData(data.data);
+        } else {
+          throw new Error(data.message);
+        }
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+  
+      fetchBlogsByCategory();
+    
+  }, [id]); // Re-run when categoryId changes
+
   const [visibleCount, setVisibleCount] = useState(6);
+  const [blogData, setBlogData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+
+
 
   // Show more or less logic
   const toggleShowMore = () => {
@@ -189,6 +227,8 @@ const Category = () => {
     }
   };
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
   return (
     <div className="font-author">
       <div>
@@ -208,11 +248,12 @@ const Category = () => {
         {/* Display blog cards */}
         {blogData.slice(0, visibleCount).map((blog) => (
           <BlogCard
-            key={blog.id}
-            id={blog.id}
+            key={blog._id}
+            id={blog._id}
             title={blog.title}
-            description={blog.description}
-            image={blog.image}
+            description={blog.content}
+            image={blog.image_url.url}
+            slug={blog.slug}
           />
         ))}
       </div>

@@ -15,80 +15,97 @@
 //       <div className="mt-4 w-full border-[1px] border-main-red"></div>
 //     <BlogCard title={} description={} image={}/>
 //       <div className="px-5">
-     
+
 //       </div>
- 
+
 //     </div>
 //   );
 // };
 
 // export default Blog;
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-// image
-import image from "../../public/images/hero-background.png";
 
 // ui
 import H4 from "../../ui/heading/H4";
 import BlogCard from "./BlogCard";
 
 // Blog Data
-const blogData = [
-  {
-    id: 1,
-    title: "Discover India's Rich Culture",
-    description:
-      "Experience the diverse traditions, festivals, and history that define India's cultural landscape.",
-    image: image,
-  },
-  {
-    id: 2,
-    title: "Top Places to Visit in North India",
-    description:
-      "From the Himalayas to the Taj Mahal, explore the best destinations in North India.",
-    image: image,
-  },
-  {
-    id: 3,
-    title: "A Culinary Journey Through India",
-    description:
-      "Discover India's mouth-watering cuisines, from street food to royal delicacies.",
-    image: image,
-  },
-  {
-    id: 4,
-    title: "Exploring Spirituality in India",
-    description:
-      "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
-    image: image,
-  },
-  {
-    id: 5,
-    title: "A Culinary Journey Through India",
-    description:
-      "Discover India's mouth-watering cuisines, from street food to royal delicacies.",
-    image: image,
-  },
-  {
-    id: 6,
-    title: "Exploring Spirituality in India",
-    description:
-      "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
-    image: image,
-  },
-  {
-    id: 7,
-    title: "Exploring Spirituality in India",
-    description:
-      "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
-    image: image,
-  },
-];
+// const blogData = [
+//   {
+//     id: 1,
+//     pathName:"/blog",
+//     title: "Discover India's Rich Culture",
+//     description:
+//       "Experience the diverse traditions, festivals, and history that define India's cultural landscape.",
+//     image: image,
+//   },
+//   {
+//     id: 2,
+//     title: "Top Places to Visit in North India",
+//     description:
+//       "From the Himalayas to the Taj Mahal, explore the best destinations in North India.",
+//     image: image,
+//   },
+//   {
+//     id: 3,
+//     title: "A Culinary Journey Through India",
+//     description:
+//       "Discover India's mouth-watering cuisines, from street food to royal delicacies.",
+//     image: image,
+//   },
+//   {
+//     id: 4,
+//     title: "Exploring Spirituality in India",
+//     description:
+//       "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
+//     image: image,
+//   },
+//   {
+//     id: 5,
+//     title: "A Culinary Journey Through India",
+//     description:
+//       "Discover India's mouth-watering cuisines, from street food to royal delicacies.",
+//     image: image,
+//   },
+//   {
+//     id: 6,
+//     title: "Exploring Spirituality in India",
+//     description:
+//       "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
+//     image: image,
+//   },
+//   {
+//     id: 7,
+//     title: "Exploring Spirituality in India",
+//     description:
+//       "Visit the sacred sites and spiritual retreats that offer a path to inner peace.",
+//     image: image,
+//   },
+// ];
+
+
 
 const Blog = () => {
+  useEffect(() => {
+    const fetchBlogData = async () => {
+      try {
+        const res = await fetch("/api/blog/category");
+  
+        const data = await res.json();
+        console.log(data);
+        setBlogData(data.data);
+      } catch (err) {
+        console.log("Cant Fetch Blogs, ", err);
+      }
+      
+    };
+    fetchBlogData()
+  }, []);
   const initialVisibleCount = 6;
   const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
+  const [blogData, setBlogData] = useState([]);
 
   // Show more blogs logic
   const showMore = () => {
@@ -103,7 +120,10 @@ const Blog = () => {
 
   return (
     <div className="py-3 sm:py-5 px-5">
-      <H4 title="India's Must Know" className="text-main-red tracking-wider md:text-[35px]" />
+      <H4
+        title="India's Must Know"
+        className="text-main-red tracking-wider md:text-[35px]"
+      />
 
       <div className="mt-4 w-full md:w-[85%] md:mx-auto border-[1px] border-main-red"></div>
 
@@ -114,7 +134,7 @@ const Blog = () => {
             key={blog.id}
             title={blog.title}
             description={blog.description}
-            image={blog.image}
+            image={blog.image_url.url}  
           />
         ))}
       </div>
