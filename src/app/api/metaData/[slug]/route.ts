@@ -1,7 +1,7 @@
 // src/app/api/metadata/[slug]/route.ts
 import { NextResponse } from 'next/server';
 import connectDb from '@/config/database';
-import Metadata from '@/models/Metadata';
+import Metadata from '@/models/MetaData';
 
 export async function GET(req: Request, { params }: { params: { slug: string } }) {
   const { slug } = params;
