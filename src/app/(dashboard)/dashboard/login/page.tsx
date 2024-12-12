@@ -15,19 +15,19 @@ export default function LoginPage() {
     setError('');
 
     try {
-    //   const res = await fetch('/api/admin/login', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ email, password }),
-    //   });
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
-    //   if (!res.ok) {
-    //     const data = await res.json();
-    //     setError(data.error || 'Login failed');
-    //     return;
-    //   }
-    //   const data = await res.json();
-    //   console.log(data)
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.error || 'Login failed');
+        return;
+      }
+      const data = await res.json();
+      console.log(data)
 
       router.push('/dashboard/form');
     } catch (error : unknown) {
