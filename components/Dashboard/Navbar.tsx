@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaHome, FaBlog, FaWpforms, FaCog, FaPage4 } from "react-icons/fa";
+import { MdReviews } from "react-icons/md";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -16,6 +17,7 @@ const Sidebar = () => {
     { name: "form", path: "/dashboard/form", icon: <FaWpforms /> },
     { name: "Meta Data", path: "/dashboard/meta-data", icon: <FaCog /> },
     { name: "Legal edit", path: "/dashboard/legal-edit", icon: <FaPage4 /> },
+    { name: "Testimonial", path: "/dashboard/testimonial", icon: <MdReviews /> },
   ];
 
   return (

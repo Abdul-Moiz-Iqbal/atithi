@@ -159,14 +159,14 @@ import { useFormContext } from "@/src/context/FormContext";
 import { useState, useRef, useEffect } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
 
-const MultiSelectDropdown = ({
+const MultiSelectDropdown = ({value =[],
   regions,
   placeholder,
   onOptionsChange,
   className,
 }) => {
   const { setFormData ,setFormError} = useFormContext();
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState(value || []);
   const [showDropdown, setShowDropdown] = useState(false);
   
   const dropdownRef = useRef(null);

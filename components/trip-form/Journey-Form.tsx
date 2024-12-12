@@ -75,10 +75,11 @@ const JourneyForm = () => {
     countryCode,
     selectedPlan,
     setFormData,
-
+    formData,
     formError,
     setFormError,
   } = useFormContext();
+  console.log("Form Daata",formData)
   
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState(currentYear.toString());
@@ -212,6 +213,7 @@ const JourneyForm = () => {
           <div className="mt-4 lg:w-[720px]">
             <MultiSelectDropdown
               regions={regions}
+              value={formData?.regions}
               placeholder="Select State"
               onOptionsChange={handleStateChange}
               className="custom-dropdown-class"
@@ -237,6 +239,7 @@ const JourneyForm = () => {
                 value: month.value,
               }))}
               placeholder="Select month"
+              value={formData?.month}
               onOptionSelect={handleMonthSelect}
               onBlur={handleMonthBlur}
           
@@ -251,6 +254,7 @@ const JourneyForm = () => {
                 value: year.value,
               }))}
               placeholder="Select a year"
+              value={formData?.year}
               onOptionSelect={handleYearSelect}
               selectedValue={selectedYear} // Reflect updated year
               onBlur={handleYearBlur}
@@ -276,6 +280,7 @@ const JourneyForm = () => {
             value: day.value,
           }))}
           placeholder="Number of days in India"
+          value={formData?.days}
           onOptionSelect={(value) => {
             setFormError((prev) => ({ ...prev, days: "" }));
             setSelectedDays(+value.value);
@@ -291,7 +296,7 @@ const JourneyForm = () => {
       <div className="mt-7 text-[20px]">Plan Charges</div>
       <div className="mt-3 text-main-red text-[30px] font-semibold">
         ${" "}
-        <span className="pl-2">{selectedDays * selectedPlan?.price || 0}</span>
+        <span className="pl-2">{formData?.days * selectedPlan?.price ||selectedDays * selectedPlan?.price || 0}</span>
       </div>
 
       {/* Additional Information */}

@@ -264,9 +264,9 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import './FormDropDown.css'; // Include your custom CSS if needed
 import { useFormContext } from "@/src/context/FormContext";
 
-const CustomDropdown = ({ options, placeholder, onOptionSelect, className, onBlur, error }) => {
+const CustomDropdown = ({value ='', options, placeholder, onOptionSelect, className, onBlur, error }) => {
   const { setFormData } = useFormContext();
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState(value);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 

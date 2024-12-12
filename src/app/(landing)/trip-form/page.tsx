@@ -179,6 +179,7 @@ const TripForm = () => {
 
   const PayNowHandler = () => {
     if (areFieldsFilled()) {
+      sessionStorage.setItem('allowNavigation', 'true'); 
       // Proceed with the "Pay Now" functionality
       router.push("/payment");
     }

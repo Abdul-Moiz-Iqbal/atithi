@@ -141,7 +141,7 @@ const PlanDetails = () => {
   const router = useRouter();
   const { selectedPlan, formData, setFormData } = useFormContext();
 
-  const [selectedDays, setSelectedDays] = useState<number>(0);
+  const [selectedDays, setSelectedDays] = useState<number>(formData?.days || 0);
   const [totalAmount, setTotalAmount] = useState<string>("1");
   const [errors, setErrors] = useState({});
   const [payPalDisabled, setPayPalDisabled] = useState(true);
@@ -199,6 +199,7 @@ const PlanDetails = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
+      sessionStorage.removeItem('allowNavigation');
       router.push("/sucess");
     }
   };
@@ -264,7 +265,8 @@ const PlanDetails = () => {
               label: day.label,
               value: day.value,
             }))}
-            placeholder="Number of days in India"
+            value={formData?.days}
+            // placeholder="Number of days in India"
             onOptionSelect={daysHandler}
           />
         </div>

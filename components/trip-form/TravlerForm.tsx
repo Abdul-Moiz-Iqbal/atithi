@@ -76,7 +76,7 @@ import ShadowCard from "../../ui/Card/ShadowCard";
 import { useFormContext } from "@/src/context/FormContext";
 
 const TravelerForm = () => {
-  const { setCountryCode, setFormData, formError, setFormError } = useFormContext();
+  const { setCountryCode, setFormData,formData, formError, setFormError } = useFormContext();
 
   const [userCountry, setUserCountry] = useState<string>("Select Country");
 
@@ -164,6 +164,7 @@ const TravelerForm = () => {
           <input
             type="text"
             placeholder="Full Name"
+            value={formData?.user_name}
             className={`p-2 sm:w-[60%] border ${
               formError?.user_name ? "border-red-500" : "border-main-red"
             } placeholder:text-[18px]`}
@@ -189,7 +190,7 @@ const TravelerForm = () => {
             onBlur={() => {
               handleBlur("country", userCountry);
             }}
-            className={`p-2 w-fit border placeholder:text-[18px]`}
+            className={`p-2 w-fit border placeholder:text-[18px] border-main-red`}
           />
           {formError?.country && (
             <p className="text-red-500 text-sm mt-1">{formError.country}</p>
@@ -202,7 +203,8 @@ const TravelerForm = () => {
           <input
             type="email"
             placeholder="example@gmail.com"
-            className={`p-2 sm:w-[60%] border  placeholder:text-[18px]`}
+            value={formData?.email}
+            className={`p-2 sm:w-[60%] border  placeholder:text-[18px] border-main-red`}
             onChange={(e) => handleInputChange("email", e.target.value)}
             onBlur={(e) => handleBlur("email", e.target.value)}
           />
