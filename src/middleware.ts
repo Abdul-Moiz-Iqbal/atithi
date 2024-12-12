@@ -25,7 +25,9 @@ export async function middleware(req: Request) {
     const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
 
     // Verify the token using `jose`
-    const { payload } = await jwtVerify(token, secret);
+    console.log('JWT_SECRET:', process.env.JWT_SECRET); // Remove this in production
+
+    const { payload } = await jwtVerify(token, new TextEncoder().encode(secret));
     console.log('Verified Token Payload:', payload);
 
     // Optional: Check user role
