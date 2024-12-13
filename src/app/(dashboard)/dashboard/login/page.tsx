@@ -30,6 +30,9 @@ export default function LoginPage() {
       console.log(data)
 
     
+     setTimeout(() => {
+      router.push('/dashboard/form');
+    }, 5000);
     } catch (error : unknown) {
         console.log(error)
       setError('Something went wrong. Please try again.');
