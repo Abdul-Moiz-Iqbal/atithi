@@ -32,13 +32,14 @@ export default function LoginPage() {
     
      setTimeout(() => {
       router.push('/dashboard/form');
-    }, 5000);
+    }, 100);
     } catch (error : unknown) {
         console.log(error)
       setError('Something went wrong. Please try again.');
     }finally{
         router.push('/dashboard/form');
     }
+}
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <form
