@@ -29,7 +29,9 @@ export default function LoginPage() {
       const data = await res.json();
       console.log(data)
 
+     setTimeout(() => {
       router.push('/dashboard/form');
+    }, 100);
     } catch (error : unknown) {
         console.log(error)
       setError('Something went wrong. Please try again.');
