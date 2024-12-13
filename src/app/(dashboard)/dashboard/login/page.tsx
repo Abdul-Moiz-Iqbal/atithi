@@ -29,13 +29,13 @@ export default function LoginPage() {
       const data = await res.json();
       console.log(data)
 
-      router.push('/dashboard/form');
+    
     } catch (error : unknown) {
         console.log(error)
       setError('Something went wrong. Please try again.');
+    }finally{
+        router.push('/dashboard/form');
     }
-  };
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <form
