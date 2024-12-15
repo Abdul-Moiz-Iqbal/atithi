@@ -11,7 +11,7 @@ export async function GET(req: Request, { params }: { params: { slug: string } }
     const { slug } = params;
     
     // Find the blog with the matching slug
-    const blog = await Blog.findOne({ slug }).populate("category");
+    const blog = await Blog.findOne({ slug }).populate("category").populate("image_url");
     
     if (!blog) {
       return NextResponse.json({ success: false, message: "Blog not found" }, { status: 404 });

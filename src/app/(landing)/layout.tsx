@@ -25,7 +25,7 @@ export default function layout({
 }>) {
   
   return (
-   <div>
+   <div className="font-author">
       <Navbar />
       <NavlinkBar />
       <FormContextProvider>

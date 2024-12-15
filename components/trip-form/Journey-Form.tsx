@@ -82,7 +82,21 @@ const JourneyForm = () => {
   console.log("Form Daata",formData)
   
   const [selectedMonth, setSelectedMonth] = useState("");
-  const [selectedYear, setSelectedYear] = useState(currentYear.toString());
+  const [selectedYear, setSelectedYear] = useState({label:currentYear.toString() ,value:currentYear.toString()});
+  const [months, setMonths] = useState([
+    { label: "January", value: 1 },
+    { label: "February", value: 2 },
+    { label: "March", value: 3 },
+    { label: "April", value: 4 },
+    { label: "May", value: 5 },
+    { label: "June", value: 6 },
+    { label: "July", value: 7 },
+    { label: "August", value: 8 },
+    { label: "September", value: 9 },
+    { label: "October", value: 10 },
+    { label: "November", value: 11 },
+    { label: "December", value: 12 },
+  ]);
 
   const [selectedDays, setSelectedDays] = useState<number>(1);
 
@@ -114,20 +128,58 @@ const JourneyForm = () => {
     }
   }, [countryCode]);
 
-  const months = [
-    { label: "January", value: "01" },
-    { label: "February", value: "02" },
-    { label: "March", value: "03" },
-    { label: "April", value: "04" },
-    { label: "May", value: "05" },
-    { label: "June", value: "06" },
-    { label: "July", value: "07" },
-    { label: "August", value: "08" },
-    { label: "September", value: "09" },
-    { label: "October", value: "10" },
-    { label: "November", value: "11" },
-    { label: "December", value: "12" },
-  ];
+  useEffect(()=> {
+
+    const getFilteredMonths = () => {
+      console.log("selected Month", selectedMonth)
+      if (selectedYear.value === currentYear.toString()) {
+        // Show only remaining months in the current year
+        setSelectedMonth('');
+        console.log(currentMonth)
+        console.log("months.slice(currentMonth)",months.slice(currentMonth))
+        setMonths( months.slice(currentMonth)); // callback method is used  here to set the state immediately 
+        console.log("after state update ",months)
+        return 
+      }
+      // setSelectedMonth('');
+      setMonths( [
+        { label: "January", value: 1 },
+        { label: "February", value: 2 },
+        { label: "March", value: 3 },
+        { label: "April", value: 4 },
+        { label: "May", value: 5 },
+        { label: "June", value: 6 },
+        { label: "July", value: 7 },
+        { label: "August", value: 8 },
+        { label: "September", value: 9 },
+        { label: "October", value: 10 },
+        { label: "November", value: 11 },
+        { label: "December", value: 12 },
+      ])
+      return ; // Show all months for future years
+    };
+    getFilteredMonths();
+   console.log("selectedMonth",selectedMonth)
+   if(selectedMonth.value < currentMonth +1) {
+     
+   }
+
+  },[selectedYear,selectedMonth,currentMonth,currentYear,months])
+
+  // const months = [
+  //   { label: "January", value: "01" },
+  //   { label: "February", value: "02" },
+  //   { label: "March", value: "03" },
+  //   { label: "April", value: "04" },
+  //   { label: "May", value: "05" },
+  //   { label: "June", value: "06" },
+  //   { label: "July", value: "07" },
+  //   { label: "August", value: "08" },
+  //   { label: "September", value: "09" },
+  //   { label: "October", value: "10" },
+  //   { label: "November", value: "11" },
+  //   { label: "December", value: "12" },
+  // ];
 
   const days = Array.from({ length: 180 }, (_, index) => ({
     label: `${index + 1} Day${index + 1 > 1 ? "s" : ""}`,
@@ -181,22 +233,25 @@ const JourneyForm = () => {
 
 
   const handleMonthSelect = (value) => {
+    // console.log("click",value)
     setSelectedMonth(value);
     setFormData((prevData) => ({ ...prevData, month: value.label }));
     setFormError((prev) => ({ ...prev, month: "" })); // Clear error on change
     const updatedYears = getDynamicYears();
+    console.log("Updated years:",updatedYears)
     if (updatedYears.length > 0) {
       setSelectedYear(updatedYears[0].value); // Default to the first year
     }
   };
 
   const handleYearSelect = (value) => {
+
     setSelectedYear(value);
     setFormData((prevData) => ({ ...prevData, year: +value.value }));
     setFormError((prev) => ({ ...prev, year: "" })); // Clear error on change
   };
 
-
+  
   return (
     <ShadowCard className="sm:w-[80%] mx-auto mt-5 sm:mt-10 py-10 px-5 sm:p-10 rounded-[20px] shadow-card-red">
       <div className="flex flex-col gap-2">
@@ -239,7 +294,8 @@ const JourneyForm = () => {
                 value: month.value,
               }))}
               placeholder="Select month"
-              value={formData?.month}
+              // value={formData?.month}
+              value={selectedMonth.label}
               onOptionSelect={handleMonthSelect}
               onBlur={handleMonthBlur}
           

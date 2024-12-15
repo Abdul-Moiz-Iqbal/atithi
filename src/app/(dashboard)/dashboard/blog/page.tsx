@@ -1,389 +1,24 @@
-// "use client"
-// import React, { useState } from "react";
-// import dynamic from "next/dynamic";
-// import "react-quill/dist/quill.snow.css";
-
-// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-
-// const modules = {
-//     toolbar: {
-//       container: [
-//         [
-//           { header: [1, 2,3, false] },
-//           { font: [] },
-//           "bold",
-//           "italic",
-//           "underline",
-//           "strike",
-//         ],
-//         [{ list: "ordered" }, { list: "bullet" }],
-//         ["link", "image"],
-//         ["clean"],
-//       ],
-//       handlers: {
-//         bold: function () {
-//           // You can define custom logic here if needed
-//           console.log("Bold clicked!");
-//           this.quill.format("bold", !this.quill.getFormat().bold);
-//         },
-//       },
-//     },
-//   };
-// const BlogEditor = () => {
-//   const [title, setTitle] = useState<string>("");
-//   const [content, setContent] = useState<string>("");
-
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-
-//     const blogData = { title, content };
-//     console.log("Blog Data",blogData)
-//     try {
-//       const response = await fetch("/api/blog", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(blogData),
-//       });
-
-//       if (response.ok) {
-//         alert("Blog uploaded successfully!");
-//         setTitle("");
-//         setContent("");
-//       } else {
-//         alert("Failed to upload the blog. Please try again.");
-//       }
-//     } catch (error) {
-//       console.error("Error uploading blog:", error);
-//       alert("Something went wrong!");
-//     }
-//   };
-
-//   return (
-//     <div className="p-6 w-full bg-gray-50 min-h-screen">
-//       <h1 className="text-2xl font-bold mb-4">Create a New Blog</h1>
-//       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md">
-//         {/* Title Input */}
-//         <div className="mb-4">
-//           <label htmlFor="title" className="block text-lg font-medium mb-2">
-//             Title
-//           </label>
-//           <input
-//             id="title"
-//             type="text"
-//             value={title}
-//             onChange={(e) => setTitle(e.target.value)}
-//             className="w-full p-2 border border-gray-300 rounded"
-//             placeholder="Enter blog title"
-//             required
-//           />
-//         </div>
-
-//         {/* Content Editor */}
-//         <div className="mb-4">
-//           <label htmlFor="content" className="block text-lg font-medium mb-2">
-//             Content
-//           </label>
-//           <ReactQuill
-//             id="content"
-//             theme="snow"
-//             value={content}
-//             onChange={setContent}
-//             placeholder="Write your blog content here..."
-//             modules={modules}
-//             formats={[
-//               "header",
-//               "font",
-//               "bold",
-//               "italic",
-//               "underline",
-//               "strike",
-//               "list",
-//               "bullet",
-//               "link",
-//               "image",
-//             ]}
-
-//           />
-//         </div>
-
-//         {/* Submit Button */}
-//         <button
-//           type="submit"
-//           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-//         >
-//           Submit Blog
-//         </button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default BlogEditor;
-// "use client";
-
-// import React, { useState, useEffect } from "react";
-// import dynamic from "next/dynamic";
-// import {CldUploadWidget} from 'next-cloudinary';
-// import "react-quill/dist/quill.snow.css";
-
-// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-
-// const modules = {
-//   toolbar: [
-//     [
-//       { header: [1, 2, 3, false] },
-//       { font: [] },
-//       "bold",
-//       "italic",
-//       "underline",
-//       "strike",
-//     ],
-//     [{ list: "ordered" }, { list: "bullet" }],
-//     ["link", "image"],
-//     ["clean"],
-//   ],
-// };
-
-// const BlogEditor = () => {
-//   const [title, setTitle] = useState<string>("");
-//   const [content, setContent] = useState<string>("");
-//   const [imageId, setImageId] = useState<string>("");
-//   const [category, setCategory] = useState<string>("");
-//   const [categories, setCategories] = useState<string[]>([]);
-//   const [newCategory, setNewCategory] = useState<string>("");
-
-//   useEffect(() => {
-//     const fetchCategories = async () => {
-//       try {
-//         const response = await fetch("/api/blog/category");
-//         const data = await response.json();
-//         console.log(data)
-//         if (data.success) {
-//           setCategories(data.data.map((cat: unknown) => cat.title));
-//         }
-//       } catch (error) {
-//         console.error("Error fetching categories:", error);
-//       }
-//     };
-//     fetchCategories();
-//   }, []);
-
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-
-//     const blogData = { title, content, category , image_url: imageId};
-//     try {
-//       const response = await fetch("/api/blog", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(blogData),
-//       });
-
-//       if (response.ok) {
-//         alert("Blog uploaded successfully!");
-//         setTitle("");
-//         setContent("");
-//         setCategory("");
-//       } else {
-//         alert("Failed to upload the blog. Please try again.");
-//       }
-//     } catch (error) {
-//       console.error("Error uploading blog:", error);
-//       alert("Something went wrong!");
-//     }
-//   };
-
-//   const handleAddCategory = async () => {
-//     if (!newCategory) return alert("Category name is required.");
-
-//     const response = await fetch("/api/blog/category", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ name: newCategory }),
-//     });
-
-//     if (response.ok) {
-//       alert("Category added!");
-//       setNewCategory("");
-//       // Update categories state without fetching from the server
-//       setCategories((prevCategories) => [...prevCategories, newCategory]);
-//     } else {
-//       alert("Failed to add category. Try again.");
-//     }
-//   };
-
-//   const onImageUploadHandler = async (result: any) => {
-//     const { public_id, secure_url, width, height, format } = result.info;
-  
-//     try {
-//       const response = await fetch("/api/blog/upload", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           public_id,
-//           url: secure_url,
-//           width,
-//           height,
-//           format,
-//         }),
-//       });
-  
-//       if (!response.ok) {
-//         throw new Error("Failed to save image to database");
-//       }
-  
-//       const data = await response.json();
-//       setImageId(data.id);
-//       console.log("Image saved successfully:", data);
-//     } catch (error) {
-//       console.error("Error saving image to database:", error);
-//     }
-//   };
-
-//   return (
-//     <div className="p-6 w-full bg-gray-50 min-h-screen">
-//       <h1 className="text-2xl font-bold mb-4">Create a New Blog</h1>
-//       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md">
-//         {/* Title Input */}
-//         <div className="mb-4">
-//           <label htmlFor="title" className="block text-lg font-medium mb-2">
-//             Title
-//           </label>
-//           <input
-//             id="title"
-//             type="text"
-//             value={title}
-//             onChange={(e) => setTitle(e.target.value)}
-//             className="w-full p-2 border border-gray-300 rounded"
-//             placeholder="Enter blog title"
-//             required
-//           />
-//         </div>
-
-//         {/* Content Editor */}
-//         <div className="mb-4">
-//           <label htmlFor="content" className="block text-lg font-medium mb-2">
-//             Content
-//           </label>
-//           <ReactQuill
-//             id="content"
-//             theme="snow"
-//             value={content}
-//             onChange={setContent}
-//             placeholder="Write your blog content here..."
-//             modules={modules}
-//             formats={[
-//               "header",
-//               "font",
-//               "bold",
-//               "italic",
-//               "underline",
-//               "strike",
-//               "list",
-//               "bullet",
-//               "link",
-//               "image",
-//             ]}
-//           />
-//         </div>
-
-//         <div>
-         
-//           <CldUploadWidget signatureEndpoint="/api/blog/sign-image" onSuccess={onImageUploadHandler}>
-//             {({ open }) => {
-//               return <button
-//               type="button" // Prevents this button from submitting the form
-//               onClick={() => open()}
-//               className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-//             >
-//               Upload an Image
-//             </button>;
-//             }}
-           
-//           </CldUploadWidget>
-//         </div>
-
-//         {/* Category Selection */}
-//         <div className="mb-4">
-//           <label htmlFor="category" className="block text-lg font-medium mb-2">
-//             Category
-//           </label>
-//           <select
-//             id="category"
-//             value={category}
-//             onChange={(e) => setCategory(e.target.value)}
-//             className="w-full p-2 border border-gray-300 rounded"
-//             required
-//           >
-//             <option value="">Select Category</option>
-//             {categories.map((cat, idx) => (
-//               <option key={idx} value={cat}>
-//                 {cat}
-//               </option>
-//             ))}
-//           </select>
-//         </div>
-
-//         {/* Add New Category */}
-//         <div className="mb-4">
-//           <label
-//             htmlFor="newCategory"
-//             className="block text-lg font-medium mb-2"
-//           >
-//             Add New Category
-//           </label>
-//           <input
-//             id="newCategory"
-//             type="text"
-//             value={newCategory}
-//             onChange={(e) => setNewCategory(e.target.value)}
-//             className="w-full p-2 border border-gray-300 rounded"
-//             placeholder="New category name"
-//           />
-//           <button
-//             type="button"
-//             onClick={handleAddCategory}
-//             className="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-//           >
-//             Add Category
-//           </button>
-//         </div>
-
-//         {/* Submit Button */}
-//         <button
-//           type="submit"
-//           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-//         >
-//           Submit Blog
-//         </button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default BlogEditor;
-
-
 "use client";
 
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { CldUploadWidget } from 'next-cloudinary';
+import { CldUploadWidget } from "next-cloudinary";
 import "react-quill/dist/quill.snow.css";
+
+import { useRouter } from "next/navigation";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const modules = {
   toolbar: [
-    [{ header: [1, 2, 3, false] }, { font: [] }, "bold", "italic", "underline", "strike"],
+    [
+      { header: [1, 2, 3, false] },
+      { font: [] },
+      "bold",
+      "italic",
+      "underline",
+      "strike",
+    ],
     [{ list: "ordered" }, { list: "bullet" }],
     ["link", "image"],
     ["clean"],
@@ -391,25 +26,42 @@ const modules = {
 };
 
 const BlogEditor = () => {
+  const router = useRouter();
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [imageId, setImageId] = useState<string>("");
   const [category, setCategory] = useState<string>("");
+  const [blogs, setBlogs] = useState<string[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
-  const [newCategory, setNewCategory] = useState<string>("");
+  const [showCategoriesEdit, setShowCategoriesEdit] = useState<boolean>(false);
+  const [showBlogsEdit, setShowBlogsEdit] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await fetch("/api/blog/category");
         const data = await response.json();
+        console.log(data);
         if (data.success) {
-          setCategories(data.data.map((cat: unknown) => cat.title));
+          setCategories([...data.data]);
         }
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
     };
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch("/api/blog");
+        const data = await response.json();
+
+        if (data.success) {
+          setBlogs([...data.data]);
+        }
+      } catch (err) {
+        console.log("Error in fetching categorie", err);
+      }
+    };
+    fetchBlogs();
     fetchCategories();
   }, []);
 
@@ -440,25 +92,18 @@ const BlogEditor = () => {
     }
   };
 
-  const handleAddCategory = async () => {
-    if (!newCategory) return alert("Category name is required.");
-
-    const response = await fetch("/api/blog/category", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name: newCategory }),
-    });
-
-    if (response.ok) {
-      alert("Category added!");
-      setNewCategory("");
-      setCategories((prevCategories) => [...prevCategories, newCategory]);
-    } else {
-      alert("Failed to add category. Try again.");
-    }
+  const handleEditBlog = async (id: string) => {
+    console.log(id);
+    router.push(`/dashboard/blog-edit/${id}`);
+   
   };
+  const handleEditCategory = async (id: string) => {
+    console.log(id);
+    router.push(`/dashboard/category-edit/${id}`);
+   
+  };
+
+  
 
   const onImageUploadHandler = async (result: unknown) => {
     const { public_id, secure_url, width, height, format } = result.info;
@@ -488,10 +133,71 @@ const BlogEditor = () => {
     }
   };
 
+  const handleRemoveBlog = async (id: string) => {
+    const ans = window.confirm("Are you sure you want to delete this blog?");
+    if (!ans) return;
+    try {
+      const res = await fetch("/api/blog", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Blog deleted successfully");
+        setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id));
+        console.log("Blog deleted successfully");
+      } else {
+        console.error(data.message);
+      }
+    } catch (error) {
+      console.error("Error deleting blog:", error);
+    }
+  };
+  const handleRemoveCategory = async (id: string) => {
+    const ans = window.confirm("Are you sure you want to delete this blog?");
+    if (!ans) return;
+    try {
+      const res = await fetch("/api/blog/category", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Blog deleted successfully");
+        setCategories((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id));
+        console.log("Blog deleted successfully");
+      } else {
+        console.error(data.message);
+      }
+    } catch (error) {
+      console.error("Error deleting blog:", error);
+    }
+  };
+
+  const handleShowCategoriesEdit = () => {
+    setShowCategoriesEdit(!showCategoriesEdit);
+  };
+  const handleShowBlogEdit = () => {
+    setShowBlogsEdit(!showBlogsEdit);
+  };
+
   return (
     <div className="p-6 w-full bg-gray-50 min-h-screen">
       <h1 className="text-3xl font-bold text-center mb-6">Create a New Blog</h1>
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-6">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-xl shadow-md space-y-6"
+      >
         {/* Title Input */}
         <div className="mb-4">
           <label htmlFor="title" className="block text-lg font-medium mb-2">
@@ -508,7 +214,7 @@ const BlogEditor = () => {
           />
         </div>
 
-        {/* Content Editor */}
+        {/* Content   Input */}
         <div className="mb-4">
           <label htmlFor="content" className="block text-lg font-medium mb-2">
             Content
@@ -537,7 +243,10 @@ const BlogEditor = () => {
 
         {/* Image Upload */}
         <div className="mb-6">
-          <CldUploadWidget signatureEndpoint="/api/blog/sign-image" onSuccess={onImageUploadHandler}>
+          <CldUploadWidget
+            signatureEndpoint="/api/blog/sign-image"
+            onSuccess={onImageUploadHandler}
+          >
             {({ open }) => (
               <button
                 type="button"
@@ -563,34 +272,12 @@ const BlogEditor = () => {
             required
           >
             <option value="">Select Category</option>
-            {categories.map((cat, idx) => (
-              <option key={idx} value={cat}>
-                {cat}
+            {categories?.map((blog) => (
+              <option key={blog._id} value={blog.tilte}>
+                {blog.title}
               </option>
             ))}
           </select>
-        </div>
-
-        {/* Add New Category */}
-        <div className="mb-6">
-          <label htmlFor="newCategory" className="block text-lg font-medium mb-2">
-            Add New Category
-          </label>
-          <input
-            id="newCategory"
-            type="text"
-            value={newCategory}
-            onChange={(e) => setNewCategory(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-            placeholder="New category name"
-          />
-          <button
-            type="button"
-            onClick={handleAddCategory}
-            className="mt-2 w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-          >
-            Add Category
-          </button>
         </div>
 
         {/* Submit Button */}
@@ -603,343 +290,79 @@ const BlogEditor = () => {
           </button>
         </div>
       </form>
+      <div className="flex flex-col gap-y-5">
+         
+        {/* edit and removve categories  */}
+        <button
+          className="mt-5 font-medium text-2xl mx-auto bg-slate-200 w-fit rounded-md px-5 py-2"
+          onClick={handleShowCategoriesEdit}
+        >
+          Edit Categories
+        </button>
+        {showCategoriesEdit && (
+          <div className="mb-6">
+            {categories?.map((blog) => (
+              <div
+                key={blog._id}
+                className="flex justify-between items-center mb-2"
+              >
+                <span>{blog.title}</span>
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => handleEditCategory(blog.title)}
+                    className="py-1 px-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveCategory(blog._id)}
+                    className="ml-2 py-1 px-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        <button          className="mt-5 font-medium text-2xl mx-auto bg-slate-200 w-fit rounded-md px-5 py-2" onClick={handleShowBlogEdit}>
+          Edit Blogs
+        </button>
+        {/* Edit and Remove Blog */}
+
+        {showBlogsEdit && (
+          <div className="mb-6">
+            {blogs?.map((blog) => (
+              <div
+                key={blog._id}
+                className="flex justify-between items-center mb-2"
+              >
+                <span>{blog.title}</span>
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => handleEditBlog(blog.slug)}
+                    className="py-1 px-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveBlog(blog._id)}
+                    className="ml-2 py-1 px-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
 export default BlogEditor;
-
-// "use client";
-
-
-// import React, { useState, useEffect } from "react";
-// import dynamic from "next/dynamic";
-// import { CldUploadWidget } from "next-cloudinary";
-// import "react-quill/dist/quill.snow.css";
-
-// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-
-// const modules = {
-//   toolbar: [
-//     [{ header: [1, 2, 3, false] }, { font: [] }, "bold", "italic", "underline", "strike"],
-//     [{ list: "ordered" }, { list: "bullet" }],
-//     ["link", "image"],
-//     ["clean"],
-//   ],
-// };
-
-// const BlogEditor = () => {
-//   const [title, setTitle] = useState<string>("");
-//   const [content, setContent] = useState<string>("");
-//   const [imageId, setImageId] = useState<string>("");
-//   const [category, setCategory] = useState<string>("");
-//   const [categories, setCategories] = useState<string[]>([]);
-//   const [newCategory, setNewCategory] = useState<string>("");
-
-//   // Metadata fields
-//   const [metaTitle, setMetaTitle] = useState<string>("");
-//   const [metaDescription, setMetaDescription] = useState<string>("");
-//   const [openGraphTitle, setOpenGraphTitle] = useState<string>("");
-//   const [openGraphDescription, setOpenGraphDescription] = useState<string>("");
-//   const [openGraphImage, setOpenGraphImage] = useState<string>("");
-
-//   useEffect(() => {
-//     const fetchCategories = async () => {
-//       try {
-//         const response = await fetch("/api/blog/category");
-//         const data = await response.json();
-//         if (data.success) {
-//           setCategories(data.data.map((cat: unknown) => cat.title));
-//         }
-//       } catch (error) {
-//         console.error("Error fetching categories:", error);
-//       }
-//     };
-//     fetchCategories();
-//   }, []);
-
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-
-//     const blogData = {
-//       title,
-//       content,
-//       category,
-//       image_url: imageId,
-//       metadata: {
-//         metaTitle,
-//         metaDescription,
-//         openGraphTitle,
-//         openGraphDescription,
-//         openGraphImage,
-//       },
-//     };
-
-//     try {
-//       const response = await fetch("/api/blog", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(blogData),
-//       });
-
-//       if (response.ok) {
-//         alert("Blog uploaded successfully!");
-//         setTitle("");
-//         setContent("");
-//         setCategory("");
-//         setMetaTitle("");
-//         setMetaDescription("");
-//         setOpenGraphTitle("");
-//         setOpenGraphDescription("");
-//         setOpenGraphImage("");
-//       } else {
-//         alert("Failed to upload the blog. Please try again.");
-//       }
-//     } catch (error) {
-//       console.error("Error uploading blog:", error);
-//       alert("Something went wrong!");
-//     }
-//   };
-
-//   const handleAddCategory = async () => {
-//     if (!newCategory) return alert("Category name is required.");
-
-//     const response = await fetch("/api/blog/category", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ name: newCategory }),
-//     });
-
-//     if (response.ok) {
-//       alert("Category added!");
-//       setNewCategory("");
-//       setCategories((prevCategories) => [...prevCategories, newCategory]);
-//     } else {
-//       alert("Failed to add category. Try again.");
-//     }
-//   };
-
-//   const onImageUploadHandler = async (result: any) => {
-//     const { public_id, secure_url, width, height, format } = result.info;
-
-//     try {
-//       const response = await fetch("/api/blog/upload", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           public_id,
-//           url: secure_url,
-//           width,
-//           height,
-//           format,
-//         }),
-//       });
-
-//       if (!response.ok) {
-//         throw new Error("Failed to save image to database");
-//       }
-
-//       const data = await response.json();
-//       setImageId(data.id);
-//     } catch (error) {
-//       console.error("Error saving image to database:", error);
-//     }
-//   };
-
-//   return (
-//     <div className="p-6 w-full bg-gray-50 min-h-screen">
-//       <h1 className="text-3xl font-bold text-center mb-6">Create a New Blog</h1>
-//       <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-lg max-w-4xl mx-auto space-y-6">
-//         {/* Blog Title */}
-//         <div className="mb-4">
-//           <label htmlFor="title" className="block text-lg font-medium mb-2">
-//             Title <span className="text-red-500">*</span>
-//           </label>
-//           <input
-//             id="title"
-//             type="text"
-//             value={title}
-//             onChange={(e) => setTitle(e.target.value)}
-//             className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-//             placeholder="Enter blog title"
-//             required
-//           />
-//         </div>
-
-//         {/* Blog Content Editor */}
-//         <div className="mb-4">
-//           <label htmlFor="content" className="block text-lg font-medium mb-2">
-//             Content <span className="text-red-500">*</span>
-//           </label>
-//           <ReactQuill
-//             id="content"
-//             theme="snow"
-//             value={content}
-//             onChange={setContent}
-//             placeholder="Write your blog content here..."
-//             modules={modules}
-//             formats={[
-//               "header",
-//               "font",
-//               "bold",
-//               "italic",
-//               "underline",
-//               "strike",
-//               "list",
-//               "bullet",
-//               "link",
-//               "image",
-//             ]}
-//           />
-//         </div>
-
-//         {/* Image Upload */}
-//         <div className="mb-4">
-//           <CldUploadWidget signatureEndpoint="/api/blog/sign-image" onSuccess={onImageUploadHandler}>
-//             {({ open }) => (
-//               <button
-//                 type="button"
-//                 onClick={() => open()}
-//                 className="w-full py-3 bg-green-600 text-white rounded-md hover:bg-green-700"
-//               >
-//                 Upload an Image
-//               </button>
-//             )}
-//           </CldUploadWidget>
-//         </div>
-
-//         {/* Category Selection */}
-//         <div className="mb-4">
-//           <label htmlFor="category" className="block text-lg font-medium mb-2">
-//             Category <span className="text-red-500">*</span>
-//           </label>
-//           <select
-//             id="category"
-//             value={category}
-//             onChange={(e) => setCategory(e.target.value)}
-//             className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-//             required
-//           >
-//             <option value="">Select Category</option>
-//             {categories.map((cat, idx) => (
-//               <option key={idx} value={cat}>
-//                 {cat}
-//               </option>
-//             ))}
-//           </select>
-//         </div>
-
-//         {/* Add New Category */}
-//         <div className="mb-4">
-//           <label htmlFor="newCategory" className="block text-lg font-medium mb-2">
-//             Add New Category
-//           </label>
-//           <input
-//             id="newCategory"
-//             type="text"
-//             value={newCategory}
-//             onChange={(e) => setNewCategory(e.target.value)}
-//             className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-//             placeholder="New category name"
-//           />
-//           <button
-//             type="button"
-//             onClick={handleAddCategory}
-//             className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
-//           >
-//             Add Category
-//           </button>
-//         </div>
-
-//         {/* Meta Data */}
-//         <div className="bg-gray-100 p-6 rounded-lg">
-//           <h3 className="text-xl font-semibold mb-4">Meta Data</h3>
-
-//           <div className="mb-4">
-//             <label htmlFor="metaTitle" className="block text-lg font-medium mb-2">
-//               Meta Title
-//             </label>
-//             <input
-//               id="metaTitle"
-//               type="text"
-//               value={metaTitle}
-//               onChange={(e) => setMetaTitle(e.target.value)}
-//               className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-//               placeholder="Enter meta title "
-//             />
-//           </div>
-
-//           <div className="mb-4">
-//             <label htmlFor="metaDescription" className="block text-lg font-medium mb-2">
-//               Meta Description
-//             </label>
-//             <textarea
-//               id="metaDescription"
-//               value={metaDescription}
-//               onChange={(e) => setMetaDescription(e.target.value)}
-//               className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-//               placeholder="Enter meta description "
-//             />
-//           </div>
-
-//           <div className="mb-4">
-//             <label htmlFor="openGraphTitle" className="block text-lg font-medium mb-2">
-//               Open Graph Title
-//             </label>
-//             <input
-//               id="openGraphTitle"
-//               type="text"
-//               value={openGraphTitle}
-//               onChange={(e) => setOpenGraphTitle(e.target.value)}
-//               className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-//               placeholder="Enter Open Graph title (optional)"
-//             />
-//           </div>
-
-//           <div className="mb-4">
-//             <label htmlFor="openGraphDescription" className="block text-lg font-medium mb-2">
-//               Open Graph Description
-//             </label>
-//             <textarea
-//               id="openGraphDescription"
-//               value={openGraphDescription}
-//               onChange={(e) => setOpenGraphDescription(e.target.value)}
-//               className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-//               placeholder="Enter Open Graph description (optional)"
-//             />
-//           </div>
-
-//           <div className="mb-4">
-//             <label htmlFor="openGraphImage" className="block text-lg font-medium mb-2">
-//               Open Graph Image URL
-//             </label>
-//             <input
-//               id="openGraphImage"
-//               type="text"
-//               value={openGraphImage}
-//               onChange={(e) => setOpenGraphImage(e.target.value)}
-//               className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-//               placeholder="Enter Open Graph image URL (optional)"
-//             />
-//           </div>
-//         </div>
-
-//         {/* Submit Button */}
-//         <button
-//           type="submit"
-//           className="w-full py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-//         >
-//           Submit Blog
-//         </button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default BlogEditor;

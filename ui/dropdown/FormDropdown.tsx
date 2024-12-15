@@ -307,7 +307,7 @@ const CustomDropdown = ({value ='', options, placeholder, onOptionSelect, classN
       >
         <input
           className="pl-2 w-[100%] placeholder:text-[18px] outline-none"
-          value={selectedOption}
+          value={value}
           placeholder={placeholder}
           readOnly
           onBlur={() => {

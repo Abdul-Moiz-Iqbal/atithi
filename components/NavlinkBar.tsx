@@ -2,9 +2,9 @@ import Link from "next/link"
 
 const NavlinkBar = () => {
     return (
-        <div className="hidden  w-full py-5 bg-main-red md:flex justify-center">
-            <div className="uppercase flex gap-[70px] justify-center text-[18px] font-medium text-white">
-                <Link href={"/how-we-work"} className="">
+        <div className=" hidden   w-full py-5 bg-main-red md:flex justify-center">
+            <div className="uppercase flex gap-[70px] justify-center !text-[18px] font-medium text-white">
+                <Link href={"/how-we-work"} className="text-[18px]">
                 How we Work
                 </Link>
                 <Link href={"/blog"} className="">

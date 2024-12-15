@@ -6,6 +6,7 @@ import lakeImage from "../../../public/images/lake-image.png";
 import mobileImage from "../../../public/images/mobile-blog.png";
 
 import Blog from "../../../components/blog/Blog";
+import Link from "next/link";
 
 
 
@@ -18,7 +19,10 @@ export default function blog() {
         <Image src={mobileImage} alt="Servies" className="sm:hidden" />
       </div>
       <div className="w-[78%] my-7  mx-auto flex gap-5 uppercase text-main-red text-[20px] font-semibold tracking-wider">
-        <div>Home</div>
+        <Link href="/" className="">
+          Home
+        </Link>
+        {/* <div>Home</div> */}
         <div>&gt;</div>
         <div>Categories</div>
       </div>

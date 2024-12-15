@@ -6,7 +6,7 @@ import BlogCard from "../../../../../components/home/BlogCard";
 // image
 import lakeImage from "../../../../../public/images/lake-image.png";
 import mobileImage from "../../../../../public/images/mobile-blog.png";
-import image from "../../../../../public/images/lake-image.png";
+import image from "../../../../../public/images/logoHres.png";
 import share from "../../../../../public/icons/share.png";
 
 // react icons
@@ -17,7 +17,7 @@ import { FaInstagram, FaTwitter } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import H4 from "../../../../../ui/heading/H4";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 // const blogData = [
 //   {
@@ -72,12 +72,18 @@ import { useParams } from "next/navigation";
 // ];
 
 const BlogPost = () => {
+  const path = usePathname();
+
   const [visibleCount, setVisibleCount] = useState(3);
   const { slug } = useParams();
   const [blogData, setBlogData] = useState(null);
   const [blog, setBlog] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const pathParts = path.split("/").slice(0, -1);
+
+  // Join the parts back into a string
+  const newUrl = pathParts.join("/");
 
   // useEffect(() => {
   //   if (slug) {
@@ -176,8 +182,8 @@ const BlogPost = () => {
       setVisibleCount((prevCount) => Math.min(prevCount + 3, blogData.length));
     }
   };
-  if(error) return <p className="text-center text-red-500">{error}</p>
-  if(loading) return <p className="text-center">Loading...</p>
+  if (error) return <p className="text-center text-red-500">{error}</p>;
+  if (loading) return <p className="text-center">Loading...</p>;
 
   return (
     <div className="font-author">
@@ -190,9 +196,15 @@ const BlogPost = () => {
         {/* Blog Section  */}
         <div className="md:w-[70%]">
           <div className="hidden  my-7  mx-auto md:flex gap-5 uppercase text-main-red text-[20px] font-semibold tracking-wider">
-            <div>Home</div>
+            <Link href="/blog" className="">
+              categories
+            </Link>
             <div>&gt;</div>
-            <div>{blog?.category.title}</div>
+
+            <Link href={`${newUrl}`} className="">
+              {blog?.category.title}
+            </Link>
+
             <div>&gt;</div>
             <div>{blog?.title} </div>
           </div>
@@ -223,7 +235,7 @@ const BlogPost = () => {
               />
             </div> */}
 
-            <div className="mt-5 mx-auto w-[274px] h-[274px] border border-black rounded-full overflow-hidden bg-gray-100">
+            {/* <div className="mt-5 mx-auto w-[274px] h-[274px] border border-black rounded-full overflow-hidden bg-gray-100">
               <Image
                 alt="profile"
                 src={image}
@@ -231,19 +243,26 @@ const BlogPost = () => {
                 height={274}
                 className="object-cover w-full h-full" // Ensures the image covers the full container
               />
+            </div> */}
+            <div className="my-10 mx-auto ">
+              <Image
+                alt="profile"
+                src={image}
+                width={274} // Matches the container dimensions
+                height={274}
+                // className="object-cover w-full h-full" // Ensures the image covers the full container
+              />
             </div>
 
             {/* Profile Bio text   */}
             <div className="mt-5 text-[18px] leading-tight tracking-wider">
-              Welcome to Incredible India Journeys, your go-to blog for
-              exploring the wonders of India! From the snow-capped peaks of the
-              Himalayas to the sun-kissed beaches of Goa, we bring you
-              captivating stories, travel tips, and cultural insights to fuel
-              your wanderlust. Whether you're planning a soulful escape to
-              Varanasi, a royal adventure in Rajasthan, or a serene retreat in
-              Kerala, we’ve got you covered. Let us inspire your next trip and
-              guide you through the vibrant landscapes, rich traditions, and
-              unforgettable experiences that make India truly incredible.
+              We turn your trip to India into a smooth and enriching experience.
+              Navigating new cultures can be tough, especially in the country of
+              1.4 billion people but we ensure you explore India safely like a
+              local, stress-free at every step. From paying for services in
+              India to interaction with local people, we empower you to handle
+              the complexities of India. Make your trip to India safe and
+              stress-free on your own
             </div>
           </div>
           {/* Social Post Share   */}
@@ -254,7 +273,7 @@ const BlogPost = () => {
             </div>
 
             {/* social icons  */}
-            <div className="ml-5 mt-5 flex  gap-5">
+            {/* <div className="ml-5 mt-5 flex  gap-5">
               <div className="bg-twitter-blue p-2 rounded-full h-fit">
                 <FaTwitter className="text-white" />
               </div>
@@ -264,6 +283,31 @@ const BlogPost = () => {
               <div className="bg-gradient-to-b from-purple-500 via-pink-500 to-yellow-500 p-2 rounded-full h-fit">
                 <FaInstagram className="text-white " />
               </div>
+            </div> */}
+            <div className="ml-5 mt-5 flex  gap-5">
+              <Link
+                href="https://www.instagram.com/hello_atithi"
+                target="_blank"
+                className="bg-twitter-blue p-2 rounded-full h-fit"
+              >
+                <FaTwitter className="text-white" />
+              </Link>
+
+              <Link
+                href="https://www.instagram.com/hello_atithi"
+                target="_blank"
+                className="bg-main-blue p-2 rounded-full h-fit"
+              >
+                <TiSocialLinkedin className="text-white " />
+              </Link>
+
+              <Link
+                href="https://www.instagram.com/hello_atithi"
+                target="_blank"
+                className="bg-gradient-to-b from-purple-500 via-pink-500 to-yellow-500 p-2 rounded-full h-fit"
+              >
+                <FaInstagram className="text-white " />
+              </Link>
             </div>
 
             <div className="flex justify-center">

@@ -3,7 +3,7 @@
 // import Navbar from "../../../../components/Navbar";
 // import NavlinkBar from "../../../../components/NavlinkBar";
 
-// // image 
+// // image
 // import mobileBlog from "../../../../public/images/mobile-blog.png";
 // import image from "../../../../public/images/lake-image.png";
 // import BlogCard from "../../../../components/home/BlogCard";
@@ -71,7 +71,7 @@
 
 //   return (
 //     <div className="font-author">
- 
+
 //       <div>
 //         <Image src={mobileBlog} alt="Servies" className="sm:hidden"/>
 //         <Image src={image} alt="Servies" className="hidden sm:block"/>
@@ -83,7 +83,7 @@
 //         <div>&gt;</div>
 //         <div>India Must Know</div>
 //       </div>
-      
+
 //       <div className="mt-4 w-[90%]  md:w-[85%] mx-auto border-[1px] border-main-red"></div>
 //       <div className="px-10  flex flex-col gap-[40px] md:flex-row md:flex-wrap justify-center">
 //         {/* Display blog cards */}
@@ -106,7 +106,7 @@
 //           </button>
 //         </div>
 //       )}
-      
+
 //     </div>
 //   );
 // };
@@ -116,13 +116,13 @@
 "use client";
 import Image from "next/image";
 
-
-// image 
+// image
 import mobileBlog from "../../../../public/images/mobile-blog.png";
 import image from "../../../../public/images/lake-image.png";
 import BlogCard from "../../../../components/home/BlogCard";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 // const blogData = [
 //     {
@@ -177,8 +177,10 @@ import { useParams } from "next/navigation";
 //   ];
 
 const Category = () => {
-  const { category} = useParams();
-  const id = category.split('-').pop();
+  const { category } = useParams();
+  const id = category.split("-").pop();
+  // console.log(category.split(/-\d/)[0]);
+  const title = category.split(/-\d/)[0];
   useEffect(() => {
     const fetchBlogsByCategory = async () => {
       try {
@@ -186,12 +188,12 @@ const Category = () => {
         const response = await fetch(`/api/blog?categoryId=${id}`);
 
         if (!response.ok) {
-          throw new Error('Failed to fetch blogs');
+          throw new Error("Failed to fetch blogs");
         }
 
         const data = await response.json();
         if (data.success) {
-          console.log(data)
+          console.log(data);
           setBlogData(data.data);
         } else {
           throw new Error(data.message);
@@ -203,18 +205,13 @@ const Category = () => {
       }
     };
 
-  
-      fetchBlogsByCategory();
-    
+    fetchBlogsByCategory();
   }, [id]); // Re-run when categoryId changes
 
   const [visibleCount, setVisibleCount] = useState(6);
   const [blogData, setBlogData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-
-
 
   // Show more or less logic
   const toggleShowMore = () => {
@@ -232,17 +229,23 @@ const Category = () => {
   return (
     <div className="font-author">
       <div>
-        <Image src={mobileBlog} alt="Services" className="sm:hidden"/>
-        <Image src={image} alt="Services" className="hidden sm:block"/>
+        <Image src={mobileBlog} alt="Services" className="sm:hidden" />
+        <Image src={image} alt="Services" className="hidden sm:block" />
       </div>
       <div className="w-[90%] md:w-[78%] my-7 mx-auto flex gap-5 uppercase text-main-red text-[16px] md:text-[20px] font-semibold tracking-wider">
-        <div>Home</div>
+        <Link href="/" className="">
+          Home
+        </Link>
         <div>&gt;</div>
-        <div>Categories</div>
+        <Link href="/blog" className="">
+          Categories
+        </Link>
+        {/* <div>Categories</div> */}
         <div>&gt;</div>
-        <div>India Must Know</div>
+
+        <div>{title}</div>
       </div>
-      
+
       <div className="mt-4 w-[90%] md:w-[85%] mx-auto border-[1px] border-main-red"></div>
       <div className="px-10 flex flex-col gap-[40px] md:flex-row md:flex-wrap justify-center">
         {/* Display blog cards */}
