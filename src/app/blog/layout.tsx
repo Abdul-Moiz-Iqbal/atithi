@@ -10,7 +10,7 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="">
+    <div className="font-author">
       <Navbar/>
       <NavlinkBar/>
 
