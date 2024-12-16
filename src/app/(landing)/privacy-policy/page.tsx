@@ -1,5 +1,3 @@
-
-
 import { Metadata } from 'next';
 import Content from "@/components/privacy-policy/Content";
 

@@ -1,36 +1,67 @@
-import LegalPage from '@/models/Legal';
-import connectDb from '@/config/database'; // Make sure to have a MongoDB connection setup
-import { NextResponse } from 'next/server';
-
+import LegalPage from "@/models/Legal";
+import connectDb from "@/config/database"; // Make sure to have a MongoDB connection setup
+import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   const url = new URL(req.url); // Get the URL
-  const slug = url.searchParams.get('id')?.trim(); // Get the 'id' query parameter
-  console.log(slug)
-  if (!slug) {
-    return NextResponse.json({ error: 'ID parameter is required' }, { status: 400 });
+  const slug = url.searchParams.get("id")?.trim(); // Get the 'id' query parameter
+  console.log(slug);
+  // if (!slug) {
+  //   return NextResponse.json({ error: 'ID parameter is required' }, { status: 400 });
+  // }
+
+  if (slug !== "get") {
+    try {
+      // Establish DB connection
+      await connectDb();
+
+      // Fetch the legal page by 'slug' (or '_id' if that's what you're using)
+      const page = await LegalPage.findOne({ slug });
+
+      if (!page) {
+        return NextResponse.json(
+          { error: "Legal page not found" },
+          { status: 404 }
+        );
+      }
+
+      // Return the legal page content
+      return NextResponse.json(page, { status: 200 });
+    } catch (error) {
+      console.error("Error fetching legal page:", error);
+      return NextResponse.json(
+        { error: "Internal server error" },
+        { status: 500 }
+      );
+    }
   }
 
-  try {
-    // Establish DB connection
-    await connectDb();
+  if(slug == 'get'){
+    try {
+      // Establish DB connection
+      await connectDb();
 
-    // Fetch the legal page by 'slug' (or '_id' if that's what you're using)
-    const page = await LegalPage.findOne({ slug });
+      // Fetch the legal page by 'slug' (or '_id' if that's what you're using)
+      const page = await LegalPage.find();
 
-    if (!page) {
-      return NextResponse.json({ error: 'Legal page not found' }, { status: 404 });
+      if (!page) {
+        return NextResponse.json(
+          { error: "Legal page not found" },
+          { status: 404 }
+        );
+      }
+
+      // Return the legal page content
+      return NextResponse.json(page, { status: 200 });
+    } catch (error) {
+      console.error("Error fetching legal page:", error);
+      return NextResponse.json(
+        { error: "Internal server error" },
+        { status: 500 }
+      );
     }
-
-    // Return the legal page content
-    return NextResponse.json(page, { status: 200 });
-  } catch (error) {
-    console.error('Error fetching legal page:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
-
-
 
 export async function POST(req: Request) {
   try {
@@ -41,7 +72,7 @@ export async function POST(req: Request) {
 
     if (!slug || !title || !content) {
       return NextResponse.json(
-        { error: 'Slug, Title, and Content are required' },
+        { error: "Slug, Title, and Content are required" },
         { status: 400 }
       );
     }
@@ -57,15 +88,19 @@ export async function POST(req: Request) {
     );
 
     return NextResponse.json(
-      { message: `Legal page ${updatedPage ? "updated" : "created"} successfully`, data: updatedPage },
+      {
+        message: `Legal page ${
+          updatedPage ? "updated" : "created"
+        } successfully`,
+        data: updatedPage,
+      },
       { status: 200 }
     );
   } catch (error) {
-    console.error('Error creating or updating legal page:', error);
+    console.error("Error creating or updating legal page:", error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
 }
-

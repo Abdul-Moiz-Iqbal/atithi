@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -18,11 +18,32 @@ const modules = {
 };
 
 const LegalPageCreate = () => {
+  const [data, setData] = useState<[]>([]);
   const [slug, setSlug] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+
+    const fetchAllLegalPages = async () => {
+      try {
+        const response = await fetch(`/api/legal-page?id=get`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch all legal pages. Status: ${response.status}`);
+        }
+        const data = await response.json();
+        setData(data)
+        console.log(data)
+        return data; // Contains the list of all legal pages
+      } catch (error) {
+        console.error("Error fetching all legal pages:", error);
+      }
+    };
+    fetchAllLegalPages();
+
+  },[])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,6 +76,15 @@ const LegalPageCreate = () => {
       setLoading(false);
     }
   };
+  const onSelectHandler = async (e) =>{
+    const slug = e.target.value
+    const result  = data.find((page)=> page.slug == slug)
+    console.log(result)
+    
+    setTitle(result.title)
+    setContent(result.content)
+    setSlug(slug)
+  }
 
   return (
     <div className="p-6 w-full bg-gray-50 min-h-screen">
@@ -69,7 +99,7 @@ const LegalPageCreate = () => {
           <select
             id="slug"
             value={slug}
-            onChange={(e) => setSlug(e.target.value)}
+            onChange={onSelectHandler}
             className="w-full p-2 border border-gray-300 rounded"
             required
           >

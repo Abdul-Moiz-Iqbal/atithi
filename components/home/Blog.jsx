@@ -140,14 +140,15 @@ const Blog = () => {
       </div>
 
       {/* Show More / Show Less button */}
-      <div className="text-center my-10">
+      {blogData.length > 6 && <div className="text-center my-10">
         <button
           className="px-7 py-[10px] uppercase tracking-wide text-white text-base sm:text-[20px] sm:tracking-[0.4px] font-medium bg-main-red"
           onClick={showMore}
         >
           {visibleCount >= blogData.length ? "Show Less" : "View More"}
         </button>
-      </div>
+      </div>}
+      
     </div>
   );
 };
