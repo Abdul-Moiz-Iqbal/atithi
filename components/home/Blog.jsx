@@ -119,7 +119,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="py-3 sm:py-5 px-5">
+    <div className="py-10 sm:py-10 px-5">
       <H4
         title="India's Must Know"
         className="text-main-red tracking-wider md:text-[35px]"

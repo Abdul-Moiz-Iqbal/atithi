@@ -328,15 +328,31 @@ const BlogPost = () => {
           <Image src={share} alt="Servies" />
 
           <h1 className="font-semibold text-[20px] md:text-[39px]">Share</h1>
-          <div className="bg-twitter-blue p-2 rounded-full h-fit">
-            <FaTwitter className="text-white md:text-xl" />
-          </div>
-          <div className="bg-main-blue p-2 rounded-full h-fit">
-            <TiSocialLinkedin className="text-white md:text-xl" />
-          </div>
-          <div className="bg-gradient-to-b from-purple-500 via-pink-500 to-yellow-500 p-2 rounded-full h-fit">
-            <FaInstagram className="text-white md:text-xl" />
-          </div>
+          
+              <Link
+                href="https://www.instagram.com/hello_atithi"
+                target="_blank"
+                className="bg-twitter-blue p-2 rounded-full h-fit"
+              >
+                <FaTwitter className="text-white" />
+              </Link>
+
+              <Link
+                href="https://www.instagram.com/hello_atithi"
+                target="_blank"
+                className="bg-main-blue p-2 rounded-full h-fit"
+              >
+                <TiSocialLinkedin className="text-white " />
+              </Link>
+
+              <Link
+                href="https://www.instagram.com/hello_atithi"
+                target="_blank"
+                className="bg-gradient-to-b from-purple-500 via-pink-500 to-yellow-500 p-2 rounded-full h-fit"
+              >
+                <FaInstagram className="text-white " />
+              </Link>
+            
         </div>
       </div>
 
@@ -351,7 +367,7 @@ const BlogPost = () => {
         title="You may also like"
         className="mt-10 text-main-red font-semibold tracking-wider md:text-[30px]"
       />
-      <div className=" px-10 flex flex-col gap-[40px] md:flex-row md:flex-wrap justify-center">
+      <div className=" px-10 pb-10 flex flex-col gap-[40px] md:flex-row md:flex-wrap justify-center">
         {/* Display blog cards */}
         {blogData?.slice(0, visibleCount).map((blog) => (
           <BlogCard

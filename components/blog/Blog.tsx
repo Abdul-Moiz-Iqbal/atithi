@@ -112,12 +112,15 @@ const Blog = () => {
       </div>
 
       <div className="mb-16 flex justify-center">
+        {visibleCount < blogData.length && (
+
         <button
           className="mt-10 px-10 py-[10px] shadow-btn-shadow uppercase tracking-wider text-white  text-base sm:text-xl font-semibold sm:font-medium bg-main-red"
           onClick={toggleShowMore}
         >
           {visibleCount >= blogData.length ? "Show Less" : "See More"}
         </button>
+        )}
       </div>
     </div>
   );
