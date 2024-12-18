@@ -11,7 +11,7 @@ import share from "../../../../../public/icons/share.png";
 
 // react icons
 import { TiSocialLinkedin } from "react-icons/ti";
-import { FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 //react
 import { useEffect, useState } from "react";

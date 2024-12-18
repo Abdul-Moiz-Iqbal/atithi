@@ -220,6 +220,7 @@ const JourneyForm = () => {
     if (selectedMonth.value < currentMonth + 1) {
       // Perform an action
     }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedYear, selectedMonth, currentMonth, currentYear]);
   
   // const months = [
