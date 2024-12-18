@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import H4 from "../../../../../ui/heading/H4";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
+import { FaXTwitter } from "react-icons/fa6";
 
 // const blogData = [
 //   {
@@ -286,15 +287,15 @@ const BlogPost = () => {
             </div> */}
             <div className="ml-5 mt-5 flex  gap-5">
               <Link
-                href="https://www.instagram.com/hello_atithi"
+                href="https://x.com/HelloAtithi"
                 target="_blank"
-                className="bg-twitter-blue p-2 rounded-full h-fit"
+                className="bg-black p-2 rounded-full h-fit"
               >
-                <FaTwitter className="text-white" />
+                <FaXTwitter className="text-white" />
               </Link>
 
               <Link
-                href="https://www.instagram.com/hello_atithi"
+                href="https://www.linkedin.com/company/hello-atithi/"
                 target="_blank"
                 className="bg-main-blue p-2 rounded-full h-fit"
               >
@@ -332,13 +333,13 @@ const BlogPost = () => {
               <Link
                 href="https://www.instagram.com/hello_atithi"
                 target="_blank"
-                className="bg-twitter-blue p-2 rounded-full h-fit"
+                className="bg-black p-2 rounded-full h-fit"
               >
-                <FaTwitter className="text-white" />
+                <FaXTwitter className="text-white" />
               </Link>
 
               <Link
-                href="https://www.instagram.com/hello_atithi"
+                href="https://www.linkedin.com/company/hello-atithi/"
                 target="_blank"
                 className="bg-main-blue p-2 rounded-full h-fit"
               >

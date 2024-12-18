@@ -100,7 +100,21 @@ const JourneyForm = () => {
 
   const [selectedDays, setSelectedDays] = useState<number>(1);
 
-
+  // this months array is being used only in useEffect to solve a problem 
+  const monthss = [
+    { label: "January", value: 1 },
+    { label: "February", value: 2 },
+    { label: "March", value: 3 },
+    { label: "April", value: 4 },
+    { label: "May", value: 5 },
+    { label: "June", value: 6 },
+    { label: "July", value: 7 },
+    { label: "August", value: 8 },
+    { label: "September", value: 9 },
+    { label: "October", value: 10 },
+    { label: "November", value: 11 },
+    { label: "December", value: 12 },
+  ];
 
   useEffect(() => {
     if (countryCode) {
@@ -128,21 +142,61 @@ const JourneyForm = () => {
     }
   }, [countryCode]);
 
-  useEffect(()=> {
+  // useEffect(()=> {
 
+  //   const getFilteredMonths = () => {
+  //     console.log("selected Month", selectedMonth)
+  //     if (selectedYear.value === currentYear.toString()) {
+  //       // Show only remaining months in the current year
+  //       setSelectedMonth('');
+  //       console.log(currentMonth)
+  //       console.log("months.slice(currentMonth)",months.slice(currentMonth))
+  //       setMonths( months.slice(currentMonth)); // callback method is used  here to set the state immediately 
+  //       console.log("after state update ",months)
+  //       return 
+  //     }
+  //     // setSelectedMonth('');
+  //     setMonths( [
+  //       { label: "January", value: 1 },
+  //       { label: "February", value: 2 },
+  //       { label: "March", value: 3 },
+  //       { label: "April", value: 4 },
+  //       { label: "May", value: 5 },
+  //       { label: "June", value: 6 },
+  //       { label: "July", value: 7 },
+  //       { label: "August", value: 8 },
+  //       { label: "September", value: 9 },
+  //       { label: "October", value: 10 },
+  //       { label: "November", value: 11 },
+  //       { label: "December", value: 12 },
+  //     ])
+  //     return ; // Show all months for future years
+  //   };
+  //   getFilteredMonths();
+  //  console.log("selectedMonth",selectedMonth)
+  //  if(selectedMonth.value < currentMonth +1) {
+     
+  //  }
+
+  // },[selectedYear,selectedMonth,currentMonth,currentYear,months])
+
+  useEffect(() => {
     const getFilteredMonths = () => {
-      console.log("selected Month", selectedMonth)
+      console.log("selected Month", selectedMonth);
+  
       if (selectedYear.value === currentYear.toString()) {
         // Show only remaining months in the current year
-        setSelectedMonth('');
-        console.log(currentMonth)
-        console.log("months.slice(currentMonth)",months.slice(currentMonth))
-        setMonths( months.slice(currentMonth)); // callback method is used  here to set the state immediately 
-        console.log("after state update ",months)
-        return 
+        setSelectedMonth(''); // Reset selected month
+        console.log(currentMonth);  
+        console.log("months.slice(currentMonth)", months.slice(currentMonth));
+  
+        // Update months state with remaining months
+        setMonths(monthss.slice(currentMonth));
+        return;
       }
-      // setSelectedMonth('');
-      setMonths( [
+  
+      // Show all months for future years
+      setMonths([
         { label: "January", value: 1 },
         { label: "February", value: 2 },
         { label: "March", value: 3 },
@@ -155,17 +209,19 @@ const JourneyForm = () => {
         { label: "October", value: 10 },
         { label: "November", value: 11 },
         { label: "December", value: 12 },
-      ])
-      return ; // Show all months for future years
+      ]);
     };
+  
     getFilteredMonths();
-   console.log("selectedMonth",selectedMonth)
-   if(selectedMonth.value < currentMonth +1) {
-     
-   }
-
-  },[selectedYear,selectedMonth,currentMonth,currentYear,months])
-
+  
+    console.log("selectedMonth", selectedMonth);
+  
+    // Add additional logic here if needed
+    if (selectedMonth.value < currentMonth + 1) {
+      // Perform an action
+    }
+  }, [selectedYear, selectedMonth, currentMonth, currentYear]);
+  
   // const months = [
   //   { label: "January", value: "01" },
   //   { label: "February", value: "02" },
