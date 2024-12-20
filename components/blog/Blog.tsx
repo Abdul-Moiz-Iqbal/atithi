@@ -88,6 +88,7 @@ const Blog = () => {
   return (
     <div className="w-[80%] mx-auto">
      <div className="hidden mt-5 sm:flex flex-col gap-8">
+      s
         {blogData.slice(0, visibleCount).map((blog) => (
           <BlogCard
             key={blog._id}
@@ -103,6 +104,7 @@ const Blog = () => {
           <BlogCardHome
             key={blog._id}
             id={blog._id}
+            slug={blog.title}
             
             title={blog.title}
             description={blog.content}

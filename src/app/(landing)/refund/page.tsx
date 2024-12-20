@@ -3,7 +3,7 @@ import Image from "next/image";
 
 // image
 import lakeImage from "../../../../public/images/terms-condition.png";
-import mobileImage from "../../../../public/images/mobile-blog.png";
+import mobileImage from "../../../../public/images/faq.png";
 
 import Link from "next/link";
 import Button from "../../../../ui/Button/Button";
@@ -66,7 +66,7 @@ export default function Refund() {
         <Image src={lakeImage} alt="Servies" className="hidden sm:block" />
         <Image src={mobileImage} alt="Servies" className="sm:hidden" />
       </div>
-      <div className="w-[80%] mx-auto">
+      <div className="w-[90%] sm:w-[80%] mx-auto">
         <h1 className="mt-10 mb-5 pl-2 text-xl sm:text-[35px] font-semibold text-main-red">
           PAYMENT TERMS, CANCELLATION AND REFUND
         </h1>

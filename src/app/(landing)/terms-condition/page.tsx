@@ -63,12 +63,12 @@ export default function TermsCondition() {
       <div>
         <Image src={image} alt="Servies" />
       </div>
-      <div className="w-[80%] mx-auto">
-        <h1 className="mt-10 mb-5 pl-2 text-[35px] font-semibold text-main-red">
+      <div className="w-[90%] sm:w-[80%] mx-auto">
+        <h1 className="mt-10 mb-5 pl-2 text-xl sm:text-[35px] font-semibold text-main-red">
           TERMS & CONDITIONS
         </h1>
         <div className="w-full border-2 border-main-red"></div>
-        <div className="px-4">
+        <div className="sm:px-4">
           <p className="my-5 text-lg">
             These terms form a legally binding agreement between users{" "}
             <span className="font-semibold">
