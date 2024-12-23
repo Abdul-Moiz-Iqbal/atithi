@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import "./style.css";
 // image
-import image from "../../../../public/images/terms-condition.png";
+import image from "../../../../public/images/jodhpur 1.jpg";
 
 import { Metadata } from 'next';
 
@@ -61,7 +61,7 @@ export default function TermsCondition() {
     <div className="font-author pb-16">
  
       <div>
-        <Image src={image} alt="Servies" />
+        <Image src={image} alt="jodhpur" className="h-[70vh] object-cover object-center" />
       </div>
       <div className="w-[90%] sm:w-[80%] mx-auto">
         <h1 className="mt-10 mb-5 pl-2 text-xl sm:text-[35px] font-semibold text-main-red">

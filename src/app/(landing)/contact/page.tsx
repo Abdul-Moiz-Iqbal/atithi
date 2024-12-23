@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 // image
-import lakeImage from "../../../../public/images/lake-image.png";
+import image from "../../../../public/images/coonoor.jpg";
 import H4 from "../../../../ui/heading/H4";
 
 // react icons
@@ -16,7 +16,7 @@ export default function ContactUs() {
   return (
     <div className="font-author">
       <div>
-        <Image src={lakeImage} alt="Servies" />
+        <Image src={image} alt="coonoor" className="h-[70vh] object-cover object-bottom" />
       </div>
 
       <div className="py-5 ">

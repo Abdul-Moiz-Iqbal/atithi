@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Image from "@/models/Image"; // Ensure correct path to your model
 
+// api to upload cloudnary  image data in mongo db 
 export async function POST(req: Request) {
     console.log("hello from upload")
   try {

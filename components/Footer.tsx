@@ -56,6 +56,7 @@ const Footer = () => {
                 </Link>
                 <Link href={"/blog"}>India Must Know</Link>
                 <Link href={"/services"}>Services & Fees</Link>
+                <Link href={"/contact"}>Contact Us</Link>
               </div>
             </div>
             <div className="flex flex-col gap-8 uppercase">
@@ -68,6 +69,7 @@ const Footer = () => {
                 </Link>
                 <Link href={"/privacy-policy"}>Privacy Policy</Link>
                 <Link href={"/terms-condition"}>Terms & Conditions</Link>
+                <Link href={"/refund"}>Payment, Cacelation and refund</Link>
               </div>
             </div>
             {/* <div className="flex gap-14  justify-center items-center">
@@ -295,6 +297,7 @@ const Footer = () => {
                   </Link>
                   <Link href={"/blog"}>India's Must Know</Link>
                   <Link href={"/services"}>Services & Fees</Link>
+                  <Link href={"/contact"}>Contact Us</Link>
                 </div>
               </div>
               <div className="pl-5  flex flex-col gap-8 uppercase">
@@ -308,6 +311,7 @@ const Footer = () => {
                   </Link>
                   <Link href={"/privacy-policy"}>Privacy Policy</Link>
                   <Link href={"/terms-condition"}>Terms & Condition</Link>
+                  <Link href={"/refund"}>Payment, Cacelation and refund</Link>
                 </div>
               </div>
             </div>

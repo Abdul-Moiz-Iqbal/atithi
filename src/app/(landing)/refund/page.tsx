@@ -2,8 +2,8 @@
 import Image from "next/image";
 
 // image
-import lakeImage from "../../../../public/images/terms-condition.png";
-import mobileImage from "../../../../public/images/faq.png";
+import image from "../../../../public/images/triund himachal pradesh.jpg";
+
 
 import Link from "next/link";
 import Button from "../../../../ui/Button/Button";
@@ -63,8 +63,8 @@ export default function Refund() {
   return (
     <div className="font-author">
       <div className="">
-        <Image src={lakeImage} alt="Servies" className="hidden sm:block" />
-        <Image src={mobileImage} alt="Servies" className="sm:hidden" />
+        <Image src={image} alt="triund himachal pradesh" className=" h-[70vh] object-cover object-top" />
+      
       </div>
       <div className="w-[90%] sm:w-[80%] mx-auto">
         <h1 className="mt-10 mb-5 pl-2 text-xl sm:text-[35px] font-semibold text-main-red">

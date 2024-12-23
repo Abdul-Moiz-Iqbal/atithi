@@ -3,8 +3,7 @@ import Image from "next/image";
 import Servies from "../../../../components/services/Services";
 import HowWeWork from "../../../../components/HowWeWork";
 // image
-import lakeImage from "../../../../public/images/lake-image.png";
-import mobileImage from "../../../../public/images/mobile-blog.png";
+import image from "../../../../public/images/chhau purulia.jpg";
 import Pricing from "../../../../components/sections/pricing";
 import WhatWeDo from "../../../../components/home/WhatWeDo";
 import Link from "next/link";
@@ -64,8 +63,8 @@ export default function Home() {
   return (
     <div className="font-author">
     <div className="">
-        <Image src={lakeImage} alt="Servies" className="hidden sm:block" />
-        <Image src={mobileImage} alt="Servies" className="sm:hidden" />
+        <Image src={image} alt="chhau purulia"  className="h-[70vh] object-cover lg:object-center hidden sm:block" />
+        <Image src={image} alt="chhau purulia" className="sm:hidden" />
       </div>
       <Servies />
       <Pricing />

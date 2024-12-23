@@ -8,7 +8,6 @@ import H6 from "../../ui/heading/H6";
 
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import "./BlogCard.css";
 interface BlogCardProps {
   title: string;
@@ -25,7 +24,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   image,
   slug = null,
 }) => {
-  const pathName = usePathname();
+
 
   return (
     <ShadowCard
@@ -40,7 +39,6 @@ const BlogCard: React.FC<BlogCardProps> = ({
           alt={title}
           width={300} // Adjust width as needed
           height={350} // Adjust height as needed
-         
           className="rounded-lg border-2 border-black" // Add rounded borders
         />
       </div>
@@ -69,7 +67,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
         {/* Learn More Button */}
         <Link
           // href={`${pathName}/${id}`}
-          href={`${slug !== null ? `${pathName}/${slug}` : `blog`}`}
+          // href={`${slug !== null ? `${pathName}/${slug}` : `blog`}`}
+          href={`${slug !== null ? `${slug}` : `blog`}`}
           className="mt-7 uppercase text-center text-main-red text-[16px] sm:text-[20px] font-semibold"
         >
           Read More

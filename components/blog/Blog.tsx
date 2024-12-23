@@ -3,6 +3,7 @@ import BlogCard from "./BlogCard";
 import BlogCardHome from "../home/BlogCard";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 // const blogData = [
 //   {
@@ -55,7 +56,13 @@ import { useEffect, useState } from "react";
 //     image: image,
 //   },
 // ];
-
+const formatTitle = (title) => {
+  return title
+    .toLowerCase() // Convert to lowercase
+    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-'); // Remove extra hyphens
+};
 const Blog = () => {
   
   useEffect(() => {
@@ -75,6 +82,9 @@ const Blog = () => {
   }, []);
   const [visibleCount, setVisibleCount] = useState(4);
   const [blogData, setBlogData] = useState([]);
+  const pathname = usePathname();
+
+
 
   // Toggle between showing more and showing less blogs
   const toggleShowMore = () => {
@@ -88,11 +98,12 @@ const Blog = () => {
   return (
     <div className="w-[80%] mx-auto">
      <div className="hidden mt-5 sm:flex flex-col gap-8">
-      s
+      
         {blogData.slice(0, visibleCount).map((blog) => (
           <BlogCard
             key={blog._id}
             id={blog._id}
+            slug={`${pathname}/${formatTitle(blog.title)}-${blog._id}`}
             title={blog.title}
             description={blog.content}
             image={blog.image_url.url}
@@ -104,7 +115,7 @@ const Blog = () => {
           <BlogCardHome
             key={blog._id}
             id={blog._id}
-            slug={blog.title}
+            slug={`${pathname}/${formatTitle(blog.title)}-${blog._id}`}
             
             title={blog.title}
             description={blog.content}

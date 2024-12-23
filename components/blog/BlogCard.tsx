@@ -1,30 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-// import image from "../../public/images/hero-background.png";
+
 
 interface BlogCardProps {
   title: string;
   description: string;
   image: string;
   id: number;
+  slug: string;
 }
-const formatTitle = (title) => {
-  return title
-    .toLowerCase() // Convert to lowercase
-    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
-    .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/-+/g, '-'); // Remove extra hyphens
-};
+
 
 const BlogCard: React.FC<BlogCardProps> = ({
   id,
   title,
   description,
   image,
+  slug
 }) => {
-  const pathName = usePathname();
-  const formattedTitle = formatTitle(title); // Format title for SEO-friendly URL
+
   console.log("Key", id);
   return (
     <div className="p-4  flex shadow-card-red rounded-[20px]">
@@ -54,7 +48,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
           dangerouslySetInnerHTML={{ __html: description }}
         ></div>
         <Link
-          href={`${pathName}/${formattedTitle}-${id}`}
+          href={`${slug}`}
           className="absolute pr-5 bottom-0 right-0 text-[16px] font-semibold text-main-red"
         >
           View More &#8594;

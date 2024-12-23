@@ -117,11 +117,10 @@
 import Image from "next/image";
 
 // image
-import mobileBlog from "../../../../public/images/mobile-blog.png";
-import image from "../../../../public/images/lake-image.png";
+
 import BlogCard from "../../../../components/home/BlogCard";
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import Link from "next/link";
 
 // const blogData = [
@@ -178,13 +177,16 @@ import Link from "next/link";
 
 const Category = () => {
   const { category } = useParams();
+  const [categoryData, setCategory] = useState<unknown>(null);
   const id = category.split("-").pop();
   // console.log(category.split(/-\d/)[0]);
   const title = category.split(/-\d/)[0];
+
+  // for getting all the blogs related to category
   useEffect(() => {
     const fetchBlogsByCategory = async () => {
       try {
-        setLoading(true);
+    
         const response = await fetch(`/api/blog?categoryId=${id}`);
 
         if (!response.ok) {
@@ -201,17 +203,42 @@ const Category = () => {
       } catch (error) {
         setError(error.message);
       } finally {
-        setLoading(false);
+     
       }
     };
 
     fetchBlogsByCategory();
   }, [id]); // Re-run when categoryId changes
 
+  // fetching category data for image url
+  useEffect(() => {
+    const fetchCategory = async () => {
+      
+      try {
+     
+        const response = await fetch(`/api/blog/category/${id}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        console.log(data.data)
+        setCategory(data.data);
+      } catch (err: unknown) {
+        setError(err.message);
+      } finally {
+     
+      }
+    };
+
+    fetchCategory();
+  }, [id]); 
+
   const [visibleCount, setVisibleCount] = useState(6);
   const [blogData, setBlogData] = useState([]);
-  const [loading, setLoading] = useState(true);
+ 
   const [error, setError] = useState(null);
+
+  const pathname = usePathname();
 
   // Show more or less logic
   const toggleShowMore = () => {
@@ -224,13 +251,15 @@ const Category = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  
   if (error) return <p>Error: {error}</p>;
   return (
     <div className="font-author">
       <div>
-        <Image src={mobileBlog} alt="Services" className="sm:hidden" />
-        <Image src={image} alt="Services" className="hidden sm:block" />
+        {/* <Image src={mobileBlog} alt="Services" className="sm:hidden" />
+         */}
+         <Image src={categoryData?.image_url.url} sizes="100vw" width={0} height={0} alt="Servies" className="w-full h-[70vh] object-cover  " />
+        
       </div>
       <div className="w-[90%] md:w-[78%] my-7 mx-auto flex gap-5 uppercase text-main-red text-[16px] md:text-[20px] font-semibold tracking-wider">
         <Link href="/" className="">
@@ -256,7 +285,8 @@ const Category = () => {
             title={blog.title}
             description={blog.content}
             image={blog.image_url.url}
-            slug={blog.slug}
+            // slug={blog.slug}
+            slug={`${pathname}/${blog.slug}`}
           />
         ))}
       </div>

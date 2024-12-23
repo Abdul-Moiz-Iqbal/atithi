@@ -1,10 +1,6 @@
 "use client"
 import Image from "next/image";
-
-
-// image
-import lakeImage from "@/public/images/terms-condition.png";
-import mobileImage from "@/public/images/mobile-blog.png";
+import image from "@/public/images/varanasi.jpg";
 import { useEffect, useState } from "react";
 
 export default function Content() {
@@ -39,8 +35,8 @@ export default function Content() {
     <div className="font-author pb-16">
 
 <div className="">
-        <Image src={lakeImage} alt="Servies" className="hidden sm:block" />
-        <Image src={mobileImage} alt="Servies" className="sm:hidden" />
+        <Image src={image} alt="varanasi" className="h-[70vh] object-cover object-center" />
+        
       </div>
       <div className="w-[80%] mx-auto">
         <h1 className="mt-5 sm:mt-10 mb-5 pl-2 text-xl sm:text-[35px] font-semibold text-main-red">

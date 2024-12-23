@@ -18,6 +18,7 @@ const Sidebar = () => {
     { name: "Meta Data", path: "/dashboard/meta-data", icon: <FaCog /> },
     { name: "Legal edit", path: "/dashboard/legal-edit", icon: <FaPage4 /> },
     { name: "Testimonial", path: "/dashboard/testimonial", icon: <MdReviews /> },
+    { name: "Upload Banner Image", path: "/dashboard/upload-banner", icon: <MdReviews /> },
   ];
 
   return (

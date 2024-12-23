@@ -4,8 +4,7 @@ import Image from "next/image";
 import BlogCard from "../../../../../components/home/BlogCard";
 
 // image
-import lakeImage from "../../../../../public/images/lake-image.png";
-import mobileImage from "../../../../../public/images/mobile-blog.png";
+
 import image from "../../../../../public/images/logoHres.png";
 import share from "../../../../../public/icons/share.png";
 
@@ -19,6 +18,7 @@ import H4 from "../../../../../ui/heading/H4";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { FaXTwitter } from "react-icons/fa6";
+import LoadingSpinner from "@/src/app/loading";
 
 // const blogData = [
 //   {
@@ -72,6 +72,12 @@ import { FaXTwitter } from "react-icons/fa6";
 //   },
 // ];
 
+function removeLastPathSegment(url) {
+  const lastSlashIndex = url.lastIndexOf('/');
+  return url.substring(0, lastSlashIndex);
+}
+
+
 const BlogPost = () => {
   const path = usePathname();
 
@@ -83,6 +89,8 @@ const BlogPost = () => {
   const [loading, setLoading] = useState(true);
   const pathParts = path.split("/").slice(0, -1);
 
+  const lastPathSegment = removeLastPathSegment(path)
+  
   // Join the parts back into a string
   const newUrl = pathParts.join("/");
 
@@ -184,13 +192,13 @@ const BlogPost = () => {
     }
   };
   if (error) return <p className="text-center text-red-500">{error}</p>;
-  if (loading) return <p className="text-center">Loading...</p>;
+  if (loading) return <LoadingSpinner/>;
 
   return (
     <div className="font-author">
       <div className="">
-        <Image src={lakeImage} alt="Servies" className="hidden sm:block" />
-        <Image src={mobileImage} alt="Servies" className="sm:hidden" />
+        <Image src={blog?.image_url.url} sizes="100vw" width={0} height={0} alt="Servies" className="w-full h-[70vh] object-cover" />
+        {/* <Image src={mobileImage} alt="Servies" className="sm:hidden" /> */}
       </div>
       {/* blog and Profile section  */}
       <div className="flex gap-6 w-[80%] mx-auto ">
@@ -209,8 +217,10 @@ const BlogPost = () => {
             <div>&gt;</div>
             <div>{blog?.title} </div>
           </div>
-          <h1 className="mt-5 sm:hidden text-main-blue text-[20px] font-semibold tracking-wide">
-            Blog Name
+          <h1 className="mt-5 sm:hidden text-main-blue text-[20px] font-semibold tracking-wide"
+          dangerouslySetInnerHTML={{ __html: blog?.title }}
+          >
+            
           </h1>
           <div className=" mt-4 w-full  md:mx-auto border-[1px] border-main-red"></div>
 
@@ -376,6 +386,7 @@ const BlogPost = () => {
             title={blog.title}
             description={blog.content}
             image={blog.image_url.url}
+            slug={lastPathSegment}
           />
         ))}
       </div>
