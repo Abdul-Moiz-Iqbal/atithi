@@ -10,7 +10,7 @@ import { Suspense, useEffect, useState } from "react";
 import LoadingSpinner from "../loading";
 
 
-export default function Blog() {
+export default function BlogPage() {
   const [bannerImage, setBannerImage] = useState<string | null>(null);
 
   useEffect(() => {
