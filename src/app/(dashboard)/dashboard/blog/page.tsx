@@ -310,7 +310,7 @@ const BlogEditor = () => {
                 <div>
                   <button
                     type="button"
-                    onClick={() => handleEditCategory(blog.title)}
+                    onClick={() => handleEditCategory(blog._id)}
                     className="py-1 px-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700"
                   >
                     Edit

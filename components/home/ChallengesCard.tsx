@@ -59,7 +59,7 @@ const ChallengesCard: React.FC<ChallengesCardProps> = ({
               textColor == "text-main-red" ? "text-main-blue" : "text-main-red"
             } font-medium`}
           >
-            <Link href={'/blog/categories/content'}>here</Link>
+            <Link href={'/blog'}>here</Link>
             
           </span>{" "}
           to know more

@@ -59,6 +59,7 @@ const EditCategoryBlog = ({ blogId }: { blogId: string }) => {
 
   const handleSave = async () => {
     setIsSaving(true);
+    console.log("id:",id,",title:", title,",content:", content,",cloud:", cloudImage)
     try {
       const res = await fetch(`/api/blog/category`, {
         method: 'PUT',
@@ -72,7 +73,7 @@ const EditCategoryBlog = ({ blogId }: { blogId: string }) => {
         throw new Error('Failed to update blog');
       }
 
-      toast.success('Blog updated successfully!');
+      alert('Blog updated successfully!');
       // router.push('/dashboard/blog');
     } catch (error) {
       console.error('Error saving blog:', error);
@@ -115,7 +116,7 @@ const EditCategoryBlog = ({ blogId }: { blogId: string }) => {
 
     // Set new image
 
-    toast.success('Image uploaded succes  sfully!');
+    toast.success('Image uploaded succes  fully!');
   };
   const handleImageRemove = async() => {
     try {
@@ -126,6 +127,7 @@ const EditCategoryBlog = ({ blogId }: { blogId: string }) => {
         },
         body: JSON.stringify({ public_id: cloudImage.public_id ,blogId:id, modelType:'category'}), // Extract public ID
       });
+      setImage(null);
       alert('Image deleted successfully!');
       toast.success('Previous image deleted!');
     } catch (error) {

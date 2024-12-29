@@ -52,3 +52,52 @@ export async function POST(request: Request) {
     );
   }
 }
+
+export async function DELETE(req: Request) {
+  const body = await req.json();
+  const { id } = body
+
+  await connectDB();
+
+  try {
+    const deletedTestimonial = await Testimonial.findByIdAndDelete(id);
+    
+    if (!deletedTestimonial) {
+      return NextResponse.json({ message: 'Testimonial not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: 'Testimonial deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ message: 'Error deleting testimonial' }, { status: 500 });
+  }
+}
+export async function PUT(req: Request) {
+  
+  const body = await req.json();
+  const { id,title, content, userName, userCountry } = body;
+  if (!title || !content || !userName || !userCountry) {
+    return NextResponse.json(
+      { error: 'All fields are required' },
+      { status: 400 }
+    );
+  }
+  await connectDB();
+
+  try {
+    const updatedTestimonial = await Testimonial.findByIdAndUpdate(
+      id,
+      { title, content, userName, userCountry },
+      { new: true } // Return the updated testimonial
+    );
+    
+    if (!updatedTestimonial) {
+      return NextResponse.json({ message: 'Testimonial not found' }, { status: 404 });
+    }
+
+    return NextResponse.json(updatedTestimonial);
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ message: 'Error updating testimonial' }, { status: 500 });
+  }
+}
